@@ -299,3 +299,33 @@
 	#wmap .wmap-c__ft { flex-direction: column; align-items: stretch; }
 	#wmap a.wmap-c__src { justify-content: center; }
 }
+
+/* 화면 점검 손질 (2026-10-18) ---------------------------------------------------------------
+ * 어르신 가독성: 작은 글씨를 13px(.8125rem) 이상으로 - rem이라 사이트 글자 크기(가+·가++)를 그대로 따라감
+ * 누르기: 칩·버튼·글자 링크의 누르는 높이 40px 이상(경로 링크는 44px)
+ * 휴대폰 경로 줄: '선택 지우기'가 혼자 둘째 줄로 내려가던 것 → 글자 링크로 같은 줄에
+ * 대상 칩: 넓은 화면에서 생애주기 | 가구 상황 사이 구분선이 둘째 줄 맨 앞에 오던 것 → 가구 상황은 새 줄에서 시작 */
+#wmap .wmap-st { height: 26px; font-size: .8125rem; }
+#wmap .wmap-hd__eb, #wmap .wmap-c__area, #wmap .wmap__tip { font-size: .84rem; }
+#wmap .wmap-c__dt, #wmap .wmap-f__note, #wmap .wmap-box .wmap-box__s, #wmap .wmap__map figcaption small, #wmap .wmap-more small, #wmap .wmap__foot p { font-size: .84rem; }
+#wmap .wmap-chip em, #wmap .wmap-gd a em, #wmap .wmap__list a small { font-size: .8125rem; }
+
+#wmap .wmap__crumb ol a { display: inline-flex; align-items: center; min-height: 44px; }
+#wmap .wmap__crumb .wmap__tgl, #wmap .wmap__crumb .wmap__clear, #wmap .wmap__mtg { height: 40px; }
+#wmap .wmap-chip, #wmap .wmap-f__more, #wmap .wmap-f__reset { height: 40px; }
+#wmap a.wmap-c__src { min-height: 40px; }
+#wmap a.wmap-box__go { display: inline-flex; align-items: center; min-height: 40px; margin-bottom: 0; }
+#wmap .wmap-gd a { min-height: 40px; }
+#wmap .wmap__up a { display: inline-flex; align-items: center; min-height: 40px; }
+#wmap #wmap-fq { height: 40px; }
+
+@media (min-width: 768px) {
+	#wmap .wmap-f__sep { flex-basis: 100%; width: auto; height: 0; margin: 0; background: none; }
+}
+@media (max-width: 767px) {
+	/* 두 줄로 정돈: 1줄 '전국 › 시·도 › 시·군·구'(긴 이름도 안 잘림) / 2줄 [다른 시·군·구] ··· 선택 지우기(글자 링크) */
+	#wmap .wmap__crumb { gap: 0 8px; }
+	#wmap .wmap__crumb ol { flex: 1 0 100%; }
+	#wmap .wmap__crumb .wmap__tgl { white-space: nowrap; }
+	#wmap .wmap__crumb .wmap__clear { margin-left: auto; padding: 0 2px; background: none; border: 0; font-size: .84rem; font-weight: 600; white-space: nowrap; color: var(--wm-ink3); text-decoration: underline; text-underline-offset: 3px; }
+}

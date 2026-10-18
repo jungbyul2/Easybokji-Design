@@ -120,8 +120,9 @@ add_action( 'wp_head', function () {
 	if ( ! is_front_page() || ! ebm_can_view() ) {
 		return;
 	}
-	// 탭 줄(.hx__tabs)과 같은 높이·글자, 오른쪽 끝. 휴대폰은 아이콘+짧은 글자
-	echo '<style id="ebm-home">.hx__fc{position:relative}.hx__fc>.hx__map{position:absolute;top:6px;right:8px;display:inline-flex;align-items:center;gap:5px;height:36px;padding:0 10px;font-size:.88rem;font-weight:700;color:var(--accent,#1d3c78);text-decoration:none;border-radius:8px}.hx__fc>.hx__map svg{width:17px;height:17px;flex:none}.hx__fc>.hx__map:hover,.hx__fc>.hx__map:focus-visible{background:var(--accent-3,#eaf0fa);text-decoration:none}@media (max-width:767px){.hx__fc>.hx__map{top:4px;right:4px;padding:0 8px;font-size:.82rem}}</style>' . "\n"; // phpcs:ignore
+	// 탭 줄(.hx__tabs)과 같은 높이·글자, 오른쪽 끝.
+	// 휴대폰(~767px): 탭 줄을 같은 폭 3칸으로 나눠 '조건으로 | 검색어로 | 지도로 찾기' (2026-10-18, 예전엔 지도 링크가 '검색어로 찾기' 탭 위에 겹침)
+	echo '<style id="ebm-home">.hx__fc{position:relative}.hx__fc>.hx__map{position:absolute;top:6px;right:8px;display:inline-flex;align-items:center;gap:5px;height:36px;padding:0 10px;font-size:.88rem;font-weight:700;color:var(--accent,#1d3c78);text-decoration:none;border-radius:8px}.hx__fc>.hx__map svg{width:17px;height:17px;flex:none}.hx__fc>.hx__map:hover,.hx__fc>.hx__map:focus-visible{background:var(--accent-3,#eaf0fa);text-decoration:none}@media (max-width:767px){#ebc .hx__tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}#ebc .hx__tabs [role=tab]{justify-content:center;padding:0 2px;white-space:nowrap}#ebc .hx__tabs [role=tab] svg,.hx__fc>.hx__map svg{display:none}#ebc .hx__fc>.hx__map{top:2px;right:4px;width:calc((100% - 8px) / 3);height:42px;justify-content:center;padding:0 2px;font-size:14px;color:#6b7684;white-space:nowrap;border-radius:0}#ebc .hx__fc>.hx__map:hover,#ebc .hx__fc>.hx__map:focus-visible{color:#14213d}}</style>' . "\n"; // phpcs:ignore
 }, 20 );
 
 /* 자산 ------------------------------------------------------------------------------- */
