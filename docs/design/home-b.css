@@ -1,0 +1,157 @@
+/* 홈 첫 화면 시안 B (2026-10-18) - 탭을 없애고 '검색창 → 내 조건으로 찾기 카드 → 지도로 찾기 줄'을 한눈에.
+   콤팩트·찾기 쉽게·어르신 가독성. 승인 전 시안용(사이트 미반영). 간격 단위 4/8/12/16/20, 누르는 곳 44px 이상, 글씨 최소 13px */
+
+/* ── 공통 ─────────────────────────────────────────────── */
+#ebc .hx { --b-line:#dfe5ee; --b-soft:#f5f8fd; --b-ink:#191f28; --b-sub:#4e5968; --b-nv:#1d3c78; }
+
+/* 탭 없앰: 검색·조건·지도를 모두 펼쳐 보여 줌 */
+#ebc .hx .hx__tabs { display:none; }
+#ebc .hx .hx__fc { background:none; box-shadow:none; border-radius:0; gap:0; }
+#ebc .hx .hx__pane { display:flex !important; }
+
+/* ① 검색창(맨 위) */
+#ebc .hx .hx__pane[data-pane=search] { order:0; flex:none; padding:0; }
+#ebc .hx .hx__sb { height:54px; padding:0 6px 0 16px; border:1.5px solid #c9d3e2 !important; border-radius:14px; background:#fff; box-shadow:0 8px 20px -14px rgba(29,60,120,.45) !important; }
+#ebc .hx .hx__sb input { font-size:16px; }
+#ebc .hx .hx__sb button[type=submit] { height:42px; padding:0 16px; border-radius:10px; font-size:15px; }
+#ebc .hx .hx__hh { display:none; }
+#ebc .hx .hx__sb b { font-size:13px; }
+
+/* ② 내 조건으로 찾기 카드 */
+#ebc .hx .hx__pane[data-pane=find] { order:1; margin-top:12px; padding:18px 20px 0; border-radius:16px 16px 0 0; background:#fff; box-shadow:inset 0 0 0 1px var(--b-line); }
+#ebc .hx .hx__fh { margin:0 0 12px; }
+#ebc .hx .hx__fh h2 { margin:0; font-size:18px; font-weight:800; line-height:1.35; color:var(--b-ink); letter-spacing:-.02em; }
+#ebc .hx .hx__fh p { margin:2px 0 0; font-size:14px; line-height:1.45; color:var(--b-sub); }
+#ebc .hx .hx__again { margin-bottom:10px; }
+
+/* 문장형(저는 ○○이고, ○○에 살아요) 대신 같은 크기 선택 칸 2개 + 더하기 */
+/* 글자(저는·이고·에 살아요)는 font-size 0으로 감추고(화면 읽기 프로그램은 그대로 읽음), 버튼만 같은 폭으로 */
+#ebc .hx .hx__sent { display:flex; flex-wrap:wrap; font-size:0; line-height:1; }
+#ebc .hx .hx__pick[data-k] { flex:1 1 0; min-width:0; }
+#ebc .hx .hx__pick[data-k=life] { margin-right:8px; }
+#ebc .hx .hx__br { display:none; }
+#ebc .hx .hx__pick { display:flex; justify-content:space-between; width:100%; height:52px; margin:0; padding:0 12px 0 14px; border-radius:12px; background:var(--b-soft); box-shadow:inset 0 0 0 1.5px #cfdcf1; font-size:16.5px; font-weight:800; color:var(--b-nv); }
+#ebc .hx .hx__pick.is-empty { color:#333d4b; font-weight:700; }
+#ebc .hx .hx__pick svg { width:18px; height:18px; flex:none; color:var(--b-nv); }
+#ebc .hx .hx__pick span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+#ebc .hx .hx__pick.is-more { flex:1 0 100%; margin-top:8px; justify-content:center; gap:6px; height:46px; background:#fff; box-shadow:inset 0 0 0 1.5px var(--b-line); font-size:15px; font-weight:700; color:#333d4b; }
+@media (hover:hover) {
+  #ebc .hx .hx__pick:hover { box-shadow:inset 0 0 0 2px var(--b-nv); }
+}
+#ebc .hx .hx__pick:focus-visible { outline:3px solid var(--b-nv); outline-offset:2px; }
+
+/* 상황별 가이드 칩은 홈 아래 '상황별 가이드' 칸과 겹쳐서 첫 화면에서는 뺌 */
+#ebc .hx .hx__sit { display:none; }
+#ebc .hx .hx__pv { margin-top:16px; }
+
+/* 결과: 세는 글 + 큰 버튼 */
+#ebc .hx .hx__res { flex-wrap:nowrap; align-items:center; gap:12px; margin:16px -20px 0; padding:12px 12px 12px 20px; border-radius:0; }
+#ebc .hx .hx__num { flex:1 1 auto; min-width:0; }
+#ebc .hx .hx__num small { font-size:13.5px; color:var(--b-sub); }
+#ebc .hx .hx__hint { font-size:14px; color:var(--b-sub); white-space:normal; }
+#ebc .hx .hx__go { flex:none; height:50px; margin-left:0; padding:0 18px 0 20px; border-radius:12px; font-size:16px; }
+
+/* ③ 지도로 찾기: 카드 맨 아래 한 줄(겹치던 위치 대신) */
+#ebc .hx .hx__fc > .hx__map { order:2; position:static !important; display:flex !important; align-items:center; gap:10px; width:auto; height:54px !important; padding:0 16px 0 20px !important; border-radius:0 0 16px 16px !important; background:#fff !important; box-shadow:inset 1px 0 0 var(--b-line), inset -1px 0 0 var(--b-line), inset 0 -1px 0 var(--b-line), 0 16px 28px -24px rgba(29,60,120,.45); border-top:1px solid #eef1f5; font-size:15.5px !important; font-weight:800; color:var(--b-nv) !important; text-decoration:none; }
+#ebc .hx .hx__fc > .hx__map svg { width:20px !important; height:20px !important; padding:7px; box-sizing:content-box; border-radius:9px; background:#eaf0fa; }
+#ebc .hx .hx__fc > .hx__map small { margin-left:8px; font-size:13.5px; font-weight:600; color:var(--b-sub); }
+#ebc .hx .hx__fc > .hx__map::after { content:""; width:8px; height:8px; margin-left:auto; border:solid #8b95a1; border-width:2px 2px 0 0; transform:rotate(45deg); }
+@media (hover:hover) {
+  #ebc .hx .hx__fc > .hx__map:hover { background:#f8faff !important; }
+}
+
+/* '전체 일정 ›'처럼 작은 글자 링크도 누르는 높이 44px */
+#ebc .hx .hx__ch a { display:inline-flex; align-items:center; min-height:44px; margin:-12px 0; }
+
+/* 글씨 최소 크기(어르신 가독성) */
+#ebc .hx .hx__trust li, #ebc .hx .hx__trust b { font-size:13.5px; }
+#ebc .hx .hx__date, #ebc .hx .hx__ebs { font-size:14px; }
+#ebc .hx .hx__pvh, #ebc .hx .hx__fc .hx__pvh span { font-size:14px; }
+#ebc .hx .hx__pvl .o, #ebc .hx .hx__pvl .o * { font-size:13.5px; color:var(--b-sub); }
+#ebc .hx .hx__pvl .k, #ebc .hx .hx__due .k { font-size:12.5px; }
+#ebc .hx .hx__ch a { font-size:14px; }
+#ebc .hx .hx__nxt small { font-size:13.5px; color:var(--b-sub); }
+#ebc .hx .hx__cal .hx__due .t strong { font-size:15px; }
+#ebc .hx .hx__cal .hx__due .t small { font-size:13.5px; color:var(--b-sub); }
+#ebc .hx .hx__due .dd { font-size:15px; }
+#ebc .hx .hx__mo .wd, #ebc .hx .hx__wk .wd { font-size:12.5px; }
+#ebc .hx .hx__mo > span:not(.wd), #ebc .hx .hx__wk > span:not(.wd) { font-size:14px; }
+#ebc .c-svc small { font-size:13.5px; color:#4e5968; }
+
+/* ── 넓은 화면(768px~): 많이 찾는 검색어를 검색창 아래 한 줄 칩으로 ── */
+@media (min-width:768px) {
+  #ebc .hx .hx__hot { display:flex; flex-wrap:nowrap; align-items:center; gap:6px; height:40px; margin-top:10px; overflow:hidden; }
+  #ebc .hx .hx__hot::before { content:"많이 찾는"; flex:none; margin-right:4px; font-size:13.5px; font-weight:700; color:var(--b-sub); }
+  #ebc .hx .hx__hot a { flex:none; height:40px; padding:0 14px; border:0; border-radius:20px; background:rgba(255,255,255,.85); box-shadow:inset 0 0 0 1px var(--b-line); font-size:14px; font-weight:600; }
+  #ebc .hx .hx__hot a b, #ebc .hx .hx__hot a .mv { display:none; }
+  #ebc .hx .hx__hot a:nth-child(n+7) { display:none; }
+  #ebc .hx .hx__pane[data-pane=find] { margin-top:14px; padding:20px 22px 0; }
+  #ebc .hx .hx__res { margin:18px -22px 0; padding-left:22px; }
+  #ebc .hx .hx__fc > .hx__map { padding-left:22px !important; }
+  /* 선택 칸: 나이·시기 | 사는 곳 | 더하기 를 한 줄에 */
+  #ebc .hx .hx__sent { flex-wrap:nowrap; }
+  #ebc .hx .hx__pick[data-k=rg] { margin-right:8px; }
+  #ebc .hx .hx__pick.is-more { flex:none; width:auto; margin-top:0; height:52px; padding:0 16px; }
+  /* 검색창은 두 칸에 걸쳐 맨 위, 그 아래 '내 조건으로 찾기 카드 | 복지 달력'의 위·아래 끝을 맞춤 */
+  #ebc .hx .hx__grid { grid-template-rows:auto 1fr auto; row-gap:0; }
+  #ebc .hx .hx__fc { display:contents; }
+  #ebc .hx .hx__pane[data-pane=search] { grid-column:1 / -1; grid-row:1; }
+  #ebc .hx .hx__pane[data-pane=find] { grid-column:1; grid-row:2; margin-top:14px; }
+  #ebc .hx .hx__fc > .hx__map { grid-column:1; grid-row:3; }
+  #ebc .hx .hx__cal { grid-column:2; grid-row:2 / 4; margin-top:14px; }
+}
+
+/* ── 휴대폰(~767px) ──────────────────────────────────── */
+@media (max-width:767px) {
+  #ebc .hx .hx__eb, #ebc .hx .hx__sub { display:none; }
+  #ebc .hx .hx__in { padding-top:18px; padding-bottom:16px; }
+  #ebc .hx .hx__h1 { font-size:22px; line-height:1.32; }
+  #ebc .hx .hx__trust { margin-top:8px; }
+  #ebc .hx .hx__trust ul { gap:2px 12px; }
+  #ebc .hx .hx__trust li { height:auto !important; padding:0 !important; border:0 !important; background:none !important; box-shadow:none !important; color:var(--b-sub); }
+  #ebc .hx .hx__trust svg { width:14px; height:14px; }
+  #ebc .hx .hx__grid { margin-top:14px; }
+  #ebc .hx .hx__hot { display:none; }
+  #ebc .hx .hx__pane[data-pane=find] { padding:16px 16px 0; }
+  #ebc .hx .hx__fh h2 { font-size:17px; }
+  /* 결과: '받을 수 있는 혜택 N개 · 정부 N · 정리 글 N'을 한 줄로, 그 아래 큰 버튼 (카드 테두리는 끊기지 않게 1px 안쪽) */
+  #ebc .hx .hx__res { flex-direction:row; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 12px; margin:12px -15px 0; padding:4px 15px 16px; border-top:0; background:#fff; }
+  #ebc .hx .hx__num { display:flex; align-items:baseline; gap:6px; flex:0 1 auto; }
+  #ebc .hx .hx__brk { order:1; margin:0; padding:0; border:0; font-size:13.5px; }
+  #ebc .hx .hx__go { order:2; flex:1 0 100%; }
+  #ebc .hx .hx__num:has(.hx__hint:not([hidden])) { display:none; } /* 고르기 전엔 버튼만(결과 수가 생기면 보임) */
+  #ebc .hx .hx__pick.is-more { height:44px; }
+  #ebc .hx .hx__go { justify-content:center; width:100%; height:52px; font-size:17px; }
+  #ebc .hx .hx__chosen { margin:12px 0 0; }
+  #ebc .hx .hx__fc > .hx__map { padding:0 14px 0 16px !important; }
+  #ebc .hx .hx__fc > .hx__map small { display:none; }
+
+  /* 일정 카드: 2주 달력 대신 '다음 지급일 + 마감 임박' 두 줄 */
+  #ebc .hx .hx__cal { margin-top:12px; padding:14px 16px !important; }
+  #ebc .hx .hx__wk { display:none; }
+  #ebc .hx .hx__ch { margin-bottom:10px; }
+  #ebc .hx .hx__ch h2 { font-size:16px; }
+  #ebc .hx .hx__nx { margin-top:0 !important; padding:10px 12px !important; }
+  #ebc .hx .hx__due { margin-top:8px !important; padding:10px 12px !important; }
+
+  /* 바로가기 8칸: 4×2를 낮게 */
+  #ebc .c-svc { gap:8px; }
+  #ebc .c-svc a { gap:6px; min-height:0; padding:12px 4px 10px !important; }
+  #ebc .c-svc .si { width:40px; height:40px; }
+  #ebc .c-svc strong { font-size:14.5px; line-height:1.3; word-break:keep-all; }
+}
+
+/* ── 태블릿(768~1079px): 칸이 좁아 휴대폰처럼 '선택 2칸 + 더하기 한 줄', 버튼은 넓게 ── */
+@media (min-width:768px) and (max-width:1079px) {
+  #ebc .hx .hx__sent { flex-wrap:wrap; }
+  #ebc .hx .hx__pick[data-k=rg] { margin-right:0; }
+  #ebc .hx .hx__pick.is-more { flex:1 0 100%; margin-top:8px; height:46px; }
+  #ebc .hx .hx__res { flex-direction:column; align-items:stretch; gap:8px; padding:12px 22px 16px; }
+  #ebc .hx .hx__num:has(.hx__hint:not([hidden])) { display:none; }
+  #ebc .hx .hx__go { justify-content:center; width:100%; }
+  #ebc .hx .hx__pvl .o { display:none; } /* 좁은 카드에서 잘리던 설명 줄은 빼고 이름만 */
+}
+/* PC(1080px~): 달력 칸을 조금 넓혀 '다음 지급일' 줄이 잘리지 않게 */
+@media (min-width:1080px) {
+  #ebc .hx .hx__grid { grid-template-columns:minmax(0,1fr) 330px; }
+}
