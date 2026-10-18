@@ -1,0 +1,967 @@
+/*
+ * 10-list.css - 목록·검색·404
+ * 분야·태그 목록(게시판형), 검색 결과·결과 없음 화면, 404, 목록 머리(page-header), 페이지 번호
+ *
+ * [들어 있는 것] 편집기에서 Ctrl+F로 왼쪽 이름을 찾으면 그 디자인으로 갑니다.
+ *   archive / search        분야·태그 목록과 검색 결과 페이지 전체 배치
+ *   page-header             목록 위 제목·설명
+ *   eb-cathead              분야 목록 위 세부 분야·많이 본 글
+ *   eb-list / eb-row(s)     게시판형 글 목록 줄
+ *   entry-summary           목록의 글 요약
+ *   page-numbers            아래 페이지 번호
+ *   eb-gov                  검색 결과의 정부 복지서비스
+ *   eb-nores / eb-noresult  검색 결과 없음 화면
+ *   eb-quickfind            404 페이지 '어디로 가 볼까요?'
+ *
+ * 파일 앞 번호는 불러오는 순서입니다(번호가 큰 파일이 뒤에 옴). 순서를 바꾸면 모양이 달라질 수 있어요.
+ * 새 규칙은 이 파일 맨 끝에 추가하세요. 자세한 안내: css/README.txt
+ */
+
+.eb-quickfind {
+  margin: 0 0 22px;
+}
+.eb-quickfind__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.eb-quickfind__title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--contrast);
+}
+.eb-quickfind__more {
+  font-size: 13px;
+  color: var(--contrast-2);
+  text-decoration: none;
+}
+.eb-quickfind__more:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.eb-quickfind__list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.eb-quickfind__list li {
+  margin: 0;
+}
+.eb-quickfind__list a {
+  display: block;
+  height: 100%;
+  padding: 12px 14px;
+  background: var(--base-3);
+  border: 1px solid var(--base);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.eb-quickfind__list strong {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--contrast);
+}
+.eb-quickfind__list span {
+  display: block;
+  margin-top: 2px;
+  font-size: 12.5px;
+  color: var(--contrast-3);
+}
+.eb-quickfind__list a:hover {
+  background: var(--accent-3);
+  border-color: var(--accent);
+}
+.eb-quickfind__list a:hover strong {
+  color: var(--accent);
+}
+.eb-quickfind__guide {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--contrast-3);
+}
+.eb-quickfind__guide strong {
+  color: var(--contrast-2);
+}
+@media (max-width: 768px) {
+.eb-quickfind__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+.eb-quickfind__list a {
+    padding: 10px 12px;
+  }
+}
+.archive .entry-title a,
+.search .entry-title a {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.archive .entry-title a:hover,
+.search .entry-title a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.archive .entry-summary,
+.search .entry-summary {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 6px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--contrast-2);
+}
+.archive .entry-summary p,
+.search .entry-summary p {
+  margin: 0;
+}
+.archive .page-header {
+  margin-bottom: 20px;
+  padding: 14px 0;
+  border-bottom: 2px solid var(--accent);
+}
+.archive .page-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+.archive .taxonomy-description {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--contrast-2);
+}
+.archive .site-main > .post,
+.search .site-main > .post {
+  margin-bottom: 0;
+  padding-top: 16px;
+  border-bottom: 1px solid var(--base);
+}
+.archive .site-main > .post .inside-article,
+.search .site-main > .post .inside-article {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas:
+        "thumb header"
+        "thumb summary"
+        "thumb footer";
+  column-gap: 18px;
+  align-items: start;
+}
+.archive .site-main > .post:not(.has-post-thumbnail) .inside-article,
+.search .site-main > .post:not(.has-post-thumbnail) .inside-article {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "header" "summary" "footer";
+}
+.site-main > .post .inside-article > .entry-summary {
+  grid-area: summary;
+  margin-top: 6px;
+  -webkit-line-clamp: 2;
+}
+.archive .entry-title,
+.search .entry-title {
+  margin-bottom: 0;
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+.archive .site-main > .post .inside-article,
+    .search .site-main > .post .inside-article {
+    grid-template-columns: 180px minmax(0, 1fr);
+  }
+}
+@media (max-width: 768px) {
+.archive .site-main > .post,
+    .search .site-main > .post {
+    padding-top: 14px;
+  }
+.archive .site-main > .post .inside-article,
+    .search .site-main > .post .inside-article {
+    grid-template-columns: 116px minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+            "thumb header"
+            "thumb footer";
+    column-gap: 12px;
+  }
+.site-main > .post .inside-article > .entry-summary {
+    display: none;
+  }
+}
+/* [순서 유지] 원래는 '기본·본문' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.entry-content strong {
+  font-weight: 700;
+  color: var(--contrast);
+}
+/* [순서 유지] 원래는 '기본·본문' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.entry-content :where(a:not([class])):hover,
+.entry-content :where(a:not([class])):focus-visible {
+  text-decoration-color: currentColor;
+  background: #eef3fc;
+}
+/* [순서 유지] 원래는 '기본·본문' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.entry-content .wp-block-button__link {
+  padding: 12px 22px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.paging-navigation {
+  margin-top: 10px;
+  text-align: center;
+}
+.paging-navigation .nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+}
+.page-numbers {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  font-size: 15px;
+  color: var(--contrast-2);
+  background: var(--base-3);
+  border: 1px solid var(--base);
+  border-radius: 4px;
+  text-decoration: none;
+}
+.page-numbers.current {
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+a.page-numbers:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.page-numbers.dots {
+  border-color: transparent;
+}
+.eb-search-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+.eb-search-head .page-title span {
+  color: var(--accent);
+}
+.eb-search-count {
+  margin: 0;
+  font-size: 14px;
+  color: var(--contrast-3);
+}
+.eb-noresult {
+  margin: 0 0 24px;
+  padding: 20px 22px;
+  background: var(--base-2);
+  border: 1px solid var(--base);
+  border-radius: 6px;
+}
+.eb-noresult__title {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--contrast);
+}
+.eb-noresult__tips {
+  margin: 0 0 14px 1.2em;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--contrast-2);
+}
+.eb-noresult__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.eb-noresult__links a,
+.eb-catgrid__head,
+.eb-sit__more {
+  text-decoration: none;
+}
+.eb-noresult__links a {
+  padding: 5px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--base-3);
+  border: 1px solid var(--base);
+  border-radius: 999px;
+}
+.eb-noresult__links a:hover {
+  border-color: var(--accent);
+}
+.eb-noresult__note {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--contrast-3);
+}
+.eb-page-search {
+  margin: 0 0 24px;
+}
+.eb-catgrid__head {
+  display: block;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--accent);
+  border-bottom: 1px solid var(--base);
+}
+@media (max-width: 768px) {
+.eb-noresult {
+    padding: 16px;
+  }
+}
+.eb-cathead {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 16px 24px;
+  margin: 16px 0 4px;
+  padding: 16px 18px;
+  background: var(--base-2);
+  border: 1px solid var(--base);
+  border-radius: 10px;
+}
+.eb-cathead__subs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  grid-column: 1 / -1;
+}
+.eb-cathead__subs > span {
+  margin-right: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--contrast-3);
+}
+.eb-cathead__subs a {
+  padding: 4px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--contrast);
+  background: var(--base-3);
+  border: 1px solid var(--base);
+  border-radius: 999px;
+  text-decoration: none;
+}
+.eb-cathead__subs a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.eb-cathead__subs em {
+  font-size: 12px;
+  font-style: normal;
+  color: var(--contrast-3);
+}
+.eb-cathead__popular ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: eb-cat;
+}
+.eb-cathead__popular li {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 4px 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  counter-increment: eb-cat;
+}
+.eb-cathead__popular li::before {
+  content: counter(eb-cat);
+  flex: 0 0 20px;
+  height: 20px;
+  margin-top: 1px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 4px;
+}
+.eb-cathead__popular a {
+  color: var(--contrast);
+  text-decoration: none;
+}
+.eb-cathead__popular a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.eb-cathead .eb-calcgrid a.eb-calccard {
+  padding: 10px 14px;
+}
+.eb-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.eb-rows li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 9px 2px;
+  border-bottom: 1px dashed var(--base);
+}
+.eb-rows li:last-child {
+  border-bottom: 0;
+}
+.eb-rows a {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 8px;
+  min-width: 0;
+  color: var(--contrast);
+  text-decoration: none;
+}
+.eb-rows__tag {
+  flex: 0 0 auto;
+  padding: 1px 7px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-3);
+  border-radius: 4px;
+}
+.eb-rows__title {
+  overflow: hidden;
+  font-size: 14.5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.eb-rows a:hover .eb-rows__title {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.eb-rows time {
+  flex: 0 0 auto;
+  font-size: 12.5px;
+  color: var(--contrast-3);
+  font-variant-numeric: tabular-nums;
+}
+.eb-rows__empty {
+  margin: 0;
+  padding: 14px 2px;
+  font-size: 14px;
+  color: var(--contrast-3);
+}
+.eb-404 {
+  margin-top: 8px;
+}
+.eb-404 > section {
+  margin: 0 0 26px;
+}
+.eb-404__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.eb-404__chips a {
+  padding: 8px 14px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--base-3);
+  border: 1px solid var(--base);
+  border-radius: 999px;
+  text-decoration: none;
+}
+.eb-404__chips a:hover {
+  background: var(--accent-3);
+  border-color: var(--accent);
+}
+.eb-bg .eb-quickfind,
+.eb-bg .eb-home > section,
+.eb-bg .page-header,
+.eb-bg .inside-right-sidebar > .widget:not(.widget_search):has(> :not([hidden]):not(script)) {
+  padding: 20px 22px;
+  background: #fff;
+  border: 1px solid #e2e7ef;
+  border-radius: 12px;
+}
+.eb-bg .eb-quickfind,
+.eb-bg .eb-home > section,
+.eb-bg .page-header,
+.eb-bg .inside-right-sidebar > .widget:not(.widget_search) {
+  margin-bottom: 16px;
+}
+/* [순서 유지] 원래는 '기본·본문' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.entry-content span[style*="text-decoration: underline"] {
+  font-weight: 700;
+  color: var(--contrast);
+  text-decoration: none !important;
+}
+@media (max-width: 768px) {
+.search .site-main > .post .inside-article > .entry-summary,
+    .search .site-main > article .entry-summary {
+    display: -webkit-box;
+    grid-area: footer;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
+.eb-list {
+  margin: 0 0 20px;
+  background: #fff;
+  border: 1px solid #e2e7ef;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.eb-list__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 20px;
+  border-bottom: 2px solid var(--accent);
+}
+.eb-list__bar b {
+  font-size: 15px;
+  color: var(--contrast);
+}
+.eb-list__bar b span {
+  color: var(--accent);
+}
+.eb-list__sort {
+  display: flex;
+  gap: 4px;
+}
+.eb-list__sort a {
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--contrast-2);
+  text-decoration: none;
+  border-radius: 6px;
+}
+.eb-list__sort a:hover {
+  color: var(--accent);
+  background: var(--accent-3);
+}
+.eb-list__sort a[aria-current] {
+  color: #fff;
+  background: var(--accent);
+}
+.eb-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 4px 12px;
+  padding: 13px 20px;
+  color: var(--contrast);
+  text-decoration: none;
+  border-bottom: 1px solid #edf0f4;
+}
+.eb-row:last-child {
+  border-bottom: 0;
+}
+.eb-row:hover {
+  background: #f7f9fc;
+}
+.eb-row:hover .eb-row__t {
+  color: var(--accent);
+}
+.eb-row__cat {
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--accent);
+  white-space: nowrap;
+  background: #eef3fc;
+  border-radius: 4px;
+}
+.eb-row__t {
+  grid-column: 2;
+  overflow: hidden;
+  font-size: 15.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.eb-row__d {
+  grid-column: 3;
+  font-size: 12.5px;
+  color: #667085;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.eb-row__ex {
+  grid-column: 2 / 4;
+  overflow: hidden;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #5d6676;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.eb-row__ex:empty {
+  display: none;
+}
+.eb-row b {
+  color: var(--accent);
+}
+.eb-list > .eb-ad-row {
+  padding: 12px 20px 14px;
+  background: #fafbfd;
+  border-bottom: 1px solid #edf0f4;
+}
+.eb-boardtools {
+  margin: 0 0 16px;
+}
+.eb-boardtools__label {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #667085;
+}
+.eb-boardtools .eb-calcgrid {
+  margin: 0;
+}
+@media (max-width: 768px) {
+.eb-list__bar {
+    padding: 11px 14px;
+  }
+.eb-row {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 6px 8px;
+    padding: 12px 14px;
+  }
+.eb-row__t {
+    display: -webkit-box;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    white-space: normal;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+.eb-row__cat {
+    grid-row: 2;
+    justify-self: start;
+  }
+.eb-row__d {
+    grid-column: auto;
+    grid-row: 2;
+  }
+.eb-row__ex {
+    display: none;
+  }
+.eb-list > .eb-ad-row {
+    padding: 10px 12px 12px;
+  }
+.eb-boardtools .eb-calcgrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+.eb-boardtools .eb-calcgrid a.eb-calccard {
+    padding: 10px 12px;
+  }
+.eb-boardtools .eb-calccard strong {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+.eb-quickfind__more,
+    .eb-sit__more {
+    display: inline-block;
+    padding: 6px 0;
+  }
+}
+html[data-eb-fs="2"] #ebc,html[data-eb-fs="2"] body.archive .site-main,html[data-eb-fs="2"] body.search .site-main,html[data-eb-fs="2"] body.page:not(.home) .site-main,html[data-eb-fs="2"] body.error404 .site-main {
+  zoom:1.1;
+}
+html[data-eb-fs="3"] #ebc,html[data-eb-fs="3"] body.archive .site-main,html[data-eb-fs="3"] body.search .site-main,html[data-eb-fs="3"] body.page:not(.home) .site-main,html[data-eb-fs="3"] body.error404 .site-main {
+  zoom:1.2;
+}
+/* 큰 글자(zoom)에서 화면 끝까지 붙는 띠(섹션 탭 등)가 반올림으로 1~2px 넘쳐 가로 스크롤이 생기던 것 (2026-10-15) */
+html[data-eb-fs] body.page:not(.home) .site-main,html[data-eb-fs] body.archive .site-main,html[data-eb-fs] body.search .site-main,html[data-eb-fs] #ebc {
+  overflow-x:clip;
+}
+.search-no-results .no-results>.inside-article>.entry-header,.search-no-results .no-results>.inside-article>.entry-content>p:first-child {
+  display:none;
+}
+.eb-nores {
+  margin:0 0 18px;
+  padding:22px 22px 20px;
+  border-radius:18px;
+  background:linear-gradient(180deg,#f2f6fd,#fff);
+  box-shadow:inset 0 0 0 1px #e3e8f1;
+}
+.eb-nores__t {
+  margin:0;
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:-.025em;
+  color:#14213d;
+}
+.eb-nores__s {
+  margin:4px 0 14px;
+  font-size:14.5px;
+  color:#4e5968;
+}
+.eb-nores__b {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.eb-nores__b a {
+  display:inline-flex;
+  align-items:center;
+  height:42px;
+  padding:0 16px;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:inset 0 0 0 1px #d6e0f0;
+  font-size:14.5px;
+  font-weight:700;
+  color:#1d3c78;
+  text-decoration:none;
+}
+.eb-nores__b a.is-main {
+  background:#1d3c78;
+  color:#fff;
+  box-shadow:none;
+}
+.eb-gov {
+  margin:0 0 22px;
+}
+.eb-gov .eb-boardtools__label b {
+  color:#0b7a55;
+}
+.eb-gov ul {
+  display:grid;
+  gap:8px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.eb-gov li {
+  margin:0;
+}
+.eb-gov a {
+  display:grid;
+  gap:4px;
+  padding:14px 16px;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:inset 0 0 0 1px #e3e8f1;
+  text-decoration:none;
+  transition:box-shadow .15s;
+}
+.eb-gov a:hover {
+  box-shadow:inset 0 0 0 1px #9fd8bf;
+}
+.eb-gov__t {
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:4px 8px;
+}
+.eb-gov__t strong {
+  font-size:15.5px;
+  font-weight:700;
+  color:#1b2433;
+}
+.eb-gov__t small {
+  font-size:12.5px;
+  color:#6b7684;
+}
+.eb-gov__s {
+  font-size:13.5px;
+  line-height:1.55;
+  color:#4e5968;
+}
+.eb-gov__go {
+  font-size:12.5px;
+  font-weight:700;
+  color:#0b7a55;
+}
+.eb-head .page-header > :not(.page-title) {
+  align-self: stretch;
+}
+.eb-bg.search .page-header.eb-search-head {
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+}
+.category.eb-head .page-header::before {
+  content: "분야별 정보";
+}
+.search.eb-head .page-header::before {
+  content: "검색";
+}
+.error404.eb-head .entry-header::before {
+  content: "페이지 없음";
+}
+
+/* 분야 머리 콤팩트 (2026-10-16, functions.php 13-4번 .eb-cattabs) - 휴대폰에서 첫 화면에 글 목록이 보이게
+ * 회색 상자 안 '세부 분야'·'이 분야 많이 본 글' 대신 [전체 | 세부 분야] 탭 한 줄, 계산기는 칩 한 줄, 많이 본 글은 목록에 '인기' 표시. PC는 그대로 */
+.eb-cattabs {
+  display: none;
+}
+@media (max-width: 767px) {
+  .category.eb-bg .page-header {
+    padding: 14px 16px 0 !important;
+  }
+  .category.eb-head .page-header::before {
+    height: auto;
+    margin: 0 0 4px;
+    padding: 0;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #6b7684;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .category .page-header .page-title {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.3;
+  }
+  .category .taxonomy-description {
+    margin: 6px 0 0;
+  }
+  .category .taxonomy-description p {
+    display: -webkit-box;
+    margin: 0;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #4e5968;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .category .eb-cathead {
+    display: flex;
+    flex-direction: column;
+    margin: 12px 0 0;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+  }
+  .category .eb-cathead__subs,
+  .category .eb-cathead__popular {
+    display: none !important;
+  }
+  .category .eb-cathead__calc {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 -16px;
+    padding: 0 16px 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .category .eb-cathead__calc::-webkit-scrollbar,
+  .eb-cattabs::-webkit-scrollbar {
+    display: none;
+  }
+  .category .eb-cathead__calc .eb-cathead__label {
+    flex: none;
+    margin: 0;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #6b7684;
+  }
+  .category .eb-cathead__calc .eb-calcgrid {
+    display: flex !important;
+    flex: none;
+    gap: 6px;
+    margin: 0;
+  }
+  .category .eb-cathead__calc .eb-calccard {
+    flex: none;
+    flex-direction: row !important;
+    align-items: center;
+    height: 36px;
+    min-height: 0;
+    padding: 0 13px !important;
+    background: #fff;
+    border: 1px solid #dde2ea;
+    border-radius: 18px !important;
+    box-shadow: none;
+  }
+  .category .eb-cathead__calc .eb-calccard strong {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d3c78;
+    white-space: nowrap;
+  }
+  .category .eb-cathead__calc .eb-calccard strong::after,
+  .category .eb-cathead__calc .eb-calccard span {
+    display: none !important;
+    content: none !important;
+  }
+  .eb-cattabs {
+    display: flex;
+    gap: 20px;
+    margin: 0 -16px;
+    padding: 0 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-top: 1px solid #edf0f4;
+  }
+  .eb-cattabs a {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: 4px;
+    height: 46px;
+    font-size: 15px;
+    color: #6b7684;
+    white-space: nowrap;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .eb-cattabs a[aria-current="page"] {
+    font-weight: 700;
+    color: #1b2433;
+    box-shadow: inset 0 -2px 0 #1b2433;
+  }
+  .eb-cattabs em {
+    font-size: 12.5px;
+    font-style: normal;
+    font-weight: 400;
+    color: #8b95a1;
+  }
+  .eb-row.is-hot .eb-row__d::before {
+    content: "인기";
+    display: inline-block;
+    margin-right: 6px;
+    padding: 1px 6px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #c4322b;
+    background: #fdecea;
+    border-radius: 5px;
+  }
+}

@@ -1,0 +1,2009 @@
+/*
+ * 85-common.css - 공통 부품
+ * 페이지 머리 통일(eb-head), 넓은 페이지(eb-wide), 사이드바·위젯, 광고 칸(eb-ad), 알림(eb-toast·eb-notice), 많이 본 글, 홈 화면 추가 안내
+ *
+ * [들어 있는 것] 편집기에서 Ctrl+F로 왼쪽 이름을 찾으면 그 디자인으로 갑니다.
+ *   eb-head                         모든 페이지 머리(꼬리표·큰 제목) 통일
+ *   eb-wide                         사이드바 없이 넓게 쓰는 페이지
+ *   eb-bg                           홈·목록·검색의 회색 바탕
+ *   sidebar / widget / block-NN     사이드바와 위젯
+ *   eb-popular                      많이 본 글
+ *   eb-recentview                   최근 본 글
+ *   eb-sticky                       따라오는 사이드바 칸
+ *   eb-ad / eb-ad-home / eb-ad-row  광고 칸(관리자에게는 '광고 자리' 상자)
+ *   eb-notice                       글 아래 안내 및 면책
+ *   eb-toast                        잠깐 떴다 사라지는 알림
+ *   eb-a2hs / eb-install-help       홈 화면에 추가(앱 설치) 안내
+ *   eb-tip                          설명 말풍선
+ *   rank-math-breadcrumb            경로(홈 › 분야 › 글)
+ *
+ * 파일 앞 번호는 불러오는 순서입니다(번호가 큰 파일이 뒤에 옴). 순서를 바꾸면 모양이 달라질 수 있어요.
+ * 새 규칙은 이 파일 맨 끝에 추가하세요. 자세한 안내: css/README.txt
+ */
+
+.site-main > .post .inside-article > .entry-header {
+  grid-area: header;
+}
+.rank-math-breadcrumb,
+#breadcrumb {
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--contrast-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rank-math-breadcrumb p {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rank-math-breadcrumb a,
+#breadcrumb a {
+  color: var(--contrast-2);
+  text-decoration: none;
+}
+.rank-math-breadcrumb a:hover,
+#breadcrumb a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.rank-math-breadcrumb .separator {
+  margin: 0 4px;
+  color: var(--base);
+}
+.page .entry-content h2 {
+  margin: 2em 0 0.8em;
+  font-size: 1.22em;
+  padding: 4px 12px 8px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--contrast);
+  background: linear-gradient(90deg, var(--accent-3) 0%, rgba(234, 240, 250, 0) 72%) no-repeat left bottom / 100% 100%; /* 2026-10-17: 55% → 100%, 두 줄 제목도 두 줄 다 칠해지게 */
+  border-bottom: 2px solid var(--accent);
+  border-bottom-left-radius: 12px;
+}
+.page .entry-content h3 {
+  margin: 1.6em 0 0.5em;
+  font-size: 1.08em;
+  padding: 2px 10px 6px;
+  font-weight: 700;
+  color: var(--accent);
+  border-bottom: 1px solid #c9d6ee;
+  border-bottom-left-radius: 8px;
+}
+.page .entry-content ul,
+.page .entry-content ol {
+  margin: 0 0 1.4em 1.3em;
+}
+.page .entry-content li {
+  margin-bottom: 0.4em;
+}
+#right-sidebar:has(.eb-sidetoc) .inside-right-sidebar {
+  position: static;
+}
+.eb-notice {
+  margin: 36px 0 20px;
+  padding: 16px 18px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--contrast-2);
+  background: var(--base-2);
+  border: 1px solid var(--base);
+  border-radius: 4px;
+}
+.eb-notice__title {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--contrast);
+}
+.eb-notice p {
+  margin: 0;
+}
+.eb-notice p + p {
+  margin-top: 6px;
+}
+.sidebar .widget {
+  margin-bottom: 28px;
+}
+.sidebar .widget-title {
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--contrast);
+  border-bottom: 2px solid var(--accent);
+}
+.sidebar .widget ul {
+  margin: 0;
+}
+.sidebar .widget ul li {
+  margin: 0;
+  padding: 7px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--base-2);
+}
+.sidebar .widget ul li:last-child {
+  border-bottom: 0;
+}
+.sidebar .widget ul li a {
+  color: var(--contrast);
+  text-decoration: none;
+}
+.sidebar .widget ul li a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.sidebar .eb-cat-tree > li > a {
+  font-weight: 700;
+}
+.sidebar .eb-cat-tree .children {
+  margin: 4px 0 0;
+  padding-left: 12px;
+  list-style: none;
+}
+.sidebar .eb-cat-tree .children li {
+  padding: 3px 0;
+  font-size: 14.5px;
+  border-bottom: 0;
+}
+.sidebar .eb-cat-tree .children a::before {
+  content: "·";
+  margin-right: 6px;
+  color: var(--contrast-3);
+}
+.sidebar .widget .eb-recent .wp-block-post-template > .wp-block-post.post {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 10px;
+  align-items: start;
+  float: none;
+  width: auto;
+  margin: 0;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--base-2);
+}
+.sidebar .widget .eb-recent .wp-block-post-template > .wp-block-post.post:last-child {
+  border-bottom: 0;
+}
+.sidebar .eb-recent .eb-recent__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  font-size: 14.5px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+.sidebar .eb-recent .eb-recent__title a {
+  color: var(--contrast);
+  text-decoration: none;
+}
+.sidebar .eb-recent .eb-recent__title a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.sidebar .eb-recent .eb-recent__date {
+  margin: 0;
+  padding-top: 2px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+  color: var(--contrast-3);
+  white-space: nowrap;
+}
+.sidebar .eb-org-desc {
+  margin-left: 4px;
+  font-size: 13px;
+  color: var(--contrast-3);
+}
+.sidebar .wp-block-search__inside-wrapper {
+  display: flex;
+}
+.sidebar .wp-block-search__input {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 12px;
+  font-size: 15px;
+  border: 1px solid var(--base);
+  border-right: 0;
+  border-radius: 4px 0 0 4px;
+}
+.sidebar .wp-block-search__input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+.sidebar .wp-block-search__button {
+  margin: 0;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 0 4px 4px 0;
+}
+@media (min-width: 1025px) {
+.inside-right-sidebar {
+    position: sticky;
+    top: 84px;
+  }
+}
+@media (min-width: 769px) and (max-width: 899px) {
+.site-content {
+    flex-direction: column;
+  }
+.site-content .content-area,
+    .site-content .is-right-sidebar {
+    width: 100%;
+  }
+.one-container.right-sidebar .site-main {
+    margin-right: 0;
+  }
+.is-right-sidebar {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--base);
+  }
+}
+@media (max-width: 768px) {
+.is-right-sidebar {
+    margin-top: 16px;
+    padding-top: 20px;
+    border-top: 1px solid var(--base);
+  }
+}
+/* [순서 유지] 원래는 '글 페이지' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.comment-list > li,
+.comment-list .children > li {
+  margin: 0;
+}
+/* [순서 유지] 원래는 '글 페이지' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+ul.children .comment-body {
+  margin-top: 8px;
+  padding: 14px 16px;
+  background: var(--base-2);
+  border: 0;
+  border-radius: 10px;
+}
+/* [순서 유지] 원래는 '글 페이지' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+ul.children .comment-content,
+ul.children .reply {
+  padding-left: 0;
+}
+/* [순서 유지] 원래는 '바닥글' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.footer-widgets .widget {
+  margin-bottom: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  background: none;
+}
+/* [순서 유지] 원래는 '바닥글' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.footer-widgets .widget-title {
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.entry-content .google-auto-placed,
+.entry-content ins.adsbygoogle {
+  margin-top: 24px !important;
+  margin-bottom: 24px !important;
+}
+.sidebar .google-auto-placed {
+  margin-bottom: 28px;
+}
+/* [순서 유지] 원래는 '목록·검색' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.eb-page-search .wp-block-search__input {
+  height: 48px;
+  padding: 0 16px;
+  font-size: 16px;
+  border-radius: 10px 0 0 10px;
+}
+/* [순서 유지] 원래는 '목록·검색' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.eb-page-search .wp-block-search__button {
+  margin-left: 0;
+  padding: 0 22px;
+  font-weight: 700;
+  border-radius: 0 10px 10px 0;
+}
+/* [순서 유지] 원래는 '맞춤 찾기' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.entry-content .eb-sit__list,
+.entry-content .eb-catgrid ul {
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+}
+/* [순서 유지] 원래는 '맞춤 찾기' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.entry-content .eb-sit__list li,
+.entry-content .eb-catgrid li {
+  position: relative;
+  margin: 0;
+  padding: 4px 0 4px 12px;
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+.eb-popular {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: eb-pop;
+}
+.eb-popular li {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 7px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  border-bottom: 1px dashed var(--base);
+  counter-increment: eb-pop;
+}
+.eb-popular li:last-child,
+.eb-paydays li:last-child {
+  border-bottom: 0;
+}
+.eb-popular li::before {
+  content: counter(eb-pop);
+  flex: 0 0 20px;
+  height: 20px;
+  margin-top: 1px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 20px;
+  text-align: center;
+  color: var(--base-3);
+  background: var(--contrast-3);
+  border-radius: 4px;
+}
+.eb-popular li:nth-child(-n+3)::before {
+  background: var(--accent);
+}
+.eb-popular a {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--contrast);
+  text-decoration: none;
+}
+.eb-popular a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.sidebar .widget_custom_html:not(:has(*)) {
+  display: none;
+}
+.sidebar .widget:has(> .eb-recentview[hidden]) {
+  display: none;
+}
+/* [순서 유지] 원래는 '맞춤 찾기' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.entry-content .eb-finder__list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  margin: 0;
+  padding: 8px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  border-bottom: 1px dashed var(--base);
+}
+.eb-tip {
+  position: absolute;
+  z-index: 9999;
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--contrast);
+  background: var(--base-3);
+  border: 1px solid var(--base);
+  border-top: 3px solid var(--accent);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 10px 24px rgba(16, 32, 64, 0.14);
+}
+.eb-tip strong {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--accent);
+}
+.eb-tip a {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+/* [순서 유지] 원래는 '홈' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.entry-content .eb-home h2.eb-quickfind__title,
+.entry-content .eb-home h3 {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+}
+/* [순서 유지] 원래는 '홈' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.entry-content .eb-home ul {
+  margin: 0;
+  padding: 0;
+}
+/* [순서 유지] 원래는 '홈' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.entry-content .eb-home li {
+  margin: 0;
+}
+.eb-tabs {
+  min-width: 0;
+}
+.eb-tabs__list {
+  display: flex;
+  gap: 2px;
+  border-bottom: 2px solid var(--accent);
+}
+.eb-tabs__list button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--contrast-2);
+  background: none;
+  border: 0;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+}
+.eb-tabs__list button:hover {
+  color: var(--accent);
+  background: var(--accent-3);
+}
+.eb-tabs__list button[aria-selected="true"] {
+  color: #fff;
+  background: var(--accent);
+}
+/* [순서 유지] 원래는 '글 페이지' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+html[data-eb-fs="2"] .single .entry-content {
+  font-size: 19px;
+}
+/* [순서 유지] 원래는 '글 페이지' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+html[data-eb-fs="3"] .single .entry-content {
+  font-size: 21px;
+}
+@media (max-width: 768px) {
+/* [순서 유지] 원래는 '글 페이지' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+html[data-eb-fs="2"] .single .entry-content {
+    font-size: 18.5px;
+  }
+/* [순서 유지] 원래는 '글 페이지' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+html[data-eb-fs="3"] .single .entry-content {
+    font-size: 20.5px;
+  }
+}
+.sidebar .widget:has(> .eb-saved[hidden]) {
+  display: none;
+}
+body.eb-bg {
+  background: #f3f5f9;
+}
+.eb-bg #page {
+  background: transparent;
+}
+.eb-bg:not(.home) .site-main > article {
+  margin: 0;
+  padding: 18px 20px;
+  background: #fff;
+  border: 1px solid #e2e7ef;
+  border-top: 0;
+  border-radius: 0;
+}
+.eb-bg:not(.home) .site-main > article:first-of-type {
+  border-top: 1px solid #e2e7ef;
+  border-radius: 12px 12px 0 0;
+}
+.eb-bg:not(.home) .site-main > article:last-of-type {
+  margin-bottom: 16px;
+  border-radius: 0 0 12px 12px;
+}
+.eb-bg:not(.home) .site-main > article:only-of-type {
+  border-radius: 12px;
+}
+.eb-bg .inside-right-sidebar > .widget_search {
+  margin-bottom: 16px;
+  background: transparent;
+}
+@media (max-width: 768px) {
+/* [순서 유지] 원래는 '목록·검색' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.eb-bg .eb-quickfind,
+    .eb-bg .eb-home > section,
+    .eb-bg .page-header,
+    .eb-bg:not(.home) .site-main > article,
+    .eb-bg .inside-right-sidebar > .widget:not(.widget_search):has(> :not([hidden]):not(script)) {
+    padding: 16px;
+  }
+.eb-bg .inside-right-sidebar > .widget:first-child {
+    margin-top: 16px;
+  }
+}
+.home .inside-right-sidebar > .widget_search {
+  display: none;
+}
+.entry-content .eb-ad {
+  clear: both;
+  margin: 2em 0;
+  text-align: center;
+}
+.entry-content .eb-ad::before {
+  content: "광고";
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: #9aa3b2;
+}
+.entry-content .eb-ad:has(ins.adsbygoogle[data-ad-status="unfilled"]) {
+  display: none;
+}
+.eb-bg:not(.home) .site-main > .eb-ad-row {
+  margin: 0;
+  padding: 12px 20px 16px;
+  background: #fafbfd;
+  border: 1px solid #e2e7ef;
+  border-top: 0;
+}
+.eb-ad-home,
+.eb-ad-row {
+  text-align: center;
+}
+.eb-ad-home::before,
+.eb-ad-row::before {
+  content: "광고";
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: #9aa3b2;
+  text-align: left;
+}
+.eb-ad-home:has(ins.adsbygoogle[data-ad-status="unfilled"]),
+.eb-ad-row:has(ins.adsbygoogle[data-ad-status="unfilled"]) {
+  display: none;
+}
+@media (max-width: 768px) {
+/* [순서 유지] 원래는 '홈' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.eb-home > .eb-ad-home,
+    .eb-bg:not(.home) .site-main > .eb-ad-row {
+    padding: 10px 12px 12px;
+  }
+}
+.single .inside-article > .eb-ad {
+  clear: both;
+  margin: 24px 0 0;
+  padding: 10px 14px 12px;
+  text-align: center;
+  border: 1px solid #e2e7ef;
+  border-radius: 12px;
+}
+.single .inside-article > .eb-ad::before {
+  content: "광고";
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: #9aa3b2;
+  text-align: left;
+}
+@media (max-width: 768px) {
+.single .inside-article > .eb-ad {
+    padding: 10px 10px 10px;
+  }
+}
+.single .inside-article > .eb-ad:has(ins.adsbygoogle[data-ad-status="unfilled"]) {
+  display: none;
+}
+.single .eb-notice {
+  margin: 10px 0 0;
+  padding: 0 4px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #667085;
+  background: none;
+  border: 0;
+}
+.single .eb-notice__title {
+  display: none;
+}
+.single .eb-notice p + p {
+  margin-top: 2px;
+}
+.single .eb-notice strong {
+  font-weight: 600;
+  color: #6b7689;
+}
+.single .eb-notice a {
+  color: #6b7689;
+}
+@media (max-width: 899px) {
+.eb-bg .is-right-sidebar {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+}
+@media (max-width: 768px) {
+.inside-right-sidebar .cat-item > a,
+    .eb-paydays__note a {
+    display: inline-block;
+    padding: 4px 0;
+  }
+}
+.eb-toast {
+  width: max-content;
+  max-width: calc(100% - 32px);
+  line-height: 1.5;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.eb-toast.is-on {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+@media (max-width: 768px) {
+.home #block-47 {
+    display: none;
+  }
+}
+.eb-install-help {
+  width: calc(100% - 32px);
+  max-width: 360px;
+  padding: 22px 20px 18px;
+  color: var(--contrast);
+  background: #fff;
+  border: 0;
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(20, 33, 61, 0.25);
+}
+.eb-install-help::backdrop {
+  background: rgba(20, 33, 61, 0.45);
+}
+.eb-install-help strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 17px;
+  color: var(--accent);
+}
+.eb-install-help p {
+  margin: 0 0 10px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--contrast-2);
+}
+.eb-install-help .eb-install-help__how {
+  padding: 12px 14px;
+  color: var(--contrast);
+  background: #f3f6fb;
+  border-radius: 10px;
+}
+.eb-install-help button {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 4px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.entry-content .eb-ad-calc {
+  margin: 28px 0 0;
+  padding: 12px 0 0;
+  border-top: 1px solid #edf0f4;
+}
+.eb-sticky[hidden] {
+  display: none;
+}
+@media (min-width: 900px) {
+.single-post .inside-right-sidebar {
+    height: 100%;
+  }
+.eb-sticky {
+    position: sticky;
+    top: 74px;
+    margin-top: 28px;
+  }
+.admin-bar .eb-sticky {
+    top: 106px;
+  }
+.eb-sticky__ad {
+    margin-top: 20px;
+    padding-top: 16px;
+    text-align: center;
+    border-top: 1px solid #edf0f4;
+  }
+.eb-sticky__ad > span {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: #667085;
+    text-align: left;
+  }
+.eb-sticky__slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 250px;
+    margin: 0 auto;
+    font-size: 13px;
+    color: #667085;
+    background: #f6f8fb;
+    border: 1px dashed #c9d2e0;
+    border-radius: 6px;
+  }
+}
+@media (min-width: 900px) and (max-height: 640px) {
+.eb-sticky {
+    position: static;
+  }
+}
+@media (max-width: 899px) {
+.eb-sticky {
+    display: none;
+  }
+.inside-right-sidebar > .widget:first-child {
+    margin-top: 8px;
+  }
+}
+/* [순서 유지] 원래는 '상단·메뉴' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.mobile-header-navigation button.menu-toggle .gp-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: #1d3c78;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272.2%27%20stroke-linecap%3D%27round%27%3E%3Cpath%20d%3D%27M4%207h16M4%2012h10M4%2017h13%27%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272.2%27%20stroke-linecap%3D%27round%27%3E%3Cpath%20d%3D%27M4%207h16M4%2012h10M4%2017h13%27%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+}
+@media (max-width: 899px) {
+#right-sidebar .inside-right-sidebar > .widget:not(#block-97):not(#block-99) {
+    display: none;
+  }
+}
+/* [순서 유지] 원래는 '홈' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+#ebc a {
+  color:inherit;
+}
+/* [순서 유지] 원래는 '상단·메뉴' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.mx .m-li .w small {
+  color:#6b7684;
+  margin-left:6px;
+  font-size:11.5px;
+  font-variant-numeric:tabular-nums;
+}
+.eb-ad--ph {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:3px;
+  box-sizing:border-box;
+  height:250px;
+  font-size:13px;
+  font-weight:600;
+  color:#667085;
+  text-align:center;
+  background:#f6f8fb;
+  border:1px dashed #c9d2e0;
+  border-radius:10px;
+}
+.eb-ad--ph small {
+  font-size:12px;
+  font-weight:400;
+  color:#6b7684;
+}
+.eb-a2hs {
+  position:fixed;
+  left:12px;
+  right:12px;
+  bottom:calc(70px + env(safe-area-inset-bottom));
+  z-index:999;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 8px 10px 10px;
+  border:1px solid #e3e8f1;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 12px 30px -10px rgba(15,23,42,.35);
+  animation:ebUp .25s ease-out;
+}
+.eb-a2hs.is-out {
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .2s,transform .2s;
+}
+.eb-a2hs__ic img {
+  display:block;
+  width:36px;
+  height:36px;
+  border-radius:9px;
+}
+.eb-a2hs p {
+  flex:1;
+  min-width:0;
+  margin:0;
+  font-size:12.5px;
+  line-height:1.45;
+  color:#4e5968;
+}
+.eb-a2hs p b {
+  display:block;
+  font-size:13.5px;
+  color:#1b2433;
+}
+.eb-a2hs__sh {
+  display:inline-block;
+  padding:0 5px;
+  border-radius:4px;
+  background:#eef3fb;
+  font-weight:700;
+  color:#1d3c78;
+}
+.eb-a2hs__add {
+  flex:none;
+  height:32px;
+  padding:0 12px;
+  border:0;
+  border-radius:8px;
+  background:#1d3c78;
+  font-size:13px;
+  font-weight:700;
+  color:#fff;
+}
+.eb-a2hs__add:hover,.eb-a2hs__add:focus {
+  background:#152c5a;
+  color:#fff;
+}
+.eb-a2hs__x {
+  display:grid;
+  place-items:center;
+  flex:none;
+  width:32px;
+  height:32px;
+  padding:0;
+  border:0;
+  border-radius:8px;
+  background:none;
+  color:#8b95a1;
+}
+.eb-a2hs__x:hover,.eb-a2hs__x:focus {
+  background:#f2f4f7;
+  color:#4e5968;
+}
+.eb-a2hs__x svg {
+  width:18px;
+  height:18px;
+}
+html.ebt-s-open .eb-a2hs {
+  display:none;
+}
+@media (min-width:768px) {
+.eb-a2hs {
+    display:none;
+  }
+}
+#ebc .c-adpan .adl,.entry-content .eb-ad::before,.eb-ad-home::before,.eb-ad-row::before,.single .inside-article>.eb-ad::before,.eb-sticky__ad>span {
+  display:block;
+  font-size:11px;
+  font-weight:500;
+  line-height:14px;
+  letter-spacing:.06em;
+  color:#6b7684;
+  text-align:left;
+  background:linear-gradient(#e5e8ef,#e5e8ef) no-repeat right center/calc(100% - 32px) 1px;
+  background-origin:content-box;
+  background-clip:content-box;
+}
+body.eb-wide {
+  background:#fff linear-gradient(180deg,#eef3fb 0,#f5f8fd 260px,#fff 520px) no-repeat;
+}
+.eb-wide .entry-header {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:10px;
+  margin-bottom:12px;
+}
+.eb-wide .entry-header::before {
+  display:inline-flex;
+  align-items:center;
+  height:26px;
+  padding:0 11px;
+  border-radius:13px;
+  background:#fff;
+  box-shadow:inset 0 0 0 1px #d6e0f0;
+  font-size:12.5px;
+  font-weight:700;
+  letter-spacing:-.01em;
+  color:#1d3c78;
+}
+.eb-wide .entry-title {
+  font-size:34px;
+  font-weight:800;
+  line-height:1.25;
+  letter-spacing:-.035em;
+  color:#14213d;
+}
+.eb-wide .entry-content>p:first-child {
+  max-width:760px;
+  margin-bottom:30px;
+  font-size:16.5px;
+  line-height:1.75;
+  color:#4e5968;
+}
+.eb-wide .entry-content>p:first-child strong {
+  color:#1b2433;
+}
+.eb-wide .entry-content>h2::after {
+  content:"";
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,#d6e0f0,rgba(214,224,240,0));
+}
+.eb-wide .entry-content>h3 {
+  border-bottom:0;
+  padding:0;
+}
+@media (max-width:767px) {
+body.eb-wide {
+    background:#fff linear-gradient(180deg,#eef3fb 0,#fff 300px) no-repeat;
+  }
+.eb-wide .entry-title {
+    font-size:26px;
+  }
+.eb-wide .entry-header::before {
+    height:24px;
+    font-size:12px;
+  }
+.eb-wide .entry-content>p:first-child {
+    margin-bottom:22px;
+    font-size:15.5px;
+  }
+}
+@media (max-width: 899px) {
+.single-post #right-sidebar #block-97 {
+    display: none;
+  }
+}
+@media (min-width: 769px) and (max-width: 899px) {
+.single-post #block-99 .eb-popular {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+}
+@media (max-width: 899px) {
+/* [순서 유지] 원래는 '글 페이지' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.eb-mini.is-on {
+    transform: none;
+  }
+}
+/* [순서 유지] 원래는 '홈' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.single-post .eb-trust .eb-notice p {
+  margin: 0 0 6px;
+}
+.eb-notice__tg {
+  min-height: 28px;
+  padding: 0;
+  font: inherit;
+  font-size: 12.5px;
+  color: var(--contrast-2);
+  text-decoration: underline;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+@media (min-width: 900px) {
+.single-post #right-sidebar #block-97,
+    .single-post #right-sidebar #block-45,
+    .single-post #right-sidebar #block-58 {
+    display: none !important;
+  }
+.single-post #right-sidebar :is(#block-98, #block-99, #block-47, #block-106.has-recent, #block-107:has(.eb-saved:not([hidden]))) {
+    margin-bottom: 16px;
+    background: #fff;
+    border: 1px solid var(--base);
+    border-radius: 14px;
+  }
+.single-post #right-sidebar .widget .widget-title {
+    color: var(--contrast);
+  }
+.single-post #right-sidebar .widget .widget-title::before,
+    .single-post #right-sidebar .widget .widget-title::after {
+    display: none;
+  }
+.single-post #block-98 .eb-paydays {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+.single-post #block-98 .eb-paydays li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 40px;
+    margin: 0;
+    padding: 0;
+    font-size: 13.5px;
+    background: none;
+    border: 0;
+    border-top: 1px solid var(--base-2);
+  }
+.single-post #block-98 .eb-paydays li:first-child {
+    border-top: 0;
+  }
+.single-post #block-98 .eb-paydays__day {
+    flex: none;
+    width: 58px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+.single-post #block-98 .eb-paydays__what {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    color: var(--contrast);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+.single-post #block-98 .eb-paydays__dday {
+    flex: none;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-3);
+    border-radius: 6px;
+  }
+.single-post #block-98 .eb-paydays__sub {
+    margin: 8px 0 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--contrast-3);
+  }
+.single-post #block-99 .eb-popular li {
+    margin: 0;
+    border-top: 1px solid var(--base-2);
+  }
+.single-post #block-99 .eb-popular li:first-child {
+    border-top: 0;
+  }
+.single-post #block-99 .eb-popular a {
+    display: flex;
+    gap: 10px;
+    min-height: 40px;
+    overflow: hidden;
+    font-size: 13.5px;
+    line-height: 1.4;
+    color: var(--contrast);
+    text-overflow: ellipsis;
+  }
+.single-post #block-47 .eb-cat-tree {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0;
+    list-style: none;
+  }
+.single-post #block-47 .eb-cat-tree > li {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+.single-post #block-47 .eb-cat-tree .children {
+    display: none;
+  }
+.single-post #block-47 .eb-cat-tree > li > a {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+    padding: 0 11px;
+    font-size: 13px;
+    color: var(--contrast);
+    text-decoration: none;
+    background: var(--base-2);
+    border-radius: 999px;
+  }
+.single-post #block-47 .eb-cat-tree > li > a:hover {
+    color: var(--accent);
+    background: var(--accent-3);
+  }
+.single-post #block-47 .eb-cat-tree > li > a::before,
+    .single-post #block-47 .eb-cat-tree > li > a::after {
+    display: none;
+  }
+.single-post .eb-sticky .eb-mtoc {
+    padding: 14px 16px 12px;
+    background: #fff;
+    border: 1px solid var(--base);
+    border-radius: 14px;
+  }
+}
+.eb-notice__tg:is(:hover, :focus) {
+  color: var(--accent);
+  background: none;
+}
+@media (max-width: 767px) {
+/* [순서 유지] 원래는 '글 페이지' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.single-post .eb-postcalc .eb-calccard strong {
+    font-size: 13.5px;
+    line-height: 1.4;
+    white-space: normal !important;
+  }
+}
+.eb-toast {
+  position: fixed;
+  bottom: calc(84px + env(safe-area-inset-bottom));
+  left: 50%;
+  z-index: 10040;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #fff;
+  background: rgba(27, 36, 51, 0.92);
+  border-radius: 999px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.eb-toast[hidden] {
+  display: none;
+}
+@media (min-width: 768px) {
+.eb-toast {
+    bottom: 32px;
+  }
+}
+@media (min-width: 900px) {
+.single-post #block-99 .eb-popular a {
+    align-items: flex-start;
+    padding: 9px 0;
+    white-space: normal;
+  }
+.single-post #right-sidebar :is(#block-98, #block-99, #block-47, #block-106.has-recent, #block-107:has(.eb-saved:not([hidden]))) {
+    padding: 14px 16px 6px !important;
+  }
+.single-post #right-sidebar .eb-popular,
+    .single-post #right-sidebar .eb-recentview ul {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+.single-post #right-sidebar .eb-popular li,
+    .single-post #right-sidebar .eb-recentview li {
+    display: flex !important;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0 !important;
+    padding: 9px 0 !important;
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+    border: 0 !important;
+    border-top: 1px solid var(--base-2) !important;
+  }
+.single-post #right-sidebar .eb-popular li:first-child,
+    .single-post #right-sidebar .eb-recentview li:first-child {
+    border-top: 0 !important;
+  }
+.single-post #right-sidebar .eb-popular li::before {
+    flex: 0 0 14px !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    line-height: inherit !important;
+    text-align: left !important;
+    color: var(--contrast-3) !important;
+    background: none !important;
+    border-radius: 0 !important;
+  }
+.single-post #right-sidebar .eb-popular li:nth-child(-n+3)::before {
+    color: var(--accent) !important;
+  }
+.single-post #right-sidebar .eb-popular a,
+    .single-post #right-sidebar .eb-recentview a {
+    display: -webkit-box !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+    color: var(--contrast) !important;
+    text-decoration: none !important;
+    white-space: normal !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+.single-post #right-sidebar .eb-popular a:hover,
+    .single-post #right-sidebar .eb-recentview a:hover {
+    color: var(--accent) !important;
+  }
+.single-post #right-sidebar .widget .widget-title {
+    margin: 0 0 4px !important;
+    padding: 0 !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    border: 0 !important;
+  }
+.single-post #block-47 .eb-cat-tree {
+    margin: 6px 0 10px !important;
+  }
+.single-post #block-47 .eb-cat-tree > li > a {
+    font-weight: 600 !important;
+  }
+}
+/* [순서 유지] 원래는 '글 페이지' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.single-post .entry-content h3:not(.no-toc) {
+  font-size: 1.15em;
+  line-height: 1.45;
+  text-wrap: balance;
+}
+@media (max-width: 768px) {
+/* [순서 유지] 원래는 '글 페이지' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.single-post .entry-content h3:not(.no-toc) {
+    font-size: 1.12em;
+  }
+/* [순서 유지] 원래는 '글 페이지' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.single-post .entry-content :is(.wp-block-table, .tablepress) th {
+    font-size: 13px;
+  }
+}
+.wp-block-table.eb-wide :is(th, td):first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  box-shadow: 1px 0 0 #e3e8f1;
+}
+.wp-block-table.eb-wide figcaption {
+  position: sticky;
+  left: 0;
+}
+.wp-block-table.eb-wide::before {
+  content: "옆으로 밀어서 더 보기 →";
+  position: sticky;
+  left: 0;
+  display: block;
+  margin: 0 0 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--contrast-3);
+}
+/* 페이지 머리 통일 (2026-10-15, functions.php body_class 'eb-head'): 모든 페이지·분야·검색·404를 도구 페이지(.eb-wide)와 같은 꼬리표 + 큰 제목 + 안내 한 줄로 */
+.eb-head .entry-header,
+.eb-head .page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.eb-head .entry-header::before,
+.eb-head .page-header::before {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 11px;
+  border-radius: 13px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #d6e0f0;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  color: #1d3c78;
+}
+.eb-head .entry-title,
+.eb-head .page-header .page-title {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -.035em;
+  color: #14213d;
+}
+.eb-head .entry-content > p:first-child,
+.eb-head .page-header .taxonomy-description p {
+  max-width: 760px;
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: #4e5968;
+}
+.eb-head .entry-content > p:first-child {
+  margin-bottom: 30px;
+}
+@media (max-width: 767px) {
+.eb-head .entry-title,
+  .eb-head .page-header .page-title {
+    font-size: 26px;
+  }
+.eb-head .entry-header::before,
+  .eb-head .page-header::before {
+    height: 24px;
+    font-size: 12px;
+  }
+.eb-head .entry-content > p:first-child,
+  .eb-head .page-header .taxonomy-description p {
+    font-size: 15.5px;
+  }
+.eb-head .entry-content > p:first-child {
+    margin-bottom: 22px;
+  }
+}
+:is(.page-id-13874, .page-id-13913, .page-id-13898).eb-head .entry-header::before {
+  content: "운영 정책";
+}
+.search-no-results .widget:has(.eb-findbox) {
+  display: none;
+}
+
+/* ===== 사이드바 통일 (2026-10-16, functions.php 67번) =====
+ * 글 페이지 사이드바 모양(흰 카드·테두리 1px·모서리 14px·제목 15px 밑줄 없음)을 계산기·가이드·안내·도구·분야·검색·404에도.
+ * 위의 '.single-post #right-sidebar …' 규칙은 그대로 두고 같은 값을 모든 사이드바에 줌. 많이 본 글 번호는 네모(위 3개 남색).
+ * 사이드바 전체 sticky는 끄고 맨 아래 따라오는 상자(.eb-sf, 글은 .eb-sticky)만 붙임. */
+#right-sidebar .widget .widget-title {
+  margin: 0 0 4px !important;
+  padding: 0 !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: var(--contrast);
+  border: 0 !important;
+}
+#right-sidebar .widget .widget-title::before,
+#right-sidebar .widget .widget-title::after {
+  display: none;
+}
+#right-sidebar #block-99 {
+  margin-bottom: 16px;
+  padding: 14px 16px 6px !important;
+  background: #fff;
+  border: 1px solid var(--base);
+  border-radius: 14px;
+}
+#right-sidebar .eb-popular {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#right-sidebar .eb-popular li,
+#right-sidebar .eb-recentview li {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 !important;
+  padding: 9px 0 !important;
+  font-size: 13.5px !important;
+  line-height: 1.45 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--base-2) !important;
+}
+#right-sidebar .eb-popular li:first-child,
+#right-sidebar .eb-recentview li:first-child {
+  border-top: 0 !important;
+}
+#right-sidebar .inside-right-sidebar .eb-popular li::before {
+  flex: 0 0 18px !important;
+  width: 18px !important;
+  height: 18px !important;
+  margin: 1px 0 0 !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  line-height: 18px !important;
+  text-align: center !important;
+  color: #fff !important;
+  background: var(--contrast-3) !important;
+  border-radius: 4px !important;
+}
+#right-sidebar .inside-right-sidebar .eb-popular li:nth-child(-n+3)::before {
+  color: #fff !important;
+  background: var(--accent) !important;
+}
+#right-sidebar .eb-popular a,
+#right-sidebar .eb-recentview a {
+  display: -webkit-box !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  font-size: 13.5px !important;
+  line-height: 1.45 !important;
+  color: var(--contrast) !important;
+  text-decoration: none !important;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+#right-sidebar .eb-popular a:hover,
+#right-sidebar .eb-recentview a:hover {
+  color: var(--accent) !important;
+}
+#right-sidebar .eb-findbox .wp-block-search__input {
+  border-radius: 8px 0 0 8px;
+}
+#right-sidebar .eb-findbox .wp-block-search__button,
+#right-sidebar .eb-findbox .wp-block-search__button:is(:hover, :focus, :active) {
+  color: #fff;
+  background: var(--accent);
+  border: 0;
+  border-radius: 0 8px 8px 0;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (hover: hover) {
+  #right-sidebar .eb-findbox .wp-block-search__button:hover {
+    background: #163063;
+  }
+}
+#right-sidebar .eb-findbox .wp-block-search__button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.search #right-sidebar #block-97 {
+  display: none !important;
+}
+.eb-sf[hidden] {
+  display: none !important;
+}
+@media (max-width: 899px) {
+  .eb-sf,
+  .eb-sg {
+    display: none !important;
+  }
+}
+@media (min-width: 900px) {
+  #right-sidebar .inside-right-sidebar {
+    position: static;
+    height: 100%;
+  }
+  #right-sidebar #block-97,
+  #right-sidebar .eb-sidetoc {
+    display: none !important;
+  }
+  #right-sidebar :is(#block-98, #block-47, #block-106.has-recent, #block-107:has(.eb-saved:not([hidden])), .widget_custom_html:has(.eb-applying), .eb-rc, .eb-sg) {
+    margin: 0 0 16px !important;
+    padding: 14px 16px 6px !important;
+    background: #fff;
+    border: 1px solid var(--base) !important;
+    border-radius: 14px !important;
+  }
+  #right-sidebar :is(.eb-rc, .eb-sg) {
+    padding-bottom: 14px !important;
+  }
+  #right-sidebar .eb-rc .widget-title {
+    margin-bottom: 8px !important;
+  }
+  #right-sidebar #block-98 .eb-paydays {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  #right-sidebar #block-98 .eb-paydays li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 40px;
+    margin: 0;
+    padding: 0;
+    font-size: 13.5px;
+    background: none;
+    border: 0;
+    border-top: 1px solid var(--base-2);
+  }
+  #right-sidebar #block-98 .eb-paydays li:first-child {
+    border-top: 0;
+  }
+  #right-sidebar #block-98 .eb-paydays__day {
+    flex: none;
+    width: 58px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  #right-sidebar #block-98 .eb-paydays__what {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    color: var(--contrast);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  #right-sidebar #block-98 .eb-paydays__dday {
+    flex: none;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-3);
+    border-radius: 6px;
+  }
+  #right-sidebar #block-98 .eb-paydays__sub {
+    margin: 8px 0 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--contrast-3);
+  }
+  #right-sidebar #block-47 .eb-cat-tree {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 6px 0 10px !important;
+    padding: 0;
+    list-style: none;
+  }
+  #right-sidebar #block-47 .eb-cat-tree > li {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  #right-sidebar #block-47 .eb-cat-tree .children {
+    display: none;
+  }
+  #right-sidebar #block-47 .eb-cat-tree > li > a,
+  .eb-sg__list a {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+    padding: 0 11px;
+    font-size: 13px;
+    font-weight: 600 !important;
+    color: var(--contrast) !important;
+    text-decoration: none !important;
+    background: var(--base-2);
+    border-radius: 999px;
+  }
+  #right-sidebar #block-47 .eb-cat-tree > li > a:hover,
+  .eb-sg__list a:hover {
+    color: var(--accent) !important;
+    background: var(--accent-3);
+  }
+  #right-sidebar #block-47 .eb-cat-tree > li > a::before,
+  #right-sidebar #block-47 .eb-cat-tree > li > a::after {
+    display: none;
+  }
+  .eb-sg__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 6px 0 0 !important;
+    padding: 0;
+    list-style: none;
+  }
+  .eb-sg__list li {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+  #right-sidebar .eb-sf {
+    position: sticky;
+    top: 74px;
+    margin: 0 0 16px;
+    padding: 14px 16px;
+    background: #fff;
+    border: 1px solid var(--base);
+    border-radius: 14px;
+  }
+  .admin-bar #right-sidebar .eb-sf {
+    top: 106px;
+  }
+  .eb-sf__txt {
+    margin: 2px 0 0;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--contrast-2);
+  }
+  .eb-sf ol {
+    max-height: calc(100vh - 280px);
+    margin: 6px -8px 0;
+    padding: 0;
+    overflow-y: auto;
+    list-style: none;
+  }
+  .eb-sf ol li {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .eb-sf ol a {
+    display: flex;
+    gap: 8px;
+    padding: 7px 8px;
+    font-size: 13.5px;
+    line-height: 1.4;
+    color: var(--contrast);
+    text-decoration: none;
+    border-radius: 8px;
+  }
+  .eb-sf ol a b {
+    flex: none;
+    width: 16px;
+    font-weight: 700;
+    color: var(--contrast-3);
+  }
+  .eb-sf ol a:hover {
+    color: var(--accent);
+    background: #f3f6fb;
+  }
+  .eb-sf ol a.is-on {
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-3);
+  }
+  .eb-sf ol a.is-on b {
+    color: var(--accent);
+  }
+  .eb-sf__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff !important;
+    text-decoration: none !important;
+    background: var(--accent);
+    border-radius: 10px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .eb-sf__btn:hover {
+    background: #163063;
+  }
+  .eb-sf__btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+@media (min-width: 900px) and (max-height: 640px) {
+  #right-sidebar .eb-sf {
+    position: static;
+  }
+}
+
+/* ===== 돕는 방법 '쇼핑하면서 돕기' (functions.php 28-1, 2026-10-18 시안) =====
+   한 줄 안내 + 같은 크기 링크 버튼 2개 + 홈 '생활 특가'처럼 주제 탭·옆으로 넘기는 카드. 휴대폰은 오른쪽 카드가 살짝 잘려 보이게(넘길 수 있다는 표시) */
+.entry-content p.eb-shop__intro {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #4e5968;
+  background: #f7f9fc;
+  border: 1px solid #e3e9f3;
+  border-radius: 12px;
+}
+.eb-shop__intro svg {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: #1d3c78;
+}
+.eb-shop__intro b {
+  color: #1b2433;
+}
+.eb-shop__go {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 8px 0 14px;
+}
+.entry-content .eb-shop__go a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1d3c78;
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid #d3deef;
+  border-radius: 10px;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+.eb-shop__go svg {
+  width: 15px;
+  height: 15px;
+}
+.entry-content .eb-shop__go a:active {
+  background: #eef3fb;
+}
+.entry-content .eb-shop__go a:focus-visible {
+  outline: 2px solid #1d3c78;
+  outline-offset: 2px;
+}
+.eb-shop__pan {
+  padding: 12px 0 12px 12px;
+  background: #fff;
+  border: 1px solid #dde2ea;
+  border-radius: 14px;
+}
+.eb-shop__h {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-right: 12px;
+}
+.entry-content .eb-shop__h h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 15.5px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: #1b2433;
+  background: none;
+  border: 0;
+}
+.entry-content .eb-shop__h h3::before,
+.entry-content .eb-shop__h h3::after {
+  content: none;
+}
+.eb-shop__ad {
+  padding: 0 5px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 17px;
+  color: #6b7684;
+  border: 1px solid #dde2ea;
+  border-radius: 4px;
+}
+.eb-shop__nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+.eb-shop__cnt {
+  margin-right: 4px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: #6b7684;
+  white-space: nowrap;
+}
+.eb-shop .eb-shop__nav button,
+.eb-shop .eb-shop__nav button:is(:hover, :focus, :active) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  color: #333d4b;
+  background: #fff;
+  border: 1px solid #dde2ea;
+  border-radius: 8px;
+  box-shadow: none;
+  cursor: pointer;
+}
+.eb-shop__nav svg {
+  width: 16px;
+  height: 16px;
+}
+.eb-shop .eb-shop__nav button:disabled {
+  color: #c3cad4;
+  background: #f7f9fc;
+  cursor: default;
+}
+.eb-shop .eb-shop__nav button:not(:disabled):active {
+  background: #eef3fb;
+}
+.eb-shop .eb-shop__nav button:focus-visible {
+  outline: 2px solid #1d3c78;
+  outline-offset: 2px;
+}
+.eb-shop__tabs {
+  display: flex;
+  gap: 6px;
+  margin: 10px 0;
+  padding-right: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.eb-shop__tabs::-webkit-scrollbar {
+  display: none;
+}
+.eb-shop .eb-shop__tabs button,
+.eb-shop .eb-shop__tabs button:is(:hover, :focus, :active) {
+  flex: none;
+  height: 32px;
+  margin: 0;
+  padding: 0 12px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  color: #4e5968;
+  background: #fff;
+  border: 1px solid #dde2ea;
+  border-radius: 999px;
+  box-shadow: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.eb-shop .eb-shop__tabs button[aria-selected="false"]:active {
+  background: #eef3fb;
+}
+.eb-shop .eb-shop__tabs button[aria-selected="true"] {
+  color: #fff;
+  background: #1d3c78;
+  border-color: #1d3c78;
+}
+.eb-shop .eb-shop__tabs button:focus-visible {
+  outline: 2px solid #1d3c78;
+  outline-offset: 2px;
+}
+.eb-shop__row {
+  display: flex;
+  gap: 10px;
+  padding: 2px 12px 2px 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.eb-shop__row::-webkit-scrollbar {
+  display: none;
+}
+.eb-shop__row[hidden] {
+  display: none;
+}
+.eb-shop__row:focus-visible {
+  outline: 2px solid #1d3c78;
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+.entry-content a.eb-shop__i {
+  display: flex;
+  flex: 0 0 132px;
+  flex-direction: column;
+  min-width: 0;
+  color: #1b2433;
+  text-decoration: none;
+  scroll-snap-align: start;
+  -webkit-tap-highlight-color: transparent;
+}
+.eb-shop__img {
+  position: relative;
+  display: block;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #f3f5f9;
+  border: 1px solid #eef1f6;
+  border-radius: 10px;
+  transition: border-color 0.15s;
+}
+.entry-content .eb-shop__img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: none;
+}
+.eb-shop__rk {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  padding: 0 5px;
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 17px;
+  color: #1a56c4;
+  background: #fff;
+  border: 1px solid #c9d6ee;
+  border-radius: 4px;
+}
+.eb-shop__nm {
+  display: -webkit-box;
+  height: 2.8em;
+  margin: 7px 0 2px;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #333d4b;
+  overflow-wrap: anywhere;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.eb-shop__pr {
+  font-size: 14.5px;
+  font-weight: 800;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+.eb-shop__pr em {
+  margin-right: 3px;
+  font-style: normal;
+  color: #e5484d;
+}
+.entry-content a.eb-shop__i:active .eb-shop__img {
+  opacity: 0.85;
+}
+.entry-content a.eb-shop__i:focus-visible {
+  outline: 2px solid #1d3c78;
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+.entry-content p.eb-shop__note {
+  display: flex;
+  gap: 6px;
+  margin: 12px 12px 0 0;
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: #6b7684;
+  background: #f7f9fc;
+  border-radius: 8px;
+}
+.eb-shop__note svg {
+  flex: none;
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+  color: #1d3c78;
+}
+@media (hover: hover) {
+  .entry-content .eb-shop__go a:hover {
+    background: #f7f9fc;
+    border-color: #1d3c78;
+  }
+  .eb-shop .eb-shop__nav button:not(:disabled):hover {
+    color: #1d3c78;
+    border-color: #1d3c78;
+  }
+  .eb-shop .eb-shop__tabs button[aria-selected="false"]:hover {
+    color: #1d3c78;
+    border-color: #1d3c78;
+  }
+  .entry-content a.eb-shop__i:hover .eb-shop__img {
+    border-color: #c9d6ee;
+  }
+  .entry-content a.eb-shop__i:hover .eb-shop__nm {
+    color: #1d3c78;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+@media (min-width: 768px) {
+  .eb-shop__pan {
+    padding: 16px;
+  }
+  .eb-shop__h,
+  .eb-shop__tabs {
+    padding-right: 0;
+  }
+  .eb-shop__row {
+    gap: 12px;
+    padding-right: 0;
+  }
+  .entry-content a.eb-shop__i {
+    flex-basis: calc((100% - 48px) / 5);
+  }
+  .entry-content p.eb-shop__note {
+    margin-right: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .entry-content .eb-shop__go a,
+  .eb-shop__img {
+    transition: none;
+  }
+}

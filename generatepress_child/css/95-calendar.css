@@ -1,0 +1,687 @@
+/*
+ * 95-calendar.css - 복지 캘린더
+ * 복지 캘린더(eb-cal), 지급일 표·목록(eb-paydays)
+ *
+ * [들어 있는 것] 편집기에서 Ctrl+F로 왼쪽 이름을 찾으면 그 디자인으로 갑니다.
+ *   eb-cal      복지 캘린더(/schedule/) 달력·목록
+ *   eb-paydays  다가오는 지급일 목록·표
+ *   eb-nav-pay  PC 메뉴의 지급일 카드
+ *
+ * 파일 앞 번호는 불러오는 순서입니다(번호가 큰 파일이 뒤에 옴). 순서를 바꾸면 모양이 달라질 수 있어요.
+ * 새 규칙은 이 파일 맨 끝에 추가하세요. 자세한 안내: css/README.txt
+ */
+
+.eb-paydays {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.eb-paydays li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 7px 0;
+  border-bottom: 1px dashed var(--base);
+}
+.eb-paydays__day {
+  flex: 0 0 auto;
+  padding: 2px 0;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+  color: var(--accent);
+  background: var(--accent-3);
+  border-radius: 4px;
+}
+.eb-paydays__what {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--contrast);
+}
+.eb-paydays__note {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  color: var(--contrast-3);
+}
+.eb-paydays__what {
+  flex: 1;
+  min-width: 0;
+}
+.eb-paydays__day {
+  min-width: 62px;
+}
+.eb-paydays__dday {
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.eb-paydays__sub {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--contrast-3);
+}
+.eb-paydays__sub::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--base);
+}
+.eb-paydays--due .eb-paydays__day {
+  color: #0f766e;
+  background: #e6f4f1;
+}
+.eb-paydays--due .is-soon .eb-paydays__day {
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #b7dcd5;
+}
+.eb-paydays--due .eb-paydays__dday {
+  color: #0f766e;
+}
+.eb-paydays__state {
+  display: block;
+  margin-top: 1px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--contrast-3);
+}
+.eb-paydays--due .is-open .eb-paydays__state::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 6px;
+  vertical-align: 1px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+.eb-payday-table th small,
+.eb-payday-table td small {
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.85;
+}
+.eb-payday-table td small {
+  padding: 1px 6px;
+  color: var(--accent);
+  background: var(--accent-3);
+  border-radius: 4px;
+  opacity: 1;
+}
+.eb-payday-table td.is-past {
+  color: var(--contrast-3);
+  text-decoration: line-through;
+}
+.eb-payday-table td.is-past small {
+  display: none;
+}
+.eb-cal__sub small {
+  margin-left: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--contrast-3);
+}
+.eb-cal {
+  position: relative;
+  margin: 8px 0 32px;
+  scroll-margin-top: 84px;
+}
+.eb-cal__tabs {
+  margin-bottom: 16px;
+}
+.eb-cal__tabs button {
+  padding: 10px 18px;
+  font-size: 15px;
+}
+.eb-cal__panel[hidden] {
+  display: none;
+}
+.eb-cal__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.eb-cal__chips button {
+  padding: 6px 13px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--contrast-2);
+  background: var(--base-3);
+  border: 1px solid var(--base);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.eb-cal__chips button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.eb-cal__chips button[aria-pressed="true"] {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.eb-cal__head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 10px;
+}
+.eb-cal__title {
+  min-width: 130px;
+  font-size: 19px;
+  text-align: center;
+  color: var(--contrast);
+}
+.eb-cal__nav {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--accent);
+  background: var(--base-3);
+  border: 1px solid var(--base);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.eb-cal__nav:hover:not(:disabled) {
+  background: var(--accent-3);
+  border-color: var(--accent);
+}
+.eb-cal__nav:disabled {
+  opacity: .35;
+  cursor: default;
+}
+.eb-cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  border-top: 1px solid var(--base);
+  border-left: 1px solid var(--base);
+}
+.eb-cal__w,
+.eb-cal__d {
+  border-right: 1px solid var(--base);
+  border-bottom: 1px solid var(--base);
+}
+.eb-cal__w {
+  padding: 6px 0;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--contrast-2);
+  background: var(--base-2);
+}
+.eb-cal__d {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  min-height: 84px;
+  padding: 6px;
+  background: var(--base-3);
+}
+.eb-cal__d.is-empty {
+  background: var(--base-2);
+}
+.eb-cal__num {
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--contrast);
+}
+.eb-cal__w.is-sun,
+.eb-cal__d.is-sun .eb-cal__num,
+.eb-cal__d.is-hol .eb-cal__num {
+  color: #d23c3c;
+}
+.eb-cal__w.is-sat,
+.eb-cal__d.is-sat:not(.is-hol) .eb-cal__num {
+  color: #2f63c4;
+}
+.eb-cal__d.is-hol {
+  background: #fdf5f5;
+}
+.eb-cal__hol {
+  overflow: hidden;
+  font-size: 11.5px;
+  line-height: 1.3;
+  color: #d23c3c;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.eb-cal__d.is-today {
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+.eb-cal__d.is-today .eb-cal__num::after {
+  content: "오늘";
+  margin-left: 4px;
+  padding: 1px 5px;
+  font-size: 10.5px;
+  color: #fff;
+  vertical-align: 1px;
+  background: var(--accent);
+  border-radius: 4px;
+}
+.eb-cal__pill {
+  overflow: hidden;
+  padding: 2px 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border-radius: 4px;
+}
+.eb-cal__pill.is-a,
+.eb-cal__legend .is-a {
+  color: #fff;
+  background: var(--accent);
+}
+.eb-cal__pill.is-b,
+.eb-cal__legend .is-b {
+  color: #7a4a00;
+  background: #ffe3a3;
+}
+.eb-cal__pill.is-start,
+.eb-cal__legend .is-start {
+  color: #0f766e;
+  background: #dcf3ef;
+  box-shadow: inset 0 0 0 1px #9fd9cf;
+}
+.eb-cal__pill.is-due,
+.eb-cal__legend .is-due {
+  color: #fff;
+  background: #0f766e;
+}
+.eb-cal__pill.is-more {
+  color: #4b5565;
+  background: #eef1f5;
+}
+.eb-cal__d.has-ev {
+  cursor: pointer;
+}
+.eb-cal__d.has-ev:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.eb-cal__tip {
+  position: absolute;
+  z-index: 20;
+  width: 280px;
+  max-width: 100%;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  background: #fff;
+  border: 1px solid #d5dce7;
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba(20, 33, 61, 0.12);
+  pointer-events: none;
+}
+.eb-cal__tip[hidden] {
+  display: none;
+}
+.eb-cal__tip strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13.5px;
+  color: var(--contrast);
+}
+.eb-cal__tip ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.eb-cal__tip li {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 6px;
+  color: var(--contrast);
+}
+.eb-cal__tip li:last-child {
+  margin: 0;
+}
+.eb-cal__tip i {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  margin-top: 5px;
+  border-radius: 3px;
+}
+.eb-cal__tip i.is-a {
+  background: var(--accent);
+}
+.eb-cal__tip i.is-b {
+  background: #f5c55a;
+}
+.eb-cal__tip i.is-start {
+  background: #dcf3ef;
+  box-shadow: inset 0 0 0 1px #0f766e;
+}
+.eb-cal__tip i.is-due {
+  background: #0f766e;
+}
+.eb-cal__tip small {
+  display: block;
+  font-size: 12px;
+  color: #667085;
+}
+.eb-cal__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: 10px 0 18px;
+  font-size: 13px;
+  color: var(--contrast-2);
+}
+.eb-cal__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.eb-cal__legend i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+.eb-cal__legend .is-hol {
+  background: #fdf5f5;
+  border: 1px solid #d23c3c;
+}
+.eb-cal__legend .is-today {
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+.eb-cal__list {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--accent);
+}
+.eb-cal__list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 4px;
+  font-size: 15px;
+  border-bottom: 1px solid var(--base);
+}
+.eb-cal__list li.is-past {
+  color: var(--contrast-3);
+}
+.eb-cal__date {
+  flex: 0 0 auto;
+  min-width: 72px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.eb-cal__what {
+  flex: 1;
+  min-width: 0;
+}
+.eb-cal__what small {
+  display: block;
+  font-size: 12.5px;
+  color: #667085;
+}
+.eb-cal__list li.is-flash {
+  animation: eb-cal-flash 1.8s ease;
+}
+@keyframes eb-cal-flash {
+  0%,
+    40% {
+    background: #fff4d1;
+  }
+
+  100% {
+    background: transparent;
+  }
+}
+.eb-cal__list b {
+  flex: 0 0 auto;
+  padding: 2px 8px;
+  font-size: 13px;
+  color: var(--accent);
+  background: var(--accent-3);
+  border-radius: 999px;
+}
+.eb-cal__list li.is-s:not(.is-past) b,
+.eb-cal__list li.is-e:not(.is-past) b {
+  color: #0f766e;
+  background: #dcf3ef;
+}
+.eb-cal__list li.is-past b {
+  color: var(--contrast-3);
+  background: var(--base-2);
+}
+.eb-cal__note,
+.eb-cal__sub {
+  font-size: 13.5px;
+  color: var(--contrast-3);
+}
+.eb-cal__sub {
+  margin: 20px 0 6px;
+  font-weight: 700;
+  color: var(--contrast);
+}
+.entry-content .eb-cal ul,
+.entry-content .eb-cal ol {
+  margin: 0;
+  padding: 0;
+}
+.entry-content .eb-cal .eb-cal__list,
+.entry-content .eb-cal .eb-cal__timeline {
+  margin-bottom: 12px;
+}
+.eb-cal__timeline {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+.eb-cal__timeline > li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  padding: 12px 14px 12px 0;
+  border-bottom: 1px solid var(--base);
+}
+.eb-cal__timeline > li > strong {
+  font-size: 16px;
+  color: var(--accent);
+}
+.eb-cal__timeline > li > em {
+  position: absolute;
+  top: 13px;
+  right: 12px;
+  padding: 1px 8px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 999px;
+}
+.eb-cal__timeline > li.is-now {
+  padding-left: 10px;
+  margin-left: -10px;
+  background: var(--accent-3);
+  border-radius: 8px;
+}
+.eb-cal__timeline > li.is-now > ul {
+  padding-right: 90px;
+}
+.eb-cal__timeline ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.eb-cal__timeline ul li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 6px;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.eb-cal__timeline ul li:last-child {
+  margin: 0;
+}
+.eb-cal__tag {
+  flex: none;
+  position: relative;
+  top: -1px;
+  padding: 1px 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.5;
+  border-radius: 4px;
+}
+.eb-cal__tag.is-welfare {
+  color: #1d3c78;
+  background: #e8eef8;
+}
+.eb-cal__tag.is-tax {
+  color: #9a5b0b;
+  background: #fbf0dd;
+}
+.eb-cal__tag.is-health {
+  color: #1f7a43;
+  background: #e5f4ea;
+}
+.eb-cal__tag.is-edu {
+  color: #5b3fa6;
+  background: #efeafa;
+}
+@media (max-width: 768px) {
+.eb-cal__tabs button {
+    flex: 1;
+    padding: 10px 6px;
+    font-size: 14px;
+  }
+.eb-cal__d {
+    align-items: center;
+    min-height: 54px;
+    padding: 5px 2px;
+  }
+.eb-cal__num {
+    font-size: 13.5px;
+  }
+.eb-cal__d.is-today .eb-cal__num::after {
+    content: none;
+  }
+.eb-cal__d.is-today .eb-cal__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: #fff !important;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+.eb-cal__d.is-today {
+    box-shadow: none;
+  }
+.eb-cal__hol {
+    display: none;
+  }
+.eb-cal__pill {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    font-size: 0;
+    border-radius: 50%;
+  }
+.eb-cal__pill.is-more {
+    display: none;
+  }
+.eb-cal__legend {
+    gap: 6px 12px;
+    font-size: 12.5px;
+  }
+.eb-cal__list li {
+    gap: 8px;
+    font-size: 14.5px;
+  }
+.eb-cal__date {
+    min-width: 64px;
+  }
+.eb-cal__timeline > li {
+    grid-template-columns: 46px minmax(0, 1fr);
+  }
+.eb-cal__timeline > li > em {
+    position: static;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: start;
+    margin-bottom: 6px;
+  }
+.eb-cal__timeline > li.is-now > ul {
+    grid-column: 2;
+    padding-right: 0;
+  }
+.eb-cal__timeline ul li {
+    gap: 6px;
+    font-size: 14.5px;
+  }
+}
+@media (min-width: 769px) {
+.eb-nav-pay__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #1d3c78;
+  }
+.eb-nav-pay__head span {
+    font-weight: 700;
+  }
+.eb-nav-pay__row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1b2433;
+  }
+.eb-nav-pay__row i {
+    flex: 0 0 auto;
+    min-width: 62px;
+    padding: 1px 0;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 800;
+    text-align: center;
+    color: #1d3c78;
+    background: #e3eaf7;
+    border-radius: 4px;
+  }
+.eb-nav-pay__row b {
+    margin-left: auto;
+    font-size: 12px;
+    color: #1d3c78;
+  }
+}
+.page-id-14852.eb-wide .entry-header::before {
+  content:"지급일 · 신청 일정";
+}
+/* [순서 유지] 원래는 '글 페이지' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.eb-tsheet__list .is-past a b {
+  color: #98a2b3;
+}
+/* [순서 유지] 원래는 '글 페이지' 디자인인데, 이 파일의 앞쪽 규칙보다 뒤에 와야 지금 모양이 나와서 여기에 둠 */
+.eb-tsheet__list .is-on a b {
+  color: var(--accent);
+}

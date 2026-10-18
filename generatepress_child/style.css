@@ -1,0 +1,18 @@
+/*
+ Theme Name:   GeneratePress Child
+ Theme URI:    https://generatepress.com
+ Description:  이지복지(easybokji.com) 자식 테마
+ Author:       이지복지
+ Template:     generatepress
+ Version:      2.0.0
+*/
+
+/*
+ 이 파일에는 테마 정보만 둡니다. 여기에 규칙을 쓰면 사이트에 반영되지 않아요.
+
+ 디자인(CSS)은 css/ 폴더의 분야별 파일에 있습니다 → 안내: css/README.txt
+   00-base  10-list  20-post  30-calc  40-header  50-home  60-mobile-bar
+   70-footer  80-finder  85-common  90-tools  95-calendar
+ 테마 편집기에서 그 파일을 고치고 저장하면 사이트용 파일(wp-content/uploads/eb-css/)이
+ 자동으로 다시 만들어지고 WP Rocket 캐시도 비워집니다. (functions.php 64번)
+*/

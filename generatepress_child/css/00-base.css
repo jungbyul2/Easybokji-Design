@@ -1,0 +1,323 @@
+/*
+ * 00-base.css - 기본·글 본문
+ * 글꼴·색·링크·제목·목록·표·버튼 등 모든 페이지의 기본 모양과 글 본문(.entry-content) 안 기본 요소
+ *
+ * [들어 있는 것] 편집기에서 Ctrl+F로 왼쪽 이름을 찾으면 그 디자인으로 갑니다.
+ *   (이름 없음)         body·제목·링크·목록 등 모든 페이지의 기본 모양, 움직임(@keyframes) 공용
+ *   entry-content   글·페이지 본문 안 기본 요소(문단·목록·인용·이미지·버튼)
+ *   wp-block-table  본문 표(블록 편집기 표)
+ *   tablepress      본문 표(TablePress 플러그인 표)
+ *
+ * 파일 앞 번호는 불러오는 순서입니다(번호가 큰 파일이 뒤에 옴). 순서를 바꾸면 모양이 달라질 수 있어요.
+ * 새 규칙은 이 파일 맨 끝에 추가하세요. 자세한 안내: css/README.txt
+ */
+
+/*
+ Theme Name:   GeneratePress Child
+ Theme URI:    https://generatepress.com
+ Description:  이지복지(easybokji.com) 자식 테마
+ Author:       이지복지
+ Template:     generatepress
+ Version:      2.0.0
+*/
+
+/*
+ 이 파일이 모든 화면의 CSS 원본입니다. 선택자·선언·미디어쿼리 순서를 유지합니다.
+ 홈용 style-home.generated.css는 functions.php에서 자동 생성하므로 직접 수정하지 마세요.
+ 스타일 수정 후 WP Rocket 캐시를 비워 주세요.
+*/
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.screen-reader-text:focus {
+  background: var(--base-3);
+  color: var(--accent);
+}
+.entry-content table,
+.eb-calc {
+  font-variant-numeric: tabular-nums;
+}
+::selection {
+  color: var(--contrast);
+  background: #cfdcf3;
+}
+.entry-content mark {
+  padding: 0;
+  font-weight: 700;
+  color: var(--contrast) !important;
+  background: none !important;
+}
+.entry-content mark[style*="#c73e3e"] {
+  color: #c73e3e !important;
+}
+.entry-content blockquote {
+  margin: 1.5em 0;
+  padding: 14px 18px;
+  font-size: 0.94em;
+  font-style: normal;
+  line-height: 1.75;
+  color: var(--contrast);
+  background: var(--accent-3);
+  border: 0;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 4px 4px 0;
+}
+.entry-content blockquote cite {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.88em;
+  font-style: normal;
+  color: var(--contrast-2);
+}
+.entry-content hr {
+  margin: 2em 0;
+  border: 0;
+  border-top: 1px solid var(--base);
+}
+@media (max-width: 768px) {
+.entry-content blockquote {
+    padding: 12px 14px;
+  }
+}
+.entry-content .wp-block-image {
+  margin: 1.5em 0;
+}
+.entry-content .wp-block-image figcaption,
+.entry-content figcaption {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--contrast-3);
+}
+.entry-content :where(a:not([class])) {
+  color: #1d4fa8;
+  text-decoration-color: rgba(29, 79, 168, 0.35);
+  text-underline-offset: 4px;
+  border-radius: 3px;
+  transition: background-color 0.15s, text-decoration-color 0.15s;
+}
+.entry-content :where(strong, b) > :where(a:not([class])),
+.entry-content :where(a:not([class])) > :where(strong, b) {
+  font-weight: 600;
+}
+.entry-content .tablepress,
+.entry-content .wp-block-table table {
+  width: 100%;
+  margin: 0 0 1.5em;
+  font-size: 15px;
+  line-height: 1.55;
+  border: 1px solid #e3e7ee;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+}
+.entry-content .wp-block-table {
+  margin: 1.5em 0;
+  overflow-x: auto;
+}
+.entry-content .wp-block-table table {
+  margin-bottom: 0;
+}
+.entry-content .wp-block-table thead,
+.entry-content .wp-block-table tfoot {
+  border: 0;
+}
+.entry-content .tablepress th,
+.entry-content .tablepress td,
+.entry-content .wp-block-table th,
+.entry-content .wp-block-table td {
+  padding: 9px 14px;
+  text-align: left;
+  vertical-align: middle;
+  color: var(--contrast);
+  background: var(--base-3);
+  border: 0;
+  border-bottom: 1px solid #edf0f4;
+}
+.entry-content .tablepress td[rowspan],
+.entry-content .wp-block-table td[rowspan] {
+  border-right: 1px solid #edf0f4;
+}
+.entry-content .tablepress thead th,
+.entry-content .wp-block-table thead th {
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #5d6676;
+  background: #f6f8fb;
+  border-bottom: 1px solid #e3e7ee;
+}
+.entry-content .tablepress thead th small,
+.entry-content .wp-block-table thead th small {
+  font-weight: 500;
+  opacity: 0.85;
+}
+.entry-content .tablepress tbody td:first-child,
+.entry-content .wp-block-table tbody td:first-child {
+  font-weight: 600;
+  color: #14264d;
+}
+.entry-content table.eb-has-span tbody td:first-child:not([rowspan]) {
+  font-weight: 400;
+  color: var(--contrast);
+}
+.entry-content .tablepress tbody tr:last-child > *,
+.entry-content .wp-block-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+.entry-content .tablepress thead tr:first-child > :first-child,
+.entry-content .wp-block-table thead tr:first-child > :first-child,
+.entry-content .tablepress:not(:has(thead)) tbody tr:first-child > :first-child,
+.entry-content .wp-block-table table:not(:has(thead)) tbody tr:first-child > :first-child {
+  border-top-left-radius: 9px;
+}
+.entry-content .tablepress thead tr:first-child > :last-child,
+.entry-content .wp-block-table thead tr:first-child > :last-child,
+.entry-content .tablepress:not(:has(thead)) tbody tr:first-child > :last-child,
+.entry-content .wp-block-table table:not(:has(thead)) tbody tr:first-child > :last-child {
+  border-top-right-radius: 9px;
+}
+.entry-content .tablepress tbody tr:last-child > :first-child,
+.entry-content .wp-block-table tbody tr:last-child > :first-child {
+  border-bottom-left-radius: 9px;
+}
+.entry-content .tablepress tbody tr:last-child > :last-child,
+.entry-content .wp-block-table tbody tr:last-child > :last-child {
+  border-bottom-right-radius: 9px;
+}
+.entry-content .tablepress tbody tr:hover > *,
+.entry-content .wp-block-table tbody tr:hover > * {
+  background: #f7f9fc;
+}
+.entry-content .tablepress .eb-num,
+.entry-content .wp-block-table .eb-num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+.entry-content .tablepress th,
+    .entry-content .tablepress td,
+    .entry-content .wp-block-table th,
+    .entry-content .wp-block-table td {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+}
+.entry-content .tablepress caption,
+.entry-content .wp-block-table figcaption {
+  padding-top: 6px;
+  font-size: 13px;
+  color: var(--contrast-3);
+  caption-side: bottom;
+  text-align: left;
+}
+@media (max-width: 768px) {
+.entry-content .tablepress,
+    .entry-content .wp-block-table table {
+    font-size: 14px;
+    border-radius: 8px;
+  }
+.entry-content .tablepress th,
+    .entry-content .tablepress td,
+    .entry-content .wp-block-table th,
+    .entry-content .wp-block-table td {
+    padding: 8px 10px;
+    letter-spacing: -0.02em;
+  }
+.entry-content .tablepress thead th,
+    .entry-content .wp-block-table thead th {
+    font-size: 12.5px;
+  }
+}
+#submit {
+  padding: 11px 26px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 10px;
+}
+ul.children {
+  margin: 0 0 0 46px;
+  padding: 0;
+  list-style: none;
+}
+@media (max-width: 768px) {
+ul.children {
+    margin-left: 12px;
+  }
+}
+.entry-content .wp-block-table thead .eb-num {
+  white-space: normal;
+}
+@media (max-width: 600px) {
+.entry-content .wp-block-table:not(.eb-scroll-table) .eb-num {
+    white-space: normal;
+    word-break: keep-all;
+  }
+}
+@media (max-width: 768px) {
+.entry-content .wp-block-table th small {
+    font-size: 11.5px;
+  }
+}
+.ci {
+  display:grid;
+  place-items:center;
+  width:32px;
+  height:32px;
+  border-radius:9px;
+  flex:none;
+}
+.ci,.ti {
+  display:grid;
+  place-items:center;
+  width:32px;
+  height:32px;
+  border-radius:9px;
+  background:#eaf0fa;
+  color:#1d3c78;
+  flex:none;
+}
+#rank-math-analytics-stats-wrapper {
+  display:none!important;
+}
+@media (max-width:767px) {
+body {
+    padding-bottom:calc(58px + env(safe-area-inset-bottom));
+  }
+}
+/* 여러 분야에서 함께 쓰는 움직임(애니메이션) */
+@keyframes ebPop {
+  from {
+    opacity:0;
+    transform:translateY(-4px);
+  }
+}
+@keyframes ebShim {
+  from {
+    background-position:100% 0;
+  }
+
+  to {
+    background-position:-100% 0;
+  }
+}
+@keyframes ebUp {
+  from {
+    opacity:0;
+    transform:translateY(10px);
+  }
+}
+@media (min-width: 768px) and (max-width: 1079px) {
+body {
+    padding-bottom: calc(58px + env(safe-area-inset-bottom));
+  }
+}

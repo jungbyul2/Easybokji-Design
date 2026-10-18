@@ -1,0 +1,991 @@
+/*
+ * 30-calc.css - 계산기·기준표
+ * 계산기 상자(eb-calc), 계산기 카드·목록, 계산기 위 탭, 계산 예시, 섹션 바로 가기(eb-secnav)
+ *
+ * [들어 있는 것] 편집기에서 Ctrl+F로 왼쪽 이름을 찾으면 그 디자인으로 갑니다.
+ *   eb-calc                    계산기 상자(입력·결과)
+ *   eb-calc-tabs               계산기 위 같은 분야 탭
+ *   eb-calc-example            숫자로 보는 계산 예시
+ *   eb-calc-related            이 계산기와 관련된 글
+ *   eb-calccard / eb-calcgrid  계산기·서식 카드 목록(계산기 모음, 서식 페이지, 홈)
+ *   eb-rc                      사이드바 관련 계산기
+ *   eb-secnav                  긴 페이지 위 '바로 가기' 줄(계산기 모음·기준표·주소 찾기)
+ *
+ * 파일 앞 번호는 불러오는 순서입니다(번호가 큰 파일이 뒤에 옴). 순서를 바꾸면 모양이 달라질 수 있어요.
+ * 새 규칙은 이 파일 맨 끝에 추가하세요. 자세한 안내: css/README.txt
+ */
+
+.eb-calc {
+  margin: 0 0 32px;
+  background: var(--base-3);
+  border: 1px solid var(--base);
+  border-top: 3px solid var(--accent);
+  border-radius: 0 0 10px 10px;
+}
+.eb-calc__form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 14px;
+  padding: 18px 20px;
+  background: var(--base-2);
+  border-bottom: 1px solid var(--base);
+}
+.eb-calc__field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--contrast);
+}
+.eb-calc__field.is-wide {
+  grid-column: 1 / -1;
+}
+.eb-calc__field small {
+  font-weight: 400;
+  color: var(--contrast-3);
+}
+.eb-calc__field input,
+.eb-calc__field select {
+  width: 100%;
+  height: 46px;
+  padding: 0 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--contrast);
+  background: var(--base-3);
+  border: 1px solid var(--base);
+  border-radius: 8px;
+}
+.eb-calc__field input:focus,
+.eb-calc__field select:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-3);
+}
+.eb-calc__btn {
+  grid-column: 1 / -1;
+  height: 48px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 8px;
+}
+.eb-calc__result {
+  padding: 18px 20px 20px;
+}
+.eb-calc__result p {
+  margin: 0 0 12px;
+}
+.eb-calc__lead {
+  font-size: 16px;
+}
+.eb-calc__lead strong {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--accent);
+}
+.eb-calc__lead small {
+  font-size: 13px;
+  color: var(--contrast-3);
+}
+.entry-content .eb-calc__table {
+  width: 100%;
+  margin: 0;
+  font-size: 14.5px;
+  border: 0;
+}
+.entry-content .eb-calc__table th,
+.entry-content .eb-calc__table td {
+  padding: 9px 10px;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--base);
+}
+.entry-content .eb-calc__table th {
+  font-size: 13px;
+  color: var(--contrast-2);
+  background: var(--base-2);
+}
+.entry-content .eb-calc__table td:nth-child(2) {
+  font-weight: 700;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.eb-calc__table small {
+  margin-left: 4px;
+  font-size: 12px;
+  color: var(--contrast-3);
+}
+.eb-calc__ok,
+.eb-calc__no {
+  display: inline-block;
+  padding: 1px 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  border-radius: 4px;
+}
+.eb-calc__ok {
+  color: #0f6e56;
+  background: #e1f5ee;
+}
+.eb-calc__no {
+  color: var(--contrast-3);
+  background: var(--base-2);
+}
+.eb-calc__note,
+.eb-calc__hint {
+  font-size: 13.5px;
+  color: var(--contrast-2);
+}
+.eb-calc__result .eb-calc__note {
+  margin: 12px 0 0;
+}
+.eb-calc__warn {
+  padding: 10px 12px;
+  font-size: 14px;
+  color: var(--global-color-9);
+  background: #fdf1f0;
+  border-radius: 6px;
+}
+@media (max-width: 768px) {
+.eb-calc__form {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+.eb-calc__result {
+    padding: 16px;
+  }
+}
+.eb-calcgrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 0 28px;
+}
+.entry-content a.eb-calccard {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 14px 16px;
+  background: var(--base-3);
+  border: 1px solid var(--base);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.eb-calccard strong {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--contrast);
+}
+.eb-calccard strong::after {
+  content: " →";
+  color: var(--accent);
+}
+.eb-calccard span {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--contrast-3);
+}
+.entry-content a.eb-calccard:hover {
+  background: var(--accent-3);
+  border-color: var(--accent);
+}
+@media (max-width: 1024px) {
+.eb-calcgrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 480px) {
+.eb-calcgrid {
+    grid-template-columns: 1fr;
+  }
+}
+.eb-calcgrid a.eb-calccard {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 14px 16px;
+  background: var(--base-3);
+  border: 1px solid var(--base);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.eb-calcgrid a.eb-calccard:hover {
+  background: var(--accent-3);
+  border-color: var(--accent);
+}
+.eb-calcgrid--home {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+}
+@media (max-width: 1100px) {
+.eb-calcgrid--home {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 768px) {
+.eb-calcgrid--home,
+    .eb-postcalc .eb-calcgrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.eb-calc__how {
+  margin: 12px 0 0;
+  padding: 0 14px;
+  background: #f8fafc;
+  border: 1px solid #e3e7ee;
+  border-radius: 8px;
+}
+.eb-calc__how summary {
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+}
+.eb-calc__how ol {
+  margin: 0 0 12px 18px;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--contrast-2);
+}
+.eb-calc__how li {
+  margin: 0 0 4px;
+}
+.eb-calc__how b {
+  color: var(--contrast);
+}
+.eb-calc__how small {
+  color: #667085;
+}
+.eb-calc__tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 0;
+}
+.eb-calc__tools button {
+  padding: 8px 14px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--accent);
+  background: #fff;
+  border: 1px solid #d5dce7;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.eb-calc__tools button:hover {
+  background: #eef3fc;
+}
+.entry-content .eb-calc-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 14px;
+  padding: 0 0 12px;
+  border-bottom: 2px solid var(--accent);
+}
+.entry-content .eb-calc-tabs__label {
+  margin-right: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #667085;
+  white-space: nowrap;
+}
+.entry-content .eb-calc-tabs__item {
+  padding: 7px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--contrast-2);
+  text-decoration: none;
+  white-space: nowrap;
+  background: #fff;
+  border: 1px solid #d5dce7;
+  border-radius: 6px;
+}
+.entry-content a.eb-calc-tabs__item:hover {
+  color: var(--accent);
+  background: var(--accent-3);
+  border-color: var(--accent-3);
+}
+.entry-content .eb-calc-tabs__item[aria-current] {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.entry-content .eb-calc-tabs__all {
+  margin-left: auto;
+  padding: 7px 2px 7px 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5d6676;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.entry-content .eb-calc-tabs__all:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.eb-calc-example,
+.eb-calc-related {
+  margin: 32px 0 0;
+}
+.eb-calc-example__body {
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid #e3e7ee;
+  border-radius: 12px;
+}
+.eb-calc-example__in {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 18px;
+  margin: 0 0 10px;
+  padding: 0;
+  font-size: 13.5px;
+  list-style: none;
+}
+.eb-calc-example__in li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0;
+  padding: 5px 0;
+  border-bottom: 1px dashed #edf0f4;
+}
+.eb-calc-example__in span {
+  color: #5d6676;
+}
+.eb-calc-example__in b {
+  font-weight: 600;
+  text-align: right;
+}
+.eb-calc-example .eb-calc__note,
+.eb-calc-example .eb-calc__hint {
+  display: none;
+}
+.eb-calc-related ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #edf0f4;
+}
+.eb-calc-related li {
+  margin: 0;
+  border-bottom: 1px solid #edf0f4;
+}
+.entry-content .eb-calc-related a {
+  display: block;
+  padding: 10px 4px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #1d4fa8;
+  text-decoration: none;
+  background: none;
+}
+.entry-content .eb-calc-related a::before {
+  content: "›";
+  margin-right: 8px;
+  color: #9aa3b2;
+}
+.entry-content .eb-calc-related a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+.entry-content .eb-calc-tabs__label {
+    flex-basis: 100%;
+    margin: 0 0 -2px;
+    font-size: 12.5px;
+  }
+.entry-content .eb-calc-tabs__item {
+    padding: 7px 11px;
+    font-size: 13.5px;
+  }
+.entry-content .eb-calc-tabs__all {
+    font-size: 12.5px;
+  }
+.eb-calc-example__in {
+    grid-template-columns: 1fr;
+  }
+}
+.eb-calc__tools button.is-done {
+  color: #fff;
+  background: #1f7a4d;
+  border-color: #1f7a4d;
+}
+.eb-calc__field[hidden] {
+  display: none !important;
+}
+@media (max-width: 768px) {
+.eb-calc__field > span > small {
+    font-size: 12px;
+  }
+}
+.page-id-14866.eb-wide .entry-header::before {
+  content:"20종 바로 계산";
+}
+.eb-wide .eb-calcgrid {
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  margin:0 0 12px;
+}
+.eb-wide .entry-content a.eb-calccard {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:4px;
+  min-height:100%;
+  padding:20px 20px 18px;
+  border:1px solid #e3e8f1;
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 1px 2px rgba(16,24,40,.04);
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.eb-wide .entry-content a.eb-calccard:hover,.eb-wide .entry-content a.eb-calccard:focus-visible {
+  transform:translateY(-2px);
+  border-color:#c9d6ec;
+  background:#fff;
+  box-shadow:0 14px 28px -14px rgba(29,60,120,.32);
+}
+.eb-wide .entry-content a.eb-calccard:focus-visible {
+  outline:2px solid #1d3c78;
+  outline-offset:2px;
+}
+.eb-wide .entry-content a.eb-calccard::after {
+  content:"";
+  position:absolute;
+  top:22px;
+  right:20px;
+  width:8px;
+  height:8px;
+  border-top:2px solid #b4bfcf;
+  border-right:2px solid #b4bfcf;
+  transform:rotate(45deg);
+  transition:border-color .18s,transform .18s;
+}
+.eb-wide .entry-content a.eb-calccard:hover::after {
+  border-color:#1d3c78;
+  transform:translateX(2px) rotate(45deg);
+}
+.eb-cc-ic {
+  display:grid;
+  place-items:center;
+  flex:none;
+  width:44px;
+  height:44px;
+  margin-bottom:10px;
+  border-radius:13px;
+  background:linear-gradient(180deg,#f2f6fd,#e4ecf8);
+  color:#1d3c78;
+  box-shadow:inset 0 0 0 1px rgba(29,60,120,.06);
+}
+.eb-cc-ic svg {
+  width:22px;
+  height:22px;
+}
+.eb-wide .eb-calccard strong {
+  padding-right:18px;
+  font-size:16px;
+  font-weight:800;
+  letter-spacing:-.02em;
+  color:#14213d;
+}
+.eb-wide .eb-calccard strong::after {
+  content:none;
+}
+.eb-wide .eb-calccard span {
+  font-size:13.5px;
+  line-height:1.55;
+  color:#6b7684;
+}
+.eb-wide .entry-content a.eb-calccard:hover .eb-cc-ic {
+  background:#1d3c78;
+  color:#fff;
+  box-shadow:none;
+}
+.page-id-14907.eb-wide .eb-calcgrid {
+  gap:16px;
+}
+.page-id-14907.eb-wide .eb-calccard span {
+  margin-top:2px;
+  color:#4e5968;
+}
+.eb-secnav {
+  position:sticky;
+  z-index:20;
+  top:0;
+  margin:-6px -8px 8px;
+  padding:8px;
+  background:rgba(255,255,255,.88);
+  -webkit-backdrop-filter:saturate(1.4) blur(10px);
+  backdrop-filter:saturate(1.4) blur(10px);
+  border-radius:14px;
+}
+.eb-secnav__in {
+  display:flex;
+  gap:6px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  scroll-behavior:smooth;
+}
+.eb-secnav__in::-webkit-scrollbar {
+  display:none;
+}
+.eb-secnav a:hover {
+  color:#1d3c78;
+  box-shadow:inset 0 0 0 1px #c9d6ec;
+}
+.eb-secnav a.is-on {
+  background:#1d3c78;
+  color:#fff;
+  box-shadow:none;
+}
+.eb-secnav a:focus-visible {
+  outline:2px solid #1d3c78;
+  outline-offset:2px;
+}
+@media (max-width:1079px) {
+.eb-wide .eb-calcgrid {
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+@media (max-width:767px) {
+.eb-wide .eb-calcgrid {
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+.eb-wide .entry-content a.eb-calccard {
+    display:grid;
+    grid-template-columns:44px 1fr;
+    grid-template-rows:auto auto;
+    column-gap:14px;
+    row-gap:2px;
+    align-items:center;
+    padding:14px 40px 14px 14px;
+    border-radius:14px;
+  }
+.eb-wide .eb-cc-ic {
+    grid-row:1/3;
+    margin:0;
+  }
+.eb-wide .entry-content a.eb-calccard::after {
+    top:50%;
+    right:18px;
+    margin-top:-4px;
+  }
+.eb-wide .eb-calccard strong {
+    padding-right:0;
+    font-size:15.5px;
+  }
+.eb-secnav {
+    margin:-4px -16px 6px;
+    padding:8px 16px;
+    border-radius:0;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+.eb-wide .entry-content a.eb-calccard,.eb-wide .entry-content a.eb-calccard::after {
+    transition:none;
+  }
+.eb-wide .entry-content a.eb-calccard:hover {
+    transform:none;
+  }
+}
+.eb-rc ul {
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:2px;
+}
+.eb-rc li {
+  margin:0;
+}
+.eb-rc li a {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:8px 8px 8px 6px;
+  margin:0 -6px;
+  border-radius:12px;
+  font-size:14.5px;
+  font-weight:600;
+  color:#1b2433;
+  text-decoration:none;
+  transition:background .15s;
+}
+.eb-rc li a:hover {
+  background:#f3f6fb;
+  color:#1d3c78;
+}
+.eb-rc .eb-cc-ic {
+  width:36px;
+  height:36px;
+  margin:0;
+  border-radius:11px;
+}
+.eb-rc .eb-cc-ic svg {
+  width:18px;
+  height:18px;
+}
+.eb-rc li a span {
+  flex:1;
+  min-width:0;
+}
+.eb-rc__go {
+  flex:none;
+  width:16px;
+  height:16px;
+  color:#b4bfcf;
+}
+.eb-rc li a:hover .eb-rc__go {
+  color:#1d3c78;
+}
+.eb-rc__all {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:40px;
+  margin-top:10px;
+  border-radius:12px;
+  background:#f3f6fb;
+  font-size:13.5px;
+  font-weight:700;
+  color:#1d3c78;
+  text-decoration:none;
+}
+.eb-rc__all:hover {
+  background:#e6edf8;
+  color:#1d3c78;
+}
+.parent-pageid-14866.eb-head .entry-header::before {
+  content: "복지 계산기";
+}
+/* 추가 기능 다듬기 (2026-10-15, functions.php): 계산기 금액 한글 읽기 · 저장한 글 날짜 · 맞춤 찾기 결과 공유 */
+.eb-calc__field .eb-calc__kr {
+  display: block;
+  min-height: 18px;
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1d3c78;
+}
+
+/* 계산기 모음(/calculator/) - 묶음마다 4개(2026-10-15 4묶음으로 정리): 태블릿에서 3칸이면 1개가 남으니 2칸×2줄 */
+@media (min-width:768px) and (max-width:1079px) {
+.page-id-14866.eb-wide .eb-calcgrid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+
+/* ===== 날짜 칸 (functions.php 78번, 2026-10-18) =====
+   숫자로 넣는 칸(.eb-dt__t)을 원래 날짜 칸 위에 겹침. 원래 칸은 테두리·배경만 보이고(글자 투명), 오른쪽 36px(달력 아이콘)을 누르면 기기 달력이 열림 */
+.eb-dt {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.eb-dt input[type="date"] {
+  color: transparent;
+  cursor: pointer;
+}
+.eb-dt input[type="date"]::-webkit-datetime-edit {
+  opacity: 0;
+}
+.eb-dt input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 36px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.eb-dt input.eb-dt__t,
+.eb-qa .eb-dt input.eb-dt__t,
+.eb-calc__field .eb-dt input.eb-dt__t {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 36px;
+  z-index: 1;
+  width: auto;
+  height: 100%;
+  margin: 0;
+  padding: 0 0 0 12px;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: #1b2433;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  outline: 0;
+}
+.eb-dt input.eb-dt__t::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  color: #98a2b3;
+  opacity: 1;
+}
+.eb-dt__ic {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  z-index: 1;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  color: #6b7684;
+  pointer-events: none;
+}
+.eb-dt__ic svg {
+  width: 100%;
+  height: 100%;
+}
+.eb-calc__field .eb-dt:focus-within input[type="date"] {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-3);
+}
+.eb-qa .eb-dt:focus-within input[type="date"] {
+  background-color: #fff;
+  border-color: #1d3c78;
+}
+.eb-dt:focus-within .eb-dt__ic {
+  color: #1d3c78;
+}
+.eb-dt.is-bad input[type="date"],
+.eb-calc__field .eb-dt.is-bad input[type="date"] {
+  border-color: #d93025;
+}
+@media (hover: hover) {
+  .eb-dt input[type="date"]:hover ~ .eb-dt__ic {
+    color: #1d3c78;
+  }
+}
+
+/* ===== 공휴일 표 (functions.php 79번 [eb_hol_table], 2026-10-18 시안) =====
+   연도 고르기(PC는 두 해 나란히) → 다음 공휴일 D-day → 한 줄에 날짜·요일·이름. 주말과 겹친 요일은 빨강, 대체공휴일은 그 줄 안에 작게 */
+.eb-hol {
+  margin: 0 0 1.5em;
+}
+.eb-hol__seg {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 0 10px;
+  padding: 3px;
+  background: #f3f5f9;
+  border-radius: 10px;
+}
+.eb-hol:not(.is-js) .eb-hol__seg {
+  display: none;
+}
+.eb-hol .eb-hol__seg button,
+.eb-hol .eb-hol__seg button:is(:hover, :focus, :active) {
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  color: #6b7684;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.eb-hol .eb-hol__seg button[aria-pressed="true"] {
+  color: #1d3c78;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(29, 60, 120, 0.15);
+}
+.eb-hol .eb-hol__seg button[aria-pressed="false"]:active {
+  background: #e8ecf2;
+}
+.eb-hol .eb-hol__seg button:focus-visible {
+  outline: 2px solid #1d3c78;
+  outline-offset: 1px;
+}
+.eb-hol__nx {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  background: #eef3fb;
+  border: 1px solid #c9d6ee;
+  border-radius: 12px;
+}
+.eb-hol__nx[hidden] {
+  display: none;
+}
+.eb-hol__dd {
+  flex: none;
+  padding: 2px 7px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+  background: #1d3c78;
+  border-radius: 6px;
+}
+.eb-hol__nt b {
+  display: block;
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: #1b2433;
+}
+.eb-hol__nt small {
+  display: block;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #4e5968;
+}
+.eb-hol__yrs {
+  display: grid;
+  gap: 16px;
+}
+.entry-content .eb-hol__yh {
+  display: none;
+}
+.entry-content .eb-hol p.eb-hol__sum {
+  margin: 0 0 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #6b7684;
+}
+.entry-content .eb-hol ul.eb-hol__list {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #dde2ea;
+  border-radius: 12px;
+}
+.entry-content .eb-hol .eb-hol__list li.eb-hol__r {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 9px 12px;
+  list-style: none;
+  border-top: 1px solid #eef1f5;
+}
+.entry-content .eb-hol .eb-hol__list li.eb-hol__r:first-child {
+  border-top: 0;
+}
+.entry-content .eb-hol .eb-hol__list li.eb-hol__r::before,
+.entry-content .eb-hol .eb-hol__list li.eb-hol__r::marker {
+  content: none;
+}
+.eb-hol__d {
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums;
+  color: #1b2433;
+}
+.eb-hol__d small,
+.eb-hol__n small {
+  display: block;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #6b7684;
+}
+.eb-hol__d small {
+  font-weight: 500;
+}
+.eb-hol__d small.is-we {
+  color: #d93025;
+}
+.eb-hol__n {
+  min-width: 0;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #1b2433;
+}
+.eb-hol__n small {
+  font-weight: 400;
+}
+.eb-hol__tg {
+  padding: 1px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
+  border-radius: 5px;
+}
+.eb-hol__tg.is-sub {
+  color: #9a3412;
+  background: #fff1e6;
+}
+.eb-hol__tg.is-long {
+  color: #1d3c78;
+  background: #e8eef8;
+}
+.eb-hol__tg.is-new {
+  color: #0b7a55;
+  background: #e6f6ef;
+}
+.eb-hol__r.is-past > * {
+  opacity: 0.45;
+}
+.entry-content .eb-hol p.eb-hol__ft {
+  margin: 10px 0 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #6b7684;
+}
+@media (hover: hover) {
+  .eb-hol .eb-hol__seg button[aria-pressed="false"]:hover {
+    color: #1d3c78;
+  }
+}
+@media (max-width: 1079px) {
+  .eb-hol.is-js .eb-hol__yr:not(.is-on) {
+    display: none;
+  }
+}
+@media (min-width: 1080px) {
+  .eb-hol .eb-hol__seg {
+    display: none;
+  }
+  .eb-hol__yrs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .entry-content h3.eb-hol__yh {
+    display: block;
+    margin: 0 0 2px;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.4;
+    color: #1b2433;
+    background: none;
+    border: 0;
+  }
+  .entry-content h3.eb-hol__yh::before,
+  .entry-content h3.eb-hol__yh::after {
+    content: none;
+  }
+}
