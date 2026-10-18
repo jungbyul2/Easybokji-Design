@@ -2,7 +2,7 @@
 /**
  * Plugin Name: 이지복지 우리 지역 복지지도
  * Description: 시·도/시·군·구를 골라 그 지역에서 확인할 만한 복지정책(시·군·구 / 시·도 / 전국 공통)을 찾는 /welfare-map/ 페이지와 관리자 검수 화면. 정책 원본은 테마의 복지로 데이터(eb_ws_local·eb_ws_all)를 그대로 읽고, 지도용 사본을 따로 두지 않음.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: 이지복지
  * Requires PHP: 7.4
  *
@@ -12,6 +12,7 @@
  *   inc/rest.php      /wp-json/ebm/v1/region · nation · regions
  *   inc/page.php      [eb_welfare_map] 화면(첫 목록은 서버에서 그림) · 자산 · 페이지 만들기 · 다른 화면 연결 스크립트
  *   inc/admin.php     복지지도 > 상태 · 검수 · 지역 코드표 (관리자)
+ *   inc/bundle.php    복지지도 > 검수 묶음: data/review-YYYYMMDD.json 검수 결과를 한 번에 적용·되돌리기 (1.0.1)
  *   data/regions.json 시·도 16 + 시·군·구 229 (SGIS 2026-10-01 경계 기준) + 옛 이름
  *   data/geo/*.json   지도 경로(미리 화면 좌표로 바꾼 SVG path)
  *
@@ -20,7 +21,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'EBM_VER', '1.0.0' );
+define( 'EBM_VER', '1.0.1' );
 define( 'EBM_DIR', plugin_dir_path( __FILE__ ) );
 define( 'EBM_URL', plugin_dir_url( __FILE__ ) );
 
@@ -30,6 +31,7 @@ require EBM_DIR . 'inc/rest.php';
 require EBM_DIR . 'inc/page.php';
 if ( is_admin() ) {
 	require EBM_DIR . 'inc/admin.php';
+	require EBM_DIR . 'inc/bundle.php';
 }
 
 /** 방문자에게 공개했는지(아니면 관리자 미리 보기만) */

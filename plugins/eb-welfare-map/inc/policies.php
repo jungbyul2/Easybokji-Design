@@ -413,6 +413,28 @@ function ebm_cycle_label( $c ) {
 	return isset( $m[ $c ] ) ? $m[ $c ] : $c;
 }
 
+/** 통합 전 지역 전체를 고른 경우 이름 하나로: 옛 전라남도 22개 시·군 / 옛 광주광역시 5개 구 (1.0.1) */
+function ebm_old_area_label( $r ) {
+	$r = array_map( 'strval', (array) $r );
+	sort( $r );
+	if ( count( $r ) < 2 ) {
+		return '';
+	}
+	$gj = array( '12210', '12240', '12270', '12300', '12330' );
+	if ( $r === $gj ) {
+		return '옛 광주광역시 지역';
+	}
+	$s12 = ebm_sido( '12' );
+	if ( $s12 && ! empty( $s12['g'] ) ) {
+		$jn = array_values( array_diff( array_map( 'strval', wp_list_pluck( $s12['g'], 'id' ) ), $gj ) );
+		sort( $jn );
+		if ( $r === $jn ) {
+			return '옛 전라남도 지역';
+		}
+	}
+	return '';
+}
+
 /** 적용 지역 표시 */
 function ebm_area_label( $it ) {
 	switch ( $it['sc'] ) {
@@ -433,6 +455,10 @@ function ebm_area_label( $it ) {
 			}
 			if ( 'legacy' === $it['sc'] ) {
 				return '옛 ' . ebm_sido( $it['sd'] )['s'] . ' ' . ( isset( $it['raw'][1] ) ? $it['raw'][1] : '' ) . ' 지역';
+			}
+			$old = ebm_old_area_label( $it['r'] );
+			if ( '' !== $old ) {
+				return $old;
 			}
 			return count( $names ) > 3 ? implode( '·', array_slice( $names, 0, 3 ) ) . ' 외 ' . ( count( $names ) - 3 ) . '곳' : implode( '·', $names );
 		default:

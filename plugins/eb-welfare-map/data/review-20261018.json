@@ -1,0 +1,829 @@
+{
+ "id": "20261018",
+ "title": "복지지도 지역 검수 2026-10-18",
+ "note": "33건은 스테이징에 이미 적용됨(같은 값이면 건너뜀). 18건은 이번 추가. 나머지 28건(확인 필요)은 그대로.",
+ "items": [
+  {
+   "id": "WLF00005203",
+   "name": "저소득층 여성청소년 생리용품 지원",
+   "sc": "sgg",
+   "sd": "47",
+   "r": [
+    "47750"
+   ],
+   "area": "경상북도 청송군",
+   "reason": "지원대상에 청송군 주소 요건 명시. 대상 설명과 선정기준의 자격 문구 불일치는 별도 확인 필요.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005203&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00005832",
+   "name": "국민여가캠핑장 요금 감면",
+   "sc": "sgg",
+   "sd": "52",
+   "r": [
+    "52180"
+   ],
+   "area": "전북특별자치도 정읍시",
+   "reason": "선정기준에 정읍시 관내 다자녀 조건 명시.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005832&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00005430",
+   "name": "영아종일제등전담아이돌보미지원",
+   "sc": "sido",
+   "sd": "47",
+   "r": [],
+   "area": "경상북도 전체",
+   "reason": "서비스 설명에서 경상북도 내 돌봄 활동 요건 확인. 울릉군으로 좁히지 않음.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005430&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00005364",
+   "name": "경기도 장애인 대소변흡수용품 구입지원",
+   "sc": "sido",
+   "sd": "41",
+   "r": [],
+   "area": "경기도 전체",
+   "reason": "지원대상에 경기도 거주 등록장애인 명시. 안양시로 좁히지 않음.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005364&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00005287",
+   "name": "산모신생아 건강관리 지원 확대(본인부담금 지원)",
+   "sc": "sido",
+   "sd": "48",
+   "r": [],
+   "area": "경상남도 전체",
+   "reason": "지원대상과 선정기준 모두 산모·출산아의 경상남도 주소 요건. 밀양시 한정 아님.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005287&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00000230",
+   "name": "고흥군 결혼장려금 지원",
+   "sc": "sgg",
+   "sd": "12",
+   "r": [
+    "12740"
+   ],
+   "area": "전남광주통합특별시 고흥군",
+   "reason": "본문에 고흥군 주소 유지와 단계별 지급 요건 명시.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000230&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00001022",
+   "name": "산모신생아 건강관리사 지원 확대",
+   "sc": "sgg",
+   "sd": "41",
+   "r": [
+    "41370"
+   ],
+   "area": "경기도 오산시",
+   "reason": "신청 시 산모의 오산시 주민등록 요건 명시.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001022&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00000283",
+   "name": "화성시 무연고 사망자 장제처리",
+   "sc": "sgg",
+   "sd": "41",
+   "r": [
+    "41590"
+   ],
+   "area": "경기도 화성시",
+   "reason": "지원대상에 화성시 관할 구역의 시신이라고 명시. 거주민 지원과는 다른 관할 조건.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000283&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00005851",
+   "name": "농촌유학 지원사업",
+   "sc": "sgg",
+   "sd": "12",
+   "r": [
+    "12830"
+   ],
+   "area": "전남광주통합특별시 영광군",
+   "reason": "영광군 학교로 전학 및 주소 이전 조건. 외지 학생도 신청 가능하므로 현 거주민 한정 표시 금지.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005851&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00004145",
+   "name": "군포시 중·고등학교 신입생 교복구입비 지원사업",
+   "sc": "sgg",
+   "sd": "41",
+   "r": [
+    "41410"
+   ],
+   "area": "경기도 군포시",
+   "reason": "지원대상과 선정기준에 군포시 주민등록 요건 명시.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004145&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00004242",
+   "name": "참전명예수당",
+   "sc": "sgg",
+   "sd": "47",
+   "r": [
+    "47930"
+   ],
+   "area": "경상북도 울진군",
+   "reason": "대상 본문에 울진군 주소 조건 명시.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004242&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00001856",
+   "name": "장애인보조기구수리사업",
+   "sc": "sgg",
+   "sd": "11",
+   "r": [
+    "11305"
+   ],
+   "area": "서울특별시 강북구",
+   "reason": "대상 본문에 강북구 등록장애인 조건을 반복 명시.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001856&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00001213",
+   "name": "장애인보조기기수리사업",
+   "sc": "sgg",
+   "sd": "11",
+   "r": [
+    "11305"
+   ],
+   "area": "서울특별시 강북구",
+   "reason": "선정기준에 강북구 등록장애인 조건 명시. 유사 사업과 중복 여부는 별도 검수.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001213&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00002084",
+   "name": "달성군 출산축하금 지원",
+   "sc": "sgg",
+   "sd": "27",
+   "r": [
+    "27710"
+   ],
+   "area": "대구광역시 달성군",
+   "reason": "부모와 출생아의 달성군 주민등록 및 거주 조건 명시.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00002084&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00003959",
+   "name": "누리과정(만3~5세) 부모부담 보육료 지원",
+   "sc": "sgg",
+   "sd": "48",
+   "r": [
+    "48220"
+   ],
+   "area": "경상남도 통영시",
+   "reason": "통영시 소재 어린이집 이용 아동 조건 명시. 아동의 거주지 조건과 혼동하지 않음.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003959&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00004375",
+   "name": "산모신생아건강관리지원사업 본인부담금지원",
+   "sc": "sgg",
+   "sd": "48",
+   "r": [
+    "48250"
+   ],
+   "area": "경상남도 김해시",
+   "reason": "대상 본문에 김해시 주민등록 또는 외국인등록 조건 명시.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004375&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00005112",
+   "name": "경상남도 청년 월세 지원사업",
+   "sc": "sgg",
+   "sd": "48",
+   "r": [
+    "48310"
+   ],
+   "area": "경상남도 거제시",
+   "reason": "지원대상에 거제시 주소 및 거제시 주택 임대차 요건 명시.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005112&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00004071",
+   "name": "산모·신생아 건강관리서비스 지원사업",
+   "sc": "sgg",
+   "sd": "48",
+   "r": [
+    "48250"
+   ],
+   "area": "경상남도 김해시",
+   "reason": "지원대상과 선정기준에 김해시 등록 출산가정 명시.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004071&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00001899",
+   "name": "독립유공자 의료비 지원",
+   "sc": "sido",
+   "sd": "48",
+   "r": [],
+   "area": "경상남도 전체",
+   "reason": "선정기준은 도내 유족이며 원문 연락처도 경상남도 복지정책과. 진주시로 좁히지 않음.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001899&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00006719",
+   "name": "세째아 육아용품 지원사업",
+   "sc": "sido",
+   "sd": "52",
+   "r": [],
+   "area": "전북특별자치도 전체",
+   "reason": "신청자격에 전라북도 주민등록 조건 명시. 정읍시 한정 추천과 구분. 유사 정읍시 사업과 중복 검수 필요.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006719&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00001451",
+   "name": "청년 어학·자격시험 응시료 지원사업",
+   "sc": "sgg",
+   "sd": "41",
+   "r": [
+    "41170"
+   ],
+   "area": "경기도 안양시",
+   "reason": "시험부터 신청까지 안양시 거주 조건 명시.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001451&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00004792",
+   "name": "생활체육교실 운영 지원",
+   "sc": "sgg",
+   "sd": "47",
+   "r": [
+    "47250"
+   ],
+   "area": "경상북도 상주시",
+   "reason": "상주시 동호인 및 상주시체육회 산하 회원 조건 명시.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004792&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00005441",
+   "name": "서울특별시 서울형 키즈카페 시립 뚝섬 자벌레점 운영",
+   "sc": "sido",
+   "sd": "11",
+   "r": [],
+   "area": "서울특별시 전체",
+   "reason": "대상에 서울시 거주 아동·보호자 명시. 시설이 광진구에 있어도 광진구민 한정 아님.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005441&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00005753",
+   "name": "성북구 서울형 키즈카페 운영",
+   "sc": "sido",
+   "sd": "11",
+   "r": [],
+   "area": "서울특별시 전체",
+   "reason": "대상에 서울시 거주뿐 아니라 생활권 포함 명시. 성북구민만으로 좁히지 않음.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005753&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00005809",
+   "name": "여수시 출생기본소득",
+   "sc": "sgg",
+   "sd": "12",
+   "r": [
+    "12130"
+   ],
+   "area": "전남광주통합특별시 여수시",
+   "reason": "대상과 지급요건에 여수시 주소 조건 명시. 통합 명칭이 있어도 사업 범위 확대 금지.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005809&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00001667",
+   "name": "장애인 건강교실 운영",
+   "sc": "sgg",
+   "sd": "44",
+   "r": [
+    "44180"
+   ],
+   "area": "충청남도 보령시",
+   "reason": "지원대상과 선정기준에 보령시 주민등록 조건 명시.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001667&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00006164",
+   "name": "365X24 아동돌봄 거점센터 운영",
+   "sc": "sido",
+   "sd": "44",
+   "r": [],
+   "area": "충청남도 전체",
+   "reason": "충남 도내 아동 및 충남에 부모·조부모가 있는 아동 이용 조건. 아산시만으로 한정하지 않음.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006164&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00006111",
+   "name": "부산형 산후조리비 지원사업",
+   "sc": "sido",
+   "sd": "26",
+   "r": [],
+   "area": "부산광역시 전체",
+   "reason": "대상과 선정기준에 부산시 주민등록 조건. 부산진구 한정 추천은 적용하지 않음.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006111&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00005793",
+   "name": "하수도요금 감면",
+   "sc": "sgg",
+   "sd": "52",
+   "r": [
+    "52130"
+   ],
+   "area": "전북특별자치도 군산시",
+   "reason": "선정기준에 군산시 조례의 다자녀가정 조건과 군산시 하수도 조례를 연결.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005793&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00005794",
+   "name": "셋째아 이상 육아용품 지원",
+   "sc": "sgg",
+   "sd": "52",
+   "r": [
+    "52180"
+   ],
+   "area": "전북특별자치도 정읍시",
+   "reason": "대상에 정읍시 거주 조건 명시. 광역 유사사업과 구분 검수 필요.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005794&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00005718",
+   "name": "수원형 통합돌봄 수원새빛돌봄(누구나) 사업",
+   "sc": "sgg",
+   "sd": "41",
+   "r": [
+    "41110"
+   ],
+   "area": "경기도 수원시",
+   "reason": "대상에 수원 실거주자와 외국인 조건 명시. 주민등록 조건만으로 좁히지 않음.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005718&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00005589",
+   "name": "어르신 무임교통 지원 사업",
+   "sc": "sgg",
+   "sd": "47",
+   "r": [
+    "47290"
+   ],
+   "area": "경상북도 경산시",
+   "reason": "지원대상에 경산시 관내 조건 명시. 연도별 연령 기준은 별도이므로 70세로 일괄 안내하지 않음.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005589&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00005406",
+   "name": "결혼이민자 취업지원 사업",
+   "sc": "sgg",
+   "sd": "12",
+   "r": [
+    "12150"
+   ],
+   "area": "전남광주통합특별시 순천시",
+   "reason": "선정기준에 순천시 거주 조건 명시. 원문이 오래되어 운영 여부는 추가 확인 필요.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005406&wlfareInfoReldBztpCd=02",
+   "grp": "2026-10-18 지역 검수 33건(적용 완료분)"
+  },
+  {
+   "id": "WLF00006759",
+   "name": "전남 청년 희망일자리 지원사업",
+   "sc": "sgg",
+   "sd": "12",
+   "r": [
+    "12780",
+    "12740",
+    "12720",
+    "12190",
+    "12730",
+    "12170",
+    "12710",
+    "12110",
+    "12810",
+    "12750",
+    "12150",
+    "12870",
+    "12130",
+    "12830",
+    "12800",
+    "12850",
+    "12840",
+    "12770",
+    "12860",
+    "12820",
+    "12790",
+    "12760"
+   ],
+   "area": "옛 전라남도 지역(22개 시·군)",
+   "reason": "도내 기업과 청년 기준. 전라남도 조례와 통합 명칭 혼재로 전체 확대 보류. 원문에 적힌 전라남도 범위만 적용(통합 후 광주 지역 확대는 확인 전까지 하지 않음).",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006759&wlfareInfoReldBztpCd=02",
+   "grp": "A. 원문 주소 요건대로 옛 지역만"
+  },
+  {
+   "id": "WLF00005850",
+   "name": "전라남도ㆍ시군 출생기본소득 지원",
+   "sc": "sgg",
+   "sd": "12",
+   "r": [
+    "12780",
+    "12740",
+    "12720",
+    "12190",
+    "12730",
+    "12170",
+    "12710",
+    "12110",
+    "12810",
+    "12750",
+    "12150",
+    "12870",
+    "12130",
+    "12830",
+    "12800",
+    "12850",
+    "12840",
+    "12770",
+    "12860",
+    "12820",
+    "12790",
+    "12760"
+   ],
+   "area": "옛 전라남도 지역(22개 시·군)",
+   "reason": "전남 출생신고 및 주소 조건 명시. 통합 지역 전체에 확대할 근거는 없음. 원문에 적힌 전라남도 범위만 적용(통합 후 광주 지역 확대는 확인 전까지 하지 않음).",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005850&wlfareInfoReldBztpCd=02",
+   "grp": "A. 원문 주소 요건대로 옛 지역만"
+  },
+  {
+   "id": "WLF00001286",
+   "name": "지역 중소기업 취업청년 학자금대출 상환지원 사업",
+   "sc": "sgg",
+   "sd": "12",
+   "r": [
+    "12780",
+    "12740",
+    "12720",
+    "12190",
+    "12730",
+    "12170",
+    "12710",
+    "12110",
+    "12810",
+    "12750",
+    "12150",
+    "12870",
+    "12130",
+    "12830",
+    "12800",
+    "12850",
+    "12840",
+    "12770",
+    "12860",
+    "12820",
+    "12790",
+    "12760"
+   ],
+   "area": "옛 전라남도 지역(22개 시·군)",
+   "reason": "주소와 근무지가 전라남도라는 조건. 통합 후 확대 여부 별도 확인. 원문에 적힌 전라남도 범위만 적용(통합 후 광주 지역 확대는 확인 전까지 하지 않음).",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001286&wlfareInfoReldBztpCd=02",
+   "grp": "A. 원문 주소 요건대로 옛 지역만"
+  },
+  {
+   "id": "WLF00000018",
+   "name": "전라남도 농어민 공익수당 지원사업",
+   "sc": "sgg",
+   "sd": "12",
+   "r": [
+    "12780",
+    "12740",
+    "12720",
+    "12190",
+    "12730",
+    "12170",
+    "12710",
+    "12110",
+    "12810",
+    "12750",
+    "12150",
+    "12870",
+    "12130",
+    "12830",
+    "12800",
+    "12850",
+    "12840",
+    "12770",
+    "12860",
+    "12820",
+    "12790",
+    "12760"
+   ],
+   "area": "옛 전라남도 지역(22개 시·군)",
+   "reason": "전라남도 주소 및 종사 기간 조건. 통합 지역 전체 확대는 근거 부족. 원문에 적힌 전라남도 범위만 적용(통합 후 광주 지역 확대는 확인 전까지 하지 않음).",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000018&wlfareInfoReldBztpCd=02",
+   "grp": "A. 원문 주소 요건대로 옛 지역만"
+  },
+  {
+   "id": "WLF00005767",
+   "name": "전라남도 임산부 친환경농산물 지원사업",
+   "sc": "sgg",
+   "sd": "12",
+   "r": [
+    "12780",
+    "12740",
+    "12720",
+    "12190",
+    "12730",
+    "12170",
+    "12710",
+    "12110",
+    "12810",
+    "12750",
+    "12150",
+    "12870",
+    "12130",
+    "12830",
+    "12800",
+    "12850",
+    "12840",
+    "12770",
+    "12860",
+    "12820",
+    "12790",
+    "12760"
+   ],
+   "area": "옛 전라남도 지역(22개 시·군)",
+   "reason": "전라남도 거주 산모·임신부 조건. 통합 지역 확대와 기준연도 불일치 확인 필요. 원문에 적힌 전라남도 범위만 적용(통합 후 광주 지역 확대는 확인 전까지 하지 않음).",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005767&wlfareInfoReldBztpCd=02",
+   "grp": "A. 원문 주소 요건대로 옛 지역만"
+  },
+  {
+   "id": "WLF00005766",
+   "name": "전라남도 난임부부 친환경농산물 꾸러미 지원사업",
+   "sc": "sgg",
+   "sd": "12",
+   "r": [
+    "12780",
+    "12740",
+    "12720",
+    "12190",
+    "12730",
+    "12170",
+    "12710",
+    "12110",
+    "12810",
+    "12750",
+    "12150",
+    "12870",
+    "12130",
+    "12830",
+    "12800",
+    "12850",
+    "12840",
+    "12770",
+    "12860",
+    "12820",
+    "12790",
+    "12760"
+   ],
+   "area": "옛 전라남도 지역(22개 시·군)",
+   "reason": "전라남도 거주 및 시군 지원결정통지서 요건. 통합 지역 전체 확대 근거 없음. 원문에 적힌 전라남도 범위만 적용(통합 후 광주 지역 확대는 확인 전까지 하지 않음).",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005766&wlfareInfoReldBztpCd=02",
+   "grp": "A. 원문 주소 요건대로 옛 지역만"
+  },
+  {
+   "id": "WLF00005765",
+   "name": "전라남도 청년부부 결혼축하금 지원사업",
+   "sc": "sgg",
+   "sd": "12",
+   "r": [
+    "12780",
+    "12740",
+    "12720",
+    "12190",
+    "12730",
+    "12170",
+    "12710",
+    "12110",
+    "12810",
+    "12750",
+    "12150",
+    "12870",
+    "12130",
+    "12830",
+    "12800",
+    "12850",
+    "12840",
+    "12770",
+    "12860",
+    "12820",
+    "12790",
+    "12760"
+   ],
+   "area": "옛 전라남도 지역(22개 시·군)",
+   "reason": "전라남도 사업 수급 이력과 도내 주소 요건. 통합 후 기준 확인 필요. 원문에 적힌 전라남도 범위만 적용(통합 후 광주 지역 확대는 확인 전까지 하지 않음).",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005765&wlfareInfoReldBztpCd=02",
+   "grp": "A. 원문 주소 요건대로 옛 지역만"
+  },
+  {
+   "id": "WLF00004998",
+   "name": "신혼부부, 다자녀가정 보금자리 지원사업",
+   "sc": "sgg",
+   "sd": "12",
+   "r": [
+    "12780",
+    "12740",
+    "12720",
+    "12190",
+    "12730",
+    "12170",
+    "12710",
+    "12110",
+    "12810",
+    "12750",
+    "12150",
+    "12870",
+    "12130",
+    "12830",
+    "12800",
+    "12850",
+    "12840",
+    "12770",
+    "12860",
+    "12820",
+    "12790",
+    "12760"
+   ],
+   "area": "옛 전라남도 지역(22개 시·군)",
+   "reason": "가구원의 전라남도 주소 요건 명시. 통합 후 승계 범위 미확인. 원문에 적힌 전라남도 범위만 적용(통합 후 광주 지역 확대는 확인 전까지 하지 않음).",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004998&wlfareInfoReldBztpCd=02",
+   "grp": "A. 원문 주소 요건대로 옛 지역만"
+  },
+  {
+   "id": "WLF00004048",
+   "name": "전라남도 여성농어업인 행복바우처 지원 사업",
+   "sc": "sgg",
+   "sd": "12",
+   "r": [
+    "12780",
+    "12740",
+    "12720",
+    "12190",
+    "12730",
+    "12170",
+    "12710",
+    "12110",
+    "12810",
+    "12750",
+    "12150",
+    "12870",
+    "12130",
+    "12830",
+    "12800",
+    "12850",
+    "12840",
+    "12770",
+    "12860",
+    "12820",
+    "12790",
+    "12760"
+   ],
+   "area": "옛 전라남도 지역(22개 시·군)",
+   "reason": "도내 거주 여성농어업인 기준이나 연결 지침은 전라남도 기준. 통합 후 확대 미확인. 원문에 적힌 전라남도 범위만 적용(통합 후 광주 지역 확대는 확인 전까지 하지 않음).",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004048&wlfareInfoReldBztpCd=02",
+   "grp": "A. 원문 주소 요건대로 옛 지역만"
+  },
+  {
+   "id": "WLF00005111",
+   "name": "광주광역시 농민공익수당 지원",
+   "sc": "sgg",
+   "sd": "12",
+   "r": [
+    "12330",
+    "12270",
+    "12210",
+    "12300",
+    "12240"
+   ],
+   "area": "옛 광주광역시 지역(5개 구)",
+   "reason": "광주광역시 거주 및 경영정보 조건 명시. 통합 지역 전체 확대 근거 없음. 원문에 적힌 광주광역시 범위만 적용(통합 후 확대는 확인 전까지 하지 않음).",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005111&wlfareInfoReldBztpCd=02",
+   "grp": "A. 원문 주소 요건대로 옛 지역만"
+  },
+  {
+   "id": "WLF00006210",
+   "name": "노숙인 재활시설 기능보강",
+   "sc": "hide",
+   "sd": "41",
+   "r": [],
+   "area": "지도에서 숨김",
+   "reason": "본문은 펜스·토지 보강공사이며 선정기준도 없음. 개인이 신청하는 혜택으로 단정하지 않음. 시설·기관 대상 사업이라 지도에서 숨김(관리자 검수 화면에서 다시 켤 수 있음).",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006210&wlfareInfoReldBztpCd=02",
+   "grp": "B. 개인이 신청하는 혜택이 아님"
+  },
+  {
+   "id": "WLF00005416",
+   "name": "지역자활센터 교육비 지원",
+   "sc": "hide",
+   "sd": "52",
+   "r": [],
+   "area": "지도에서 숨김",
+   "reason": "대상이 지역자활센터로만 적힘. 담당기관 주소로 적용 지역 추정 금지. 시설·기관 대상 사업이라 지도에서 숨김(관리자 검수 화면에서 다시 켤 수 있음).",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005416&wlfareInfoReldBztpCd=02",
+   "grp": "B. 개인이 신청하는 혜택이 아님"
+  },
+  {
+   "id": "WLF00006642",
+   "name": "기장군 공공심야어린이병원 지원",
+   "sc": "hide",
+   "sd": "26",
+   "r": [],
+   "area": "지도에서 숨김",
+   "reason": "수혜 대상으로 지정 의료기관·약국을 제시. 이용 주민 대상의 직접 지원으로 분류하기 전 성격 확인. 시설·기관 대상 사업이라 지도에서 숨김(관리자 검수 화면에서 다시 켤 수 있음).",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006642&wlfareInfoReldBztpCd=02",
+   "grp": "B. 개인이 신청하는 혜택이 아님"
+  },
+  {
+   "id": "WLF00005779",
+   "name": "읍면동 찾아가는 보건복지서비스 사업비",
+   "sc": "hide",
+   "sd": "12",
+   "r": [],
+   "area": "지도에서 숨김",
+   "reason": "본문은 일반적인 전달체계 설명. 순천시 전체와 황전면 한정을 가를 근거 부족. 시설·기관 대상 사업이라 지도에서 숨김(관리자 검수 화면에서 다시 켤 수 있음).",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005779&wlfareInfoReldBztpCd=02",
+   "grp": "B. 개인이 신청하는 혜택이 아님"
+  },
+  {
+   "id": "WLF00000886",
+   "name": "(파주시)무연고 사망자 장례비 지원",
+   "sc": "hide",
+   "sd": "41",
+   "r": [],
+   "area": "지도에서 숨김",
+   "reason": "파주시 사업명은 있으나 본문에 시신 발견지 등 관할 기준이 없음. 단순 거주 요건으로 처리 금지. 관할 기준이 원문에 없어 지역을 정하지 않고 지도에서 숨김.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000886&wlfareInfoReldBztpCd=02",
+   "grp": "C. 무연고 사망자 장례(주민 신청 혜택 아님)"
+  },
+  {
+   "id": "WLF00005366",
+   "name": "무연고 사망자 등에 대한 장례비 지원 사업",
+   "sc": "hide",
+   "sd": "41",
+   "r": [],
+   "area": "지도에서 숨김",
+   "reason": "본문에 시신 인수 여부만 설명. 구리시 관할 사건인지 추가 확인 필요. 관할 기준이 원문에 없어 지역을 정하지 않고 지도에서 숨김.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005366&wlfareInfoReldBztpCd=02",
+   "grp": "C. 무연고 사망자 장례(주민 신청 혜택 아님)"
+  },
+  {
+   "id": "WLF00000913",
+   "name": "안성시 무연고 사망자 관리(장제인건비)",
+   "sc": "hide",
+   "sd": "41",
+   "r": [],
+   "area": "지도에서 숨김",
+   "reason": "사업명은 안성시지만 본문에 관할 구역 기준이 빠져 있음. 관할 기준이 원문에 없어 지역을 정하지 않고 지도에서 숨김.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000913&wlfareInfoReldBztpCd=02",
+   "grp": "C. 무연고 사망자 장례(주민 신청 혜택 아님)"
+  },
+  {
+   "id": "WLF00003986",
+   "name": "산모신생아 건강관리 지원사업(추가형)",
+   "sc": "hide",
+   "sd": "41",
+   "r": [],
+   "area": "지도에서 숨김",
+   "reason": "복지로는 소득초과 가정 지원을 설명하지만 하남시 공식 안내에는 10월 이후 소득초과 지원 불가 안내가 있음. 현행성 우선 확인. 하남시 공식 안내와 복지로가 달라 잘못 안내하지 않도록 확인 전까지 숨김.",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003986&wlfareInfoReldBztpCd=02",
+   "grp": "D. 공식 안내 충돌(확인 전까지 숨김)"
+  }
+ ]
+}
