@@ -79,6 +79,11 @@
   - 로그인한 관리자는 쿠키가 함께 가지만, nonce(일회용 보안 값)가 없어 WordPress가 로그인으로 보지 않으므로 응답은 같습니다.
   - Password Protection과 스테이징 보호 파일은 바꾸지 않았습니다.
 
+## 같은 폴더의 다른 스테이징 전용 도구 (Codex 작성, 2026-10-18 병합)
+
+- `eb-map-review-export.php`: 복지지도 검수 목록 JSON 내려받기(관리자만)
+- `eb-map-review-batch.php`: 지역 검수 33건 적용 도구. **이미 실행함. 다시 누르지 마세요.** 기록: `docs/welfare-map/README.md`
+
 ## 되돌리기
 
 SFTP로 `wp-content/mu-plugins/eb-staging-guard.php`를 지우면 끝납니다. 이 파일이 DB에 남기는 것은 기록용 `eb_stg_log` 하나뿐입니다.

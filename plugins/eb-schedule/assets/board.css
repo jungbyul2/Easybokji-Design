@@ -1,0 +1,190 @@
+.ebs{--n:#1d3c78;--nb:#eaf0fa;--ink:#1b2433;--ink2:#333d4b;--sub:#5b6676;--line:#e3e8f1;--soft:#f5f7fa;--g:#0b7a55;--gb:#e4f6ef;--r:#c8291d;--rb:#fdeceb;--a:#b85a06;--ab:#fff3e6;--p:#5b3fb0;--pb:#efeafc;container-type:inline-size;position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 2px rgba(16,24,40,.06);padding:14px 16px 10px;color:var(--ink);font-size:14px;line-height:1.5;min-width:0;display:flex;flex-direction:column}
+.ebs *{box-sizing:border-box}
+.ebs .ebs-ic{width:1em;height:1em;flex:none;vertical-align:-.125em}
+.ebs__h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ebs__t{display:flex;align-items:center;gap:8px;margin:0;font-size:15.5px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.ebs__ic{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:var(--ab);color:var(--a);font-size:15px}
+.ebs__sum{font-size:12px;color:var(--sub)}
+.ebs__sum b{color:var(--ink2);font-weight:700}
+.ebs__more{display:inline-flex;align-items:center;gap:2px;font-size:12.5px;color:var(--sub);text-decoration:none}
+.ebs__more:hover{color:var(--n)}
+.ebs-rg{position:relative;margin-left:auto}
+.ebs-rg summary{display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 9px 0 8px;border:1px solid #c9d3e4;border-radius:999px;background:#fff;font-size:12.5px;color:var(--ink);cursor:pointer;list-style:none;white-space:nowrap}
+.ebs-rg summary::-webkit-details-marker{display:none}
+.ebs-rg summary:hover{border-color:#9fb1cf}
+.ebs-rg summary>.ebs-ic:first-child{color:#6d4fd1}
+.ebs-rg__k{color:var(--sub)}
+.ebs-rg__v{font-weight:700}
+.ebs-rg.is-set summary{border-color:#cbbdf3;background:#faf8ff}
+.ebs-rg__pop{position:absolute;z-index:30;top:calc(100% + 6px);right:0;width:260px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 10px 28px rgba(16,24,40,.14);display:flex;flex-direction:column;gap:8px}
+.ebs-rg__pop>b{font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.45}
+.ebs-rg__pop label{display:flex;flex-direction:column;gap:3px;font-size:11.5px;color:var(--sub)}
+.ebs-rg__pop select{width:100%;height:34px;padding:0 8px;border:1px solid #c9d3e4;border-radius:8px;background:#fff;font:inherit;font-size:13px;color:var(--ink)}
+.ebs-rg__btns{display:flex;gap:6px;justify-content:flex-end}
+.ebs-rg__btns button{height:32px;padding:0 12px;border-radius:8px;font:inherit;font-size:13px;cursor:pointer}
+.ebs-rg__clear{border:1px solid var(--line);background:#fff;color:var(--ink2)}
+.ebs-rg__clear:hover,.ebs-rg__clear:focus{background:var(--soft);color:var(--ink2)}
+.ebs-rg__ok{border:1px solid var(--n);background:var(--n);color:#fff;font-weight:700}
+.ebs-rg__ok:hover,.ebs-rg__ok:focus{background:#163064;color:#fff}
+.ebs-rg__pop small{font-size:11px;color:var(--sub);line-height:1.45}
+.ebs__bar{display:flex;align-items:center;gap:10px;margin:10px 0 6px;min-width:0}
+.ebs__tabs{flex:none;display:flex;gap:2px;padding:3px;background:#f1f4f8;border-radius:9px}
+.ebs__tabs button{flex:none;border:0;background:none;padding:4px 10px;border-radius:7px;font:inherit;font-size:12.5px;color:#4b5565;cursor:pointer;white-space:nowrap;line-height:1.5}
+.ebs__tabs button span{font-size:11.5px}
+.ebs__tabs button:hover,.ebs__tabs button:focus{background:rgba(255,255,255,.6);color:var(--ink2)}
+.ebs__tabs button[aria-selected=true]{background:#fff;color:var(--n);font-weight:700;box-shadow:0 1px 2px rgba(16,24,40,.08)}
+.ebs__tabs button[data-f=local][aria-selected=true]{color:var(--p)}
+.ebs__tabs button[data-hide]{display:none}
+.ebs__chips{display:flex;gap:4px;min-width:0;overflow-x:auto;scrollbar-width:none}
+.ebs__chips::-webkit-scrollbar{display:none}
+.ebs__chips button{flex:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:2px 9px;font:inherit;font-size:12px;line-height:1.6;color:var(--ink2);cursor:pointer}
+.ebs__chips button:hover,.ebs__chips button:focus{border-color:#c9d3e4;background:#fff;color:var(--ink2)}
+.ebs__chips button[aria-pressed=true]{border-color:var(--n);background:var(--nb);color:var(--n);font-weight:600}
+.ebs__hero{display:none}
+.ebs__list{list-style:none;margin:0;padding:0}
+/* 홈처럼 옆 칸에 맞춰 상자가 늘어나면 목록이 남는 높이를 차지 → board.js snap()이 줄마다 같게 나눔(마지막 줄 아래 공백 없앰, 2026-10-16) */
+.ebs>.ebs__list{flex:1 1 auto;display:flex;flex-direction:column}
+/* 줄마다 나누는 것은 board.js snap()이 기기 픽셀 단위로 함(소수 높이로 게이지바가 1px씩 어긋나지 않게) */
+/* 복지 캘린더처럼 글 본문 안에 있을 때 본문 목록 여백(li 아래 0.4em = 5.6px)이 줄마다 붙어 홈과 줄 간격이 달랐던 것 */
+.entry-content .ebs .ebs__list>.ebs-r{margin-bottom:0}
+/* 대상 칩으로 몇 줄만 남아 아래 안내(.ebs__hint)가 보일 때는 줄을 늘리지 않고 안내가 남는 높이를 가짐 */
+.ebs:has(>.ebs__hint:not([hidden]))>.ebs__list{flex:0 0 auto}
+.ebs-r{position:relative;display:grid;grid-template-columns:58px minmax(0,1fr) 164px 112px 156px;gap:12px;align-items:center;margin:0;min-height:46px;padding:6px 0;border-top:1px solid var(--line)}
+.ebs-r[hidden]{display:none}
+.ebs-r.is-local{background:#faf8ff;margin:0 -16px;padding:6px 16px}
+.ebs-r__dd{justify-self:start;display:flex;flex-direction:column;align-items:center;min-width:52px;padding:3px 0;border-radius:7px;background:var(--gb);color:var(--g);line-height:1.15}
+.ebs-r__dd b{font-size:13.5px;font-weight:800;letter-spacing:-.02em;white-space:nowrap}
+.ebs-r__dd small{display:none}
+.ebs-r.is-soon .ebs-r__dd{background:var(--rb);color:var(--r)}
+.ebs-r.is-next .ebs-r__dd{background:var(--nb);color:var(--n)}
+.ebs-r__m{min-width:0;display:flex;flex-direction:column;gap:1px}
+.ebs-r__top{display:flex;align-items:center;gap:6px;min-width:0}
+.ebs-lc{flex:none;padding:0 6px;border-radius:4px;background:var(--pb);color:var(--p);font-size:11px;font-weight:700;line-height:18px}
+.ebs-r__n{min-width:0;font-size:14px;font-weight:700;color:var(--ink);line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ebs-r__n a{color:inherit;text-decoration:none}
+.ebs-r__n a:hover{color:var(--n);text-decoration:underline;text-underline-offset:2px}
+.ebs-r__meta{font-size:12px;color:var(--sub);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ebs-r__sep{margin:0 5px;color:#c3cad6}
+.ebs-r__mm{display:none}
+.ebs-r__amt{font-size:12.5px;font-weight:700;color:var(--n);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ebs-r__pl{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ebs-r__p{font-size:11.5px;color:var(--sub);white-space:nowrap}
+.ebs-r__bar{display:block;height:4px;border-radius:2px;background:#eef1f6;overflow:hidden}
+.ebs-r__bar i{display:block;height:100%;width:0;border-radius:inherit;background:var(--g);transition:width .4s}
+.ebs-r.is-soon .ebs-r__bar i{background:var(--r)}
+.ebs-r.is-next .ebs-r__bar{visibility:hidden}
+.ebs-r__act{display:flex;gap:4px;align-items:center;justify-content:flex-end}
+.ebs-r__act>a,.ebs-cal summary{display:inline-flex;align-items:center;gap:3px;height:26px;padding:0 8px;border:1px solid var(--line);border-radius:7px;font-size:12px;color:var(--ink2);text-decoration:none;background:#fff;cursor:pointer;white-space:nowrap}
+.ebs-r__act>a:hover,.ebs-cal summary:hover{border-color:#c9d3e4;color:var(--n)}
+.ebs-r__act>a.is-guide{border-color:var(--n);background:var(--n);color:#fff;font-weight:600}
+.ebs-r__act>a.is-guide:hover{background:#163064;color:#fff}
+.ebs-r__go{display:none}
+.ebs-cal{position:relative}
+.ebs-cal summary{list-style:none;width:26px;padding:0;justify-content:center}
+.ebs-cal summary::-webkit-details-marker{display:none}
+.ebs-cal__pop{position:absolute;z-index:20;top:calc(100% + 6px);right:0;min-width:210px;padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff;box-shadow:0 8px 24px rgba(16,24,40,.12);display:flex;flex-direction:column;gap:2px;text-align:left}
+.ebs-cal__pop b{font-size:12px;color:var(--sub);font-weight:600;padding:2px 6px 6px}
+.ebs-cal__pop a,.ebs-cal__pop button{display:block;text-align:left;padding:7px 8px;border:0;border-radius:6px;background:none;font:inherit;font-size:13px;color:var(--ink);text-decoration:none;cursor:pointer}
+.ebs-cal__pop a:hover,.ebs-cal__pop button:hover,.ebs-cal__pop button:focus{background:var(--soft);color:var(--ink)}
+.ebs__hint{flex:1 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:84px;padding:14px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--sub)}
+.ebs__hint[hidden]{display:none}
+.ebs__hint button{height:30px;padding:0 12px;border:1px solid #c9d3e4;border-radius:999px;background:#fff;font:inherit;font-size:12.5px;font-weight:600;color:var(--n);cursor:pointer}
+.ebs__hint button:hover,.ebs__hint button:focus{background:var(--nb);color:var(--n)}
+.ebs__empty{margin:0;padding:18px 4px;border-top:1px solid var(--line);font-size:13px;color:var(--sub);text-align:center}
+.ebs__foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:8px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink2)}
+.ebs__toggle{display:inline-flex;align-items:center;gap:3px;padding:0;border:0;background:none;font:inherit;font-size:12.5px;color:var(--n);font-weight:700;cursor:pointer}
+.ebs__toggle:hover,.ebs__toggle:focus{background:none;color:#163064;text-decoration:underline}
+.ebs__toggle[hidden]{display:none}
+.ebs__toggle[aria-expanded=true] .ebs-ic{transform:rotate(180deg)}
+.ebs__tax{color:var(--ink2);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.ebs__tax b{font-weight:700}
+.ebs__tax .dd{color:var(--a)}
+.ebs__tax:hover{color:var(--n)}
+.ebs__note{margin-left:auto;font-size:11.5px;color:var(--sub)}
+.ebs--full{border:0;box-shadow:none;padding:0;background:none}
+.ebs--full .ebs-r.is-local{margin:0;padding:6px 8px}
+@container (min-width: 640px) and (max-width: 899px){
+/* 버튼 칸은 고정 폭(가장 긴 '국민건강보험'+종+달력) - 버튼 글자 길이에 따라 금액·기간 칸이 줄마다 밀리던 것 (2026-10-16) */
+.ebs-r{grid-template-columns:58px minmax(0,1fr) 168px 156px;grid-template-areas:"dd m amt act" "dd m pl act";row-gap:3px}
+.ebs-r__dd{grid-area:dd}
+.ebs-r__m{grid-area:m}
+.ebs-r__amt{grid-area:amt;align-self:end}
+.ebs-r__pl{grid-area:pl;flex-direction:row;align-items:center;justify-content:space-between;gap:8px;align-self:start}
+/* 막대는 오른쪽 끝에 같은 폭으로 - 기간 글자 길이에 따라 막대 시작·길이가 들쭉날쭉하던 것 (2026-10-16) */
+.ebs-r__p{flex:1 1 auto;min-width:0;font-size:11px;overflow:hidden;text-overflow:ellipsis}
+.ebs-r__bar{flex:none;width:52px}
+.ebs-r__act{grid-area:act}
+}
+@container (max-width: 639px){
+.ebs__bar{flex-direction:column;align-items:stretch;gap:8px}
+.ebs__tabs{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}
+.ebs__tabs button{padding:6px 4px}
+.ebs__hero:not([hidden]){display:flex;align-items:center;gap:12px;margin:2px 0 8px;padding:10px 14px;border:1px solid #f6d6c3;border-radius:12px;background:#fff6f0;text-decoration:none}
+.ebs .ebs__hero-t{display:flex;flex-direction:column;min-width:0;flex:1}
+.ebs .ebs__hero-t small{font-size:11.5px;color:#a8501a;font-weight:600}
+.ebs .ebs__hero-t b{font-size:14.5px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ebs .ebs__hero-d{flex:none;padding:4px 10px;border-radius:8px;background:#fff;border:1px solid #f2c3b0;font-size:17px;font-weight:800;letter-spacing:-.02em;color:var(--r)}
+.ebs__h{gap:8px 10px}
+.ebs__sum{display:none}
+.ebs__more{order:2;margin-left:auto}
+.ebs-rg{order:3;flex:1 1 100%;margin-left:0;position:static}
+.ebs-rg summary{width:100%;height:38px;padding:0 12px;border-radius:10px}
+.ebs-rg summary>.ebs-ic:last-child{margin-left:auto}
+.ebs-rg__pop{left:12px;right:12px;width:auto;top:auto;margin-top:6px}
+.ebs__foot{flex-direction:column;align-items:stretch;gap:8px}
+.ebs__toggle{justify-content:center;height:40px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.ebs__toggle:hover,.ebs__toggle:focus{background:var(--soft);text-decoration:none}
+.ebs__tax{white-space:normal}
+.ebs-r{grid-template-columns:52px minmax(0,1fr) 14px;gap:10px;min-height:58px;padding:8px 0}
+.ebs-r.is-local{margin:0 -16px;padding:8px 16px}
+.ebs-r__dd{align-self:center;min-width:50px;padding:6px 0;border-radius:9px}
+.ebs-r__dd b{font-size:14px}
+.ebs-r__n{font-size:14.5px;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.ebs-r__n a::after{content:"";position:absolute;inset:0}
+.ebs-r__meta,.ebs-r__amt,.ebs-r__pl,.ebs-r__act{display:none}
+.ebs-r__mm{display:block;font-size:12.5px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ebs-r__mm b{color:var(--n);font-weight:700}
+.ebs-r__go{display:flex;color:#9aa4b2}
+.ebs__note{margin-left:0;width:100%}
+}
+@media (max-width:600px){.ebs{padding:12px 12px 8px}.ebs-r.is-local{margin:0 -12px;padding:8px 12px}}
+@media (min-width:1080px){
+#ebc .c-tool{display:flex;flex-direction:column;gap:0;padding:0}
+#ebc .c-tool li{flex:1 0 40px;border-top:1px solid #eef1f6}
+#ebc .c-tool li:first-child{border-top:0}
+#ebc .c-tool a{height:100%;min-height:40px;border:0;border-radius:8px;padding:0 6px;gap:10px}
+#ebc .c-tool a:hover{background:#f5f8fc}
+#ebc .c-tool strong{flex:none;font-size:14px}
+#ebc .c-tool small{flex:1;min-width:0;text-align:right;font-size:11.5px;color:#5b6676;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+}
+@media (max-width:1079px){#ebc .c-tool small{display:none}}
+.ebs .ebs__t,#ebc .ebs .ebs__t{font-size:15.5px;font-weight:800;letter-spacing:-.035em}
+#ebc .hx__mo .due::after,#ebc .hx__wk .due::after{background:#d92d20!important}
+#ebc .hx__mo .due::before,#ebc .hx__wk .due::before{background:#fdeceb!important;border-color:#f2b8b2!important}
+
+/* 마감 알림 종 버튼 (2026-10-15): 넓은 칸은 버튼 줄 안, 좁은 칸(휴대폰)은 줄 오른쪽 */
+.ebs-bell,.ebs-bell:hover,.ebs-bell:focus,.ebs-bell:active{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;padding:0;border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--ink2);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background-color .15s,border-color .15s,color .15s}
+.ebs-bell .ebs-ic{width:15px;height:15px}
+@media (hover:hover){.ebs-bell:hover{border-color:#c9d3e4;background:var(--soft);color:var(--n)}}
+.ebs-bell:active{background:var(--nb);color:var(--n)}
+.ebs-bell:focus{outline:0}
+.ebs-bell:focus-visible{outline:2px solid var(--n);outline-offset:2px}
+.ebs-bell[aria-pressed="true"],.ebs-bell[aria-pressed="true"]:hover,.ebs-bell[aria-pressed="true"]:focus,.ebs-bell[aria-pressed="true"]:active{border-color:var(--n);background:var(--nb);color:var(--n)}
+.ebs-bell[aria-pressed="true"] .ebs-ic{fill:currentColor}
+.ebs-r>.ebs-bell{display:none}
+@container (max-width: 639px){
+.ebs-r{grid-template-columns:52px minmax(0,1fr) 34px 14px}
+.ebs-r>.ebs-bell{display:inline-flex;position:relative;z-index:2;width:34px;height:34px;border-radius:9px}
+.ebs-r>.ebs-bell .ebs-ic{width:17px;height:17px}
+}
+
+/* 탭(전체·접수 중·우리 지역·곧 시작) 대신: 상태는 제목 옆 요약(접수 중 n · 곧 시작 n), 우리 지역 사업은 목록 맨 위 묶음 (2026-10-16, board.js apply()) */
+.ebs__tabs{display:none!important}
+.ebs__list>.ebs-sec{display:flex;align-items:center;gap:5px;margin:0;padding:10px 2px 5px;border-top:1px solid var(--line);font-size:12.5px;font-weight:800;line-height:1.4;color:var(--ink2);list-style:none}
+.entry-content .ebs .ebs__list>.ebs-sec{margin:0}
+.ebs__list>.ebs-sec:first-child{border-top:0;padding-top:2px}
+.ebs-sec b{color:var(--n);font-weight:800}
+.ebs-sec small{margin-left:3px;font-size:11.5px;font-weight:600;color:var(--sub)}
+.ebs-sec.is-local{color:var(--p)}
+.ebs-sec.is-local b{color:var(--p)}
+.ebs-sec .ebs-ic{flex:none;width:14px;height:14px}

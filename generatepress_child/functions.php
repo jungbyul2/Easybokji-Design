@@ -6535,6 +6535,10 @@ function eb_x_mega_panes() {
 			continue;
 		}
 		$tools .= $tool( $s['item']->url, isset( $tool_ic[ $name ] ) ? $tool_ic[ $name ] : 'compass', $t( $s ), $d( $s ), false !== strpos( $name, '맞춤' ) );
+		if ( false !== strpos( $name, '맞춤' ) && function_exists( 'ebm_menu_item' ) && ebm_menu_item() ) { // 복지지도 플러그인 (2026-10-18)
+			$mi     = ebm_menu_item();
+			$tools .= $tool( $mi[0], 'map', $mi[1], $mi[2] );
+		}
 	}
 	$tools .= $tool( home_url( '/senior-equipment/' ), 'heart', '어르신 복지용구', '연 160만원, 15%만 내기' ); // 2026-10-16
 	$tools .= $tool( home_url( '/saved/' ), 'star', '저장한 글', '저장해 둔 글 모아 보기' );
@@ -6952,7 +6956,7 @@ function eb_hero_v3_html( $trend, $roll ) {
 	}
 	$data = array( 'data' => rest_url( 'eb/v1/finder-data' ), 'api' => rest_url( 'eb/v1/services' ), 'lapi' => rest_url( 'eb/v1/local' ), 'find' => home_url( '/find/' ), 'regions' => array_map( function ( $sgs ) { return array_values( array_filter( array_keys( $sgs ) ) ); }, $regs ) );
 	$h .= '<div class="hx__fc" data-set="' . esc_attr( wp_json_encode( $data ) ) . '">'
-		. '<div class="hx__tabs" role="tablist" aria-label="찾는 방법"><button type="button" role="tab" id="hx-t1" aria-controls="hx-p1" aria-selected="true" data-tab="find">' . eb_x_ic( 'compass' ) . '조건으로 찾기</button><button type="button" role="tab" id="hx-t2" aria-controls="hx-p2" aria-selected="false" data-tab="search" tabindex="-1">' . eb_x_ic( 'search' ) . '검색어로 찾기</button></div>'
+		. '<div class="hx__tabs" role="tablist" aria-label="찾는 방법"><button type="button" role="tab" id="hx-t1" aria-controls="hx-p1" aria-selected="true" data-tab="find">' . eb_x_ic( 'compass' ) . '조건으로 찾기</button><button type="button" role="tab" id="hx-t2" aria-controls="hx-p2" aria-selected="false" data-tab="search" tabindex="-1">' . eb_x_ic( 'search' ) . '검색어로 찾기</button></div>' . ( function_exists( 'ebm_home_link' ) ? ebm_home_link() : '' ) // 복지지도 플러그인 진입점 (2026-10-18)
 		// 조건으로
 		. '<div class="hx__pane" id="hx-p1" role="tabpanel" aria-labelledby="hx-t1" data-pane="find">'
 		. '<p class="hx__again" hidden>' . $svg( '<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>', '2.2' ) . '지난번 조건을 불러왔어요<button type="button" class="hx__reset">새로 고르기</button></p>'
@@ -7168,6 +7172,7 @@ add_action( 'wp_footer', function () {
 	var rlab = function () { return S.sd ? short(S.sd) + (S.sg ? ' ' + S.sg : '') : ''; };
 	var labels = function () { return (S.life ? [S.life] : []).concat(S.hh, S.th, S.sd ? [rlab()] : []); };
 	try { var L = JSON.parse(localStorage.getItem('eb_finder_last') || 'null'); if (L && L.v === 2 && (L.life || (L.hh && L.hh.length) || (L.th && L.th.length) || L.sd)) { S.life = L.life || ''; S.hh = L.hh || []; S.th = L.th || []; S.sd = L.sd || ''; S.sg = L.sg || ''; again.hidden = false; } } catch (e) {}
+	if (window.ebRegionNewer) { var NR = window.ebRegionNewer(L); if (NR) { S.sd = NR.sd; S.sg = NR.sg; if (NR.sd) { again.hidden = false; } } } // 복지지도 플러그인: 지역은 가장 나중에 고른 것 하나로 (2026-10-18)
 	// 주소에 조건이 있으면(?life=&hh=&th=&sd=&sg=, 혜택 찾기와 같은 형식) 그 조건으로 - 공유 링크
 	var Q = new URLSearchParams(location.search);
 	if (Q.get('life') || Q.get('hh') || Q.get('th') || Q.get('sd')) { S = { life: Q.get('life') || '', hh: (Q.get('hh') || '').split(',').filter(Boolean), th: (Q.get('th') || '').split(',').filter(Boolean), sd: Q.get('sd') || '', sg: Q.get('sg') || '' }; again.hidden = true; }
@@ -8270,6 +8275,13 @@ function eb_ws_list( $page = 1, $rows = 10 ) {
 	}
 	$items = array();
 	foreach ( $xml->xpath( '//servList' ) ?: array() as $s ) {
+		if ( ! $items && 1 === (int) $page && $rows >= 100 ) { // 복지지도: 응답 항목 이름 확인용(설정 > 복지서비스 API와 복지지도 > 상태에서 봄) (2026-10-18)
+			$raw1 = array();
+			foreach ( $s->children() as $k => $v ) {
+				$raw1[ (string) $k ] = trim( (string) $v );
+			}
+			update_option( 'eb_ws_raw1', $raw1, false );
+		}
 		$items[] = array(
 			'id'   => (string) $s->servId,
 			'name' => (string) $s->servNm,
@@ -8279,6 +8291,9 @@ function eb_ws_list( $page = 1, $rows = 10 ) {
 			'life' => (string) $s->lifeArray,
 			'hh'   => (string) $s->trgterIndvdlArray,
 			'them' => (string) $s->intrsThemaArray,
+			'cy'   => (string) $s->sprtCycNm, // 복지지도: 혜택 한 줄(없으면 빈칸) (2026-10-18)
+			'pv'   => (string) $s->srvPvsnNm,
+			'm'    => (string) $s->lastModYmd,
 		);
 	}
 	return array( 'total' => (int) $pick( '//totalCount' ), 'items' => $items );
@@ -8431,6 +8446,7 @@ add_action( 'wp_footer', function () {
 	var chipsAll = function () { return labels().concat(S.sd ? [rlab()] : []); };
 	// 지난번 조건(이 기기) → 주소에 조건이 있으면 그걸 우선(공유 링크)
 	try { var L = JSON.parse(localStorage.getItem('eb_finder_last') || 'null'); if (L && L.v === 2) { S.life = L.life || ''; S.hh = L.hh || []; S.th = L.th || []; S.sd = L.sd || ''; S.sg = L.sg || ''; } } catch (e) {}
+	if (window.ebRegionNewer) { var NR = window.ebRegionNewer(L); if (NR) { S.sd = NR.sd; S.sg = NR.sg; } } // 복지지도 플러그인: 지역은 가장 나중에 고른 것 하나로 (2026-10-18)
 	var Q = new URLSearchParams(location.search);
 	if (Q.get('life') || Q.get('hh') || Q.get('th') || Q.get('sd')) {
 		S.life = Q.get('life') || '';
@@ -8868,6 +8884,11 @@ function eb_ws_local_sync() {
 				$raw1 = $r;
 			}
 			$all[] = array(
+				'id' => eb_ws_local_pick( $r, array( 'servId' ) ), // 복지지도(eb-welfare-map): 같은 사업은 ID 하나로만 세기·검수 기록 열쇠 (2026-10-18)
+				'm'  => eb_ws_local_pick( $r, array( 'lastModYmd' ) ), // 복지로 최종 수정일(복지지도 '복지로 수정' 날짜)
+				'ap' => eb_ws_local_pick( $r, array( 'aplyMtdNm' ) ),
+				'cy' => eb_ws_local_pick( $r, array( 'sprtCycNm' ) ),
+				'pv' => eb_ws_local_pick( $r, array( 'srvPvsnNm' ) ),
 				'n'  => eb_ws_local_pick( $r, array( 'servNm' ) ),
 				'o'  => eb_ws_local_pick( $r, array( 'bizChrDeptNm', 'jurOrgNm', 'jurMnofNm' ) ),
 				's'  => eb_ws_local_pick( $r, array( 'servDgst' ) ),
@@ -9427,6 +9448,7 @@ add_action( 'wp_footer', function () {
 	var change = function () { dirty = true; paint(); calc(); };
 	var open = function () {
 		try { var L = JSON.parse(localStorage.getItem('eb_finder_last') || 'null'); if (L && L.v === 2) { S = { life: L.life || '', hh: L.hh || [], th: L.th || [], sd: L.sd || '', sg: L.sg || '' }; } } catch (e) {}
+		if (window.ebRegionNewer) { var NR = window.ebRegionNewer(L); if (NR) { S.sd = NR.sd; S.sg = NR.sg; } } // 복지지도 플러그인 (2026-10-18)
 		load(); fillSg(); loadLocal();
 		show(S.life || S.th.length || S.sd ? 3 : 1);
 		Q.hidden = false;
@@ -10737,12 +10759,15 @@ add_action( 'wp_footer', function () {
 	$tl = array(
 		array( '/forms/', 'doc', '공식 서식 모음' ),
 		array( '/links/', 'bank', '공식 기관 모음' ),
-		array( '/nearby/', 'map', '우리 동네 복지 기관' ),
+		array( '/nearby/', 'pin', '우리 동네 복지 기관' ),
 		array( '/hotline/', 'phone', '긴급·상담 전화' ),
-		array( '/address/', 'pin', '주소·영문주소 찾기' ),
+		array( '/address/', 'home', '주소·영문주소 찾기' ),
 		array( '/glossary/', 'book', '복지 용어사전' ),
 		array( '/senior-equipment/', 'user', '어르신 복지용구' ),
 	);
+	if ( function_exists( 'ebm_menu_item' ) && ebm_menu_item() ) { // 복지지도 플러그인 (2026-10-18)
+		array_unshift( $tl, array( '/' . ltrim( str_replace( home_url(), '', ebm_menu_item()[0] ), '/' ), 'map', ebm_menu_item()[1] ) );
+	}
 	$h .= '<section class="ebm__sec" id="ebm-s5" aria-labelledby="ebm-h5"><div class="ebm__sh"><h3 id="ebm-h5">바로 쓰는 도구</h3></div><div class="ebm__rows">';
 	foreach ( $tl as $t ) {
 		$h .= '<a href="' . $u( $t[0] ) . '" data-k="도구"><i>' . eb_x_ic( $t[1] ) . '</i><span>' . esc_html( $t[2] ) . '</span>' . $chev . '</a>';

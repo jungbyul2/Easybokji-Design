@@ -1,0 +1,57 @@
+[
+ {
+  "name": "P1 지역 서비스 받기(56번): 서비스 ID·원문 수정일·신청방법·지원주기·제공유형도 저장",
+  "find": "\t\t\t\t'n'  => eb_ws_local_pick( $r, array( 'servNm' ) ),\n",
+  "repl": "\t\t\t\t'id' => eb_ws_local_pick( $r, array( 'servId' ) ), // 복지지도(eb-welfare-map): 같은 사업은 ID 하나로만 세기·검수 기록 열쇠 (2026-10-18)\n\t\t\t\t'm'  => eb_ws_local_pick( $r, array( 'lastModYmd' ) ), // 복지로 최종 수정일(복지지도 '복지로 수정' 날짜)\n\t\t\t\t'ap' => eb_ws_local_pick( $r, array( 'aplyMtdNm' ) ),\n\t\t\t\t'cy' => eb_ws_local_pick( $r, array( 'sprtCycNm' ) ),\n\t\t\t\t'pv' => eb_ws_local_pick( $r, array( 'srvPvsnNm' ) ),\n\t\t\t\t'n'  => eb_ws_local_pick( $r, array( 'servNm' ) ),\n"
+ },
+ {
+  "name": "P2 정부 서비스 받기(54번): 지원주기·제공유형·수정일(있으면) + 첫 항목 원본(응답 항목 확인용)",
+  "find": "\t\t\t'them' => (string) $s->intrsThemaArray,\n",
+  "repl": "\t\t\t'them' => (string) $s->intrsThemaArray,\n\t\t\t'cy'   => (string) $s->sprtCycNm, // 복지지도: 혜택 한 줄(없으면 빈칸) (2026-10-18)\n\t\t\t'pv'   => (string) $s->srvPvsnNm,\n\t\t\t'm'    => (string) $s->lastModYmd,\n"
+ },
+ {
+  "name": "P2-2 정부 서비스 첫 항목 원본 저장(관리자 확인용, 전체 받기 때만)",
+  "find": "\tforeach ( $xml->xpath( '//servList' ) ?: array() as $s ) {\n\t\t$items[] = array(\n\t\t\t'id'   => (string) $s->servId,\n",
+  "repl": "\tforeach ( $xml->xpath( '//servList' ) ?: array() as $s ) {\n\t\tif ( ! $items && 1 === (int) $page && $rows >= 100 ) { // 복지지도: 응답 항목 이름 확인용(설정 > 복지서비스 API와 복지지도 > 상태에서 봄) (2026-10-18)\n\t\t\t$raw1 = array();\n\t\t\tforeach ( $s->children() as $k => $v ) {\n\t\t\t\t$raw1[ (string) $k ] = trim( (string) $v );\n\t\t\t}\n\t\t\tupdate_option( 'eb_ws_raw1', $raw1, false );\n\t\t}\n\t\t$items[] = array(\n\t\t\t'id'   => (string) $s->servId,\n"
+ },
+ {
+  "name": "P3 맞춤 찾기(55번): 복지지도·캘린더에서 더 나중에 고른 지역이 있으면 지역만 그것으로(주소 조건이 있으면 주소 우선)",
+  "find": "\ttry { var L = JSON.parse(localStorage.getItem('eb_finder_last') || 'null'); if (L && L.v === 2) { S.life = L.life || ''; S.hh = L.hh || []; S.th = L.th || []; S.sd = L.sd || ''; S.sg = L.sg || ''; } } catch (e) {}\n\tvar Q = new URLSearchParams(location.search);\n",
+  "repl": "\ttry { var L = JSON.parse(localStorage.getItem('eb_finder_last') || 'null'); if (L && L.v === 2) { S.life = L.life || ''; S.hh = L.hh || []; S.th = L.th || []; S.sd = L.sd || ''; S.sg = L.sg || ''; } } catch (e) {}\n\tif (window.ebRegionNewer) { var NR = window.ebRegionNewer(L); if (NR) { S.sd = NR.sd; S.sg = NR.sg; } } // 복지지도 플러그인: 지역은 가장 나중에 고른 것 하나로 (2026-10-18)\n\tvar Q = new URLSearchParams(location.search);\n"
+ },
+ {
+  "name": "P4 홈 찾기 카드(48번 hx): 같은 규칙",
+  "find": "\ttry { var L = JSON.parse(localStorage.getItem('eb_finder_last') || 'null'); if (L && L.v === 2 && (L.life || (L.hh && L.hh.length) || (L.th && L.th.length) || L.sd)) { S.life = L.life || ''; S.hh = L.hh || []; S.th = L.th || []; S.sd = L.sd || ''; S.sg = L.sg || ''; again.hidden = false; } } catch (e) {}\n",
+  "repl": "\ttry { var L = JSON.parse(localStorage.getItem('eb_finder_last') || 'null'); if (L && L.v === 2 && (L.life || (L.hh && L.hh.length) || (L.th && L.th.length) || L.sd)) { S.life = L.life || ''; S.hh = L.hh || []; S.th = L.th || []; S.sd = L.sd || ''; S.sg = L.sg || ''; again.hidden = false; } } catch (e) {}\n\tif (window.ebRegionNewer) { var NR = window.ebRegionNewer(L); if (NR) { S.sd = NR.sd; S.sg = NR.sg; if (NR.sd) { again.hidden = false; } } } // 복지지도 플러그인: 지역은 가장 나중에 고른 것 하나로 (2026-10-18)\n"
+ },
+ {
+  "name": "P5 휴대폰 빠른 찾기(59번): 같은 규칙",
+  "find": "\t\ttry { var L = JSON.parse(localStorage.getItem('eb_finder_last') || 'null'); if (L && L.v === 2) { S = { life: L.life || '', hh: L.hh || [], th: L.th || [], sd: L.sd || '', sg: L.sg || '' }; } } catch (e) {}\n",
+  "repl": "\t\ttry { var L = JSON.parse(localStorage.getItem('eb_finder_last') || 'null'); if (L && L.v === 2) { S = { life: L.life || '', hh: L.hh || [], th: L.th || [], sd: L.sd || '', sg: L.sg || '' }; } } catch (e) {}\n\t\tif (window.ebRegionNewer) { var NR = window.ebRegionNewer(L); if (NR) { S.sd = NR.sd; S.sg = NR.sg; } } // 복지지도 플러그인 (2026-10-18)\n"
+ },
+ {
+  "name": "P6 홈 찾기 카드 탭 줄 오른쪽 '지도로 찾기'",
+  "find": "data-tab=\"search\" tabindex=\"-1\">' . eb_x_ic( 'search' ) . '검색어로 찾기</button></div>'\n",
+  "repl": "data-tab=\"search\" tabindex=\"-1\">' . eb_x_ic( 'search' ) . '검색어로 찾기</button></div>' . ( function_exists( 'ebm_home_link' ) ? ebm_home_link() : '' ) // 복지지도 플러그인 진입점 (2026-10-18)\n"
+ },
+ {
+  "name": "P7 PC 메가메뉴 '바로 쓰는 도구': 맞춤 혜택 찾기 바로 뒤에 우리 지역 복지지도",
+  "find": "\t\t$tools .= $tool( $s['item']->url, isset( $tool_ic[ $name ] ) ? $tool_ic[ $name ] : 'compass', $t( $s ), $d( $s ), false !== strpos( $name, '맞춤' ) );\n",
+  "repl": "\t\t$tools .= $tool( $s['item']->url, isset( $tool_ic[ $name ] ) ? $tool_ic[ $name ] : 'compass', $t( $s ), $d( $s ), false !== strpos( $name, '맞춤' ) );\n\t\tif ( false !== strpos( $name, '맞춤' ) && function_exists( 'ebm_menu_item' ) && ebm_menu_item() ) { // 복지지도 플러그인 (2026-10-18)\n\t\t\t$mi     = ebm_menu_item();\n\t\t\t$tools .= $tool( $mi[0], 'map', $mi[1], $mi[2] );\n\t\t}\n"
+ },
+ {
+  "name": "P8 휴대폰 전체 메뉴 '바로 쓰는 도구': 맨 위에 복지지도, 동네 기관은 PC와 같은 핀 아이콘(지도 아이콘은 복지지도가 씀)",
+  "find": "\t\tarray( '/nearby/', 'map', '우리 동네 복지 기관' ),\n",
+  "repl": "\t\tarray( '/nearby/', 'pin', '우리 동네 복지 기관' ),\n"
+ },
+ {
+  "name": "P8-1 휴대폰 주소 찾기 아이콘도 PC와 같게(집)",
+  "find": "\t\tarray( '/address/', 'pin', '주소·영문주소 찾기' ),\n",
+  "repl": "\t\tarray( '/address/', 'home', '주소·영문주소 찾기' ),\n"
+ },
+ {
+  "name": "P8-2",
+  "find": "\t\tarray( '/senior-equipment/', 'user', '어르신 복지용구' ),\n\t);\n",
+  "repl": "\t\tarray( '/senior-equipment/', 'user', '어르신 복지용구' ),\n\t);\n\tif ( function_exists( 'ebm_menu_item' ) && ebm_menu_item() ) { // 복지지도 플러그인 (2026-10-18)\n\t\tarray_unshift( $tl, array( '/' . ltrim( str_replace( home_url(), '', ebm_menu_item()[0] ), '/' ), 'map', ebm_menu_item()[1] ) );\n\t}\n"
+ }
+]
