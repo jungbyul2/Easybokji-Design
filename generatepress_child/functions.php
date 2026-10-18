@@ -7189,15 +7189,15 @@ add_action( 'wp_footer', function () {
 	var load = function () {
 		if (busy) { return; }
 		busy = true;
-		fetch(D.data, { credentials: 'omit' }).then(function (r) { return r.json(); }).then(function (j) { posts = (j && j.posts) || []; calc(); }).catch(function () { posts = []; calc(); });
-		fetch(D.api, { credentials: 'omit' }).then(function (r) { return r.json(); }).then(function (j) { svc = (j && j.items) || []; calc(); }).catch(function () { svc = []; calc(); });
+		fetch(D.data, { credentials: 'same-origin' }).then(function (r) { return r.json(); }).then(function (j) { posts = (j && j.posts) || []; calc(); }).catch(function () { posts = []; calc(); });
+		fetch(D.api, { credentials: 'same-origin' }).then(function (r) { return r.json(); }).then(function (j) { svc = (j && j.items) || []; calc(); }).catch(function () { svc = []; calc(); });
 	};
 	var loadLocal = function () {
 		if (!S.sd) { return; }
 		var k = S.sd + '|' + S.sg;
 		if (loc[k] || locKey === k) { return; }
 		locKey = k;
-		fetch(D.lapi + (D.lapi.indexOf('?') > -1 ? '&' : '?') + 'sd=' + encodeURIComponent(S.sd) + '&sg=' + encodeURIComponent(S.sg), { credentials: 'omit' })
+		fetch(D.lapi + (D.lapi.indexOf('?') > -1 ? '&' : '?') + 'sd=' + encodeURIComponent(S.sd) + '&sg=' + encodeURIComponent(S.sg), { credentials: 'same-origin' })
 			.then(function (r) { return r.json(); }).then(function (j) { loc[k] = (j && j.items) || []; calc(); }).catch(function () { loc[k] = []; calc(); });
 	};
 	var url = function () {
@@ -8455,7 +8455,7 @@ add_action( 'wp_footer', function () {
 		var k = S.sd + '|' + S.sg;
 		if (loc[k] || locKey === k) { return; }
 		locKey = k; locFail = false;
-		fetch(D.lapi + (D.lapi.indexOf('?') > -1 ? '&' : '?') + 'sd=' + encodeURIComponent(S.sd) + '&sg=' + encodeURIComponent(S.sg), { credentials: 'omit' })
+		fetch(D.lapi + (D.lapi.indexOf('?') > -1 ? '&' : '?') + 'sd=' + encodeURIComponent(S.sd) + '&sg=' + encodeURIComponent(S.sg), { credentials: 'same-origin' })
 			.then(function (r) { return r.json(); }).then(function (j) { loc[k] = (j && j.items) || []; render(); })
 			.catch(function () { locFail = true; render(); });
 	};
@@ -8801,7 +8801,7 @@ add_action( 'wp_footer', function () {
 	if (document.fonts && document.fonts.ready) { document.fonts.ready.then(stick); }
 	setTimeout(stick, 600);
 	// 정부 서비스 목록은 화면이 뜬 뒤 따로(1시간 브라우저 캐시)
-	fetch(D.api, { credentials: 'omit' }).then(function (r) { return r.json(); }).then(function (j) { svc = (j && j.items) || []; render(); f3count(); if (f3jump && !f3moved) { f3hash(); } }).catch(function () { failed = true; render(); f3count(); });
+	fetch(D.api, { credentials: 'same-origin' }).then(function (r) { return r.json(); }).then(function (j) { svc = (j && j.items) || []; render(); f3count(); if (f3jump && !f3moved) { f3hash(); } }).catch(function () { failed = true; render(); f3count(); });
 })();
 JS
 	. "\n</script>\n";
@@ -9345,17 +9345,17 @@ add_action( 'wp_footer', function () {
 		var k = S.sd + '|' + S.sg;
 		if (loc[k] || locKey === k) { return; }
 		locKey = k; locFail = false;
-		fetch(D.lapi + (D.lapi.indexOf('?') > -1 ? '&' : '?') + 'sd=' + encodeURIComponent(S.sd) + '&sg=' + encodeURIComponent(S.sg), { credentials: 'omit' })
+		fetch(D.lapi + (D.lapi.indexOf('?') > -1 ? '&' : '?') + 'sd=' + encodeURIComponent(S.sd) + '&sg=' + encodeURIComponent(S.sg), { credentials: 'same-origin' })
 			.then(function (r) { return r.json(); }).then(function (j) { loc[k] = (j && j.items) || []; calc(); })
 			.catch(function () { locFail = true; calc(); });
 	};
 	var load = function () {
 		if (busy) { return; }
 		busy = true;
-		fetch(D.data, { credentials: 'omit' }).then(function (r) { return r.json(); })
+		fetch(D.data, { credentials: 'same-origin' }).then(function (r) { return r.json(); })
 			.then(function (j) { posts = (j && j.posts) || []; regions = (j && j.regions) || {}; fillSg(); calc(); })
 			.catch(function () { posts = []; regions = {}; calc(); });
-		fetch(D.api, { credentials: 'omit' }).then(function (r) { return r.json(); })
+		fetch(D.api, { credentials: 'same-origin' }).then(function (r) { return r.json(); })
 			.then(function (j) { svc = (j && j.items) || []; calc(); })
 			.catch(function () { svc = []; calc(); });
 	};

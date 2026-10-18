@@ -58,6 +58,27 @@
   - 페이지에 `gtag/js`는 없고 `ga-disable` 신호만 있음
 - 운영 주소(`easybokji.com`)일 때: GA4 코드가 그대로 나오고, 메일도 보내려고 시도함 → 이 파일이 아무 영향을 주지 않음
 
+## 변경 기록: 맞춤 찾기 내부 요청 credentials (2026-10-18, 스테이징 먼저)
+
+- **증상**: 복지지도 '내 조건으로 더 좁히기' → 맞춤 찾기(경기도 가평군)에서 '지역 서비스를 불러오지 못했어요'.
+- **원인**: `functions.php`의 같은 사이트 REST 요청 8곳이 `credentials: 'omit'`이었습니다. 이 설정은 브라우저가 Password Protection(Basic 인증) 정보를 빼고 보내게 해서, 서버가 401(인증 필요)을 돌려줍니다.
+- **재현**:
+  - 임시 WordPress에 Basic 인증을 걸고 Chromium으로 `/find/?sd=경기도&sg=가평군`을 열었습니다.
+  - 고치기 전: `/wp-json/eb/v1/local`과 `/services` 모두 401, 오류 문구 나옴.
+  - 고친 뒤: 둘 다 200, 가평군 서비스가 보임.
+- **수정**: `{ credentials: 'omit' }` → `{ credentials: 'same-origin' }` (8곳, 모두 `rest_url()`로 만든 이 사이트 주소)
+
+| 위치 | 요청 |
+|---|---|
+| 48번 홈 찾기 카드 | `finder-data`, `services`, `local` |
+| 55번 맞춤 찾기 | `local`, `services` |
+| 59번 휴대폰 빠른 찾기 | `local`, `finder-data`, `services` |
+
+- **운영 영향(반영은 승인 후)**:
+  - 운영에는 Basic 인증이 없어서 응답이 같습니다.
+  - 로그인한 관리자는 쿠키가 함께 가지만, nonce(일회용 보안 값)가 없어 WordPress가 로그인으로 보지 않으므로 응답은 같습니다.
+  - Password Protection과 스테이징 보호 파일은 바꾸지 않았습니다.
+
 ## 되돌리기
 
 SFTP로 `wp-content/mu-plugins/eb-staging-guard.php`를 지우면 끝납니다. 이 파일이 DB에 남기는 것은 기록용 `eb_stg_log` 하나뿐입니다.
